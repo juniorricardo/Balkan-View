@@ -1,0 +1,56 @@
+.App {
+  /* text-align: center; */
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: center;
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
+  position: fixed;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wallpaper{
+  background-image: url("https://wp.decrypt.co/wp-content/uploads/2019/10/etienne-martin-2_k82gx9uk8-uns-2048x1152.jpg");
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  display: block;
+  opacity: 0.2;
+  height: 100%;
+  left: 0;
+  top:0;
+  width: 100%;
+}

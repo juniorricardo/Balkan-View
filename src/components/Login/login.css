@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap');
+
+.font-quicksand{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card{
+    -moz-osz-font-smoothing: grayscale;
+    -webkit-font-smoothing:antialiased;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+.card-title{
+    font-weight: 600;
+}
