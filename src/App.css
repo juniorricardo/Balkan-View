@@ -4,7 +4,7 @@
 }
 
 .wallpaper{
-  background-image: url("https://wp.decrypt.co/wp-content/uploads/2019/10/etienne-martin-2_k82gx9uk8-uns-2048x1152.jpg");
+  background-image: url("./img/wallpaper.jpg");
   background-position: center;
   background-size: cover;
   position: fixed;

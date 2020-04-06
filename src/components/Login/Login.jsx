@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <div className='container  mt-4 pt-4'>
-      <div className='card mx-auto font-quicksand'>
+      <div className='card width-1 mx-auto font-quicksand bg-light'>
         <img
           className='card-img-top'
           src={Image}

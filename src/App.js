@@ -13,8 +13,8 @@ class App extends React.Component {
         <div className='wallpaper'></div>
         <Navigation logo={logo}></Navigation>
 
-        <Login />
-        {/* <UserList /> */}
+        {/* <Login /> */}
+        <UserList />
       </div>
     )
   }
