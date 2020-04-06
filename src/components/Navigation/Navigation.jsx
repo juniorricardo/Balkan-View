@@ -4,7 +4,7 @@ import './navigation.css'
 class Navigation extends Component {
   render () {
     return (
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <nav className='navbar navbar-expand-lg navbar-light bg-light mb-4'>
         <a className='navbar-brand' href='/'>
           <img
             className="d-inline-block align-top"
