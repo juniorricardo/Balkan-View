@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 .contador {
-    font-weight: 600;
+  font-weight: 600;
+}
+
+.table {
+  font-family: 'Quicksand', sans-serif;
+}
+thead {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.avatar {
+  position: relative;
+  line-height: 1;
+  border-radius: 500px;
+  white-space: nowrap;
+  font-weight: 700;
+  border-radius: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  border-radius: 500px;
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 50, 0.15);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.w-48 {
+  width: 48px !important;
+  height: 48px !important;
 }
