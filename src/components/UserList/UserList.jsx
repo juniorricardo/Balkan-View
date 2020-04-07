@@ -1,5 +1,5 @@
 import React from 'react'
-import { results } from './resultsApi.json'
+import { results } from './../../json/usuarios.json'
 import './userlist.css'
 
 const UserList = () => {
@@ -24,16 +24,15 @@ const UserList = () => {
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>
           <img
-            className='avatar w-60 border border-secondary'
+            className='shadow rounded-circle w-60 border border-secondary d-block'
             src={user.avatar}
             alt='Avatar'
           />
           <div className='ml-3 align-middle text-left'>
-            <span onClick={() => seleccionUsuario(index)}>
+            <h5 className='my-0' onClick={() => seleccionUsuario(index)}>
               {user.name.firstName} {user.name.lastName}
-            </span>
-            <br />
-            <small className='text-muted'>{user.name.jobTitle}</small>
+            </h5>
+            <small className='text-muted d-none d-lg-block'>{user.name.jobTitle}</small>
           </div>
         </td>
         <td className='align-middle'>
@@ -47,8 +46,8 @@ const UserList = () => {
         </td>
         <td className='align-middle'>{user.document}</td>
         <td className='align-middle'>{user.login.email}</td>
-        <td className='align-middle'>{user.addres.city}</td>
-        <td className='align-middle'>{user.addres.county}</td>
+        {/* <td className='align-middle d-none d-lg-block'>{user.addres.city}</td>
+        <td className='align-middle d-none d-lg-block'>{user.addres.county}</td> */}
       </tr>
     ))
     return list
@@ -111,8 +110,8 @@ const UserList = () => {
               <th>Tipo</th>
               <th>Documento</th>
               <th>Correo</th>
-              <th>Ciudad</th>
-              <th>Provincia</th>
+              {/* <th className='d-none d-lg-block'>Ciudad</th>
+              <th className='d-none d-lg-block'>Provincia</th> */}
             </tr>
           </thead>
           <tbody>{showList()}</tbody>

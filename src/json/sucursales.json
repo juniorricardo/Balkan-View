@@ -1,0 +1,44 @@
+{
+  "results": {
+    "sucursales": [
+      {
+        "name": {
+          "nameCompany": "Engelmann - Denzinger",
+          "companySuffix": "ED"
+        },
+        "email": "engelmanndenzinger@gmail.com",
+        "addres": {
+          "street": {
+            "number": "5302 Asya Wells",
+            "name": "Mira Trail"
+          },
+          "city": "Neu Mariellaland",
+          "state": "Sachsen",
+          "county": "Borders",
+          "country": "Monaco",
+          "countryCode": "PN"
+        },
+        "phoneNumber": "+49-7290-57756755"
+      },
+      {
+        "name": {
+          "nameCompany": "Kesselring Gruppe",
+          "companySuffix": "KG"
+        },
+        "email": "kesselring@gmail.com",
+        "addres": {
+          "street": {
+            "number": "254 Krause Village",
+            "name": "Liebach Path"
+          },
+          "city": "Kaulburg",
+          "state": "Bremen",
+          "county": "Bedfordshire",
+          "country": "Vereinigtes Königreich",
+          "countryCode": "IM"
+        },
+        "phoneNumber": "(08278) 6017880"
+      }
+    ]
+  }
+}

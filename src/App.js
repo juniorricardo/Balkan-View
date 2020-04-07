@@ -3,7 +3,7 @@ import logo from './banco.svg'
 import Login from './components/Login/Login'
 import Navigation from './components/Navigation/Navigation'
 import UserList from './components/UserList/UserList'
-// import UserList from './components/UserList/UserList'
+import Sucursal from './components/Sucursal/Sucursal'
 import './App.css'
 
 class App extends React.Component {
@@ -14,7 +14,8 @@ class App extends React.Component {
         <Navigation logo={logo}></Navigation>
 
         {/* <Login /> */}
-        <UserList />
+        {/* <UserList /> */}
+        <Sucursal />
       </div>
     )
   }

@@ -11,29 +11,6 @@ thead {
   font-size: 1.2rem;
 }
 
-.avatar {
-  position: relative;
-  line-height: 1;
-  border-radius: 500px;
-  white-space: nowrap;
-  font-weight: 700;
-  border-radius: 100%;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  border-radius: 500px;
-  box-shadow: 0 4px 8px 0 rgba(50, 50, 50, 0.15);
-}
-
-a:link {
-  text-decoration: none;
-}
-
 .w-60 {
   width: 60px !important;
   height: 60px !important;
