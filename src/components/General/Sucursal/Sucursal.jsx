@@ -1,5 +1,5 @@
 import React from 'react'
-import { results } from './../../json/sucursales.json'
+import { results } from '../../../json/sucursales.json'
 import './sucursal.css'
 
 const showSucursales = (listaSucursales) => {

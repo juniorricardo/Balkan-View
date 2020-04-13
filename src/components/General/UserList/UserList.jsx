@@ -1,9 +1,23 @@
 import React from 'react'
-import { results } from './../../json/usuarios.json'
+// import { results } from '../../../json/usuarios.json'
 import './userlist.css'
 
 const UserList = () => {
-  const [listUsers, setList] = React.useState(results[0].listUsers)
+  // const [listUsers, setList] = React.useState(results[0].listUsers)
+
+  const [userList, setUserList] = React.useState([])
+
+  const obtenerLista = async () => {
+    const lista = await fetch('https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json')
+      .then(r => r.json())
+      .then(e => e.listUsers)
+    console.log(lista)
+    setUserList(lista)
+  }
+
+  React.useEffect(() => {
+    obtenerLista()
+  }, [])
 
   const showList = () => {
     var valueOfType = { color: '', type: '' }
@@ -20,7 +34,7 @@ const UserList = () => {
       }
       return valueOfType
     }
-    const list = listUsers.map((user, index) => (
+    const list = userList.map((user, index) => (
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>
           <img
@@ -32,7 +46,9 @@ const UserList = () => {
             <h5 className='my-0' onClick={() => seleccionUsuario(index)}>
               {user.name.firstName} {user.name.lastName}
             </h5>
-            <small className='text-muted d-none d-lg-block'>{user.name.jobTitle}</small>
+            <small className='text-muted d-none d-lg-block'>
+              {user.name.jobTitle}
+            </small>
           </div>
         </td>
         <td className='align-middle'>
@@ -77,7 +93,7 @@ const UserList = () => {
         >
           Administradores
           <span className='badge badge-light contador ml-2 align-middle badge-pill'>
-            {listUsers.filter(e => e.userType === 'admin').length}
+            {userList.filter(e => e.userType === 'admin').length}
           </span>
         </button>
         <button
@@ -87,7 +103,7 @@ const UserList = () => {
         >
           Agente de cuantas
           <span className='badge badge-light contador ml-2 align-middle badge-pill'>
-            {listUsers.filter(e => e.userType === 'account-manager').length}
+            {userList.filter(e => e.userType === 'account-manager').length}
           </span>
         </button>
         <button
@@ -97,7 +113,7 @@ const UserList = () => {
         >
           Clientes
           <span className='badge badge-light contador ml-2 align-middle badge-pill'>
-            {listUsers.filter(e => e.userType === 'client').length}
+            {userList.filter(e => e.userType === 'client').length}
           </span>
         </button>
       </div>
@@ -110,8 +126,6 @@ const UserList = () => {
               <th>Tipo</th>
               <th>Documento</th>
               <th>Correo</th>
-              {/* <th className='d-none d-lg-block'>Ciudad</th>
-              <th className='d-none d-lg-block'>Provincia</th> */}
             </tr>
           </thead>
           <tbody>{showList()}</tbody>
