@@ -1,9 +1,10 @@
 .App {
   /* text-align: center; */
   min-height: 100vh;
+  padding: 50px;
 }
 
-/* .wallpaper{
+.bg-bank{
   background-image: url("./img/wallpaper.jpg");
   background-position: center;
   background-size: cover;
@@ -14,4 +15,4 @@
   left: 0;
   top:0;
   width: 100%;
-} */
+}

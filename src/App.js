@@ -1,30 +1,39 @@
 import React from 'react'
-import Admin from './components/User/Admin/Admin'
-import Agent from './components/User/Agent/Agent'
-import Client from './components/User/Client/Client'
-import logo from './banco.svg'
-import Navigation from './components/Navigation/Navigation'
-import UserList from './components/General/UserList/UserList'
+import Admin from './components/Users/Admin/Admin'
+import Agent from './components/Users/Agent/Agent'
+import Client from './components/Users/Client/Client'
+import Login from './components/Login/Login'
 import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  Route
+} from "react-router-dom"
+import LoadListUser from './services/LoadListUser'
+
 
 class App extends React.Component {
-  constructor(){
-    super()
-    // sessionStorage.setItem('nombre', 'Junior')
-    this.getRoute()
+  // constructor() {
+  //   super()
+  //   // if (typeof (Storage) !== 'undefined') {
+  //   //   // Código cuando Storage es compatible
+  //   //   console.log('vacio');
+  //   // } else {
+  //   //   // Código cuando Storage NO es compatible
+  //   //   console.log('contiene datos');
+  //   // }
+  // }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+    LoadListUser()
+    //const listaStorage = JSON.parse(localStorage.getItem('userList'))
   }
 
-
   getRoute() {
-    if(sessionStorage.getItem('nombre') == null){
+    if (sessionStorage.getItem('nombre')) {
       console.log('No existe');
-    } else{
+    } else {
       console.log(sessionStorage.getItem('nombre'))
     }
   }
@@ -33,24 +42,20 @@ class App extends React.Component {
       // <div className='App'>
       //   <div className='wallpaper'></div>
       //   <Navigation logo={logo}></Navigation>
+      //    <UserList />
       // </div>
-      <div className='App'>
-        <Navigation logo={logo}></Navigation>
-        <UserList />
+      <div className="App">
+        <div className='bg-bank'></div>
+        <Router>
+          <Switch>
+            <Route path='/' exact component={Login} />
+            <Route path='/admin' component={Admin} />
+            <Route path='/agent' component={Agent} />
+            <Route path='/client' component={Client} />
+            <Route path='*' component={() => "404 NOT FOUND"} />
+          </Switch>
+        </Router>
       </div>
-      // <Router>
-      //   <Switch>
-      //     <Route path='/admin'>
-      //       <Admin />
-      //     </Route>
-      //     <Route path='/agent'>
-      //       <Agent />
-      //     </Route>
-      //     <Route path='/client'>
-      //       <Client />
-      //     </Route>
-      //   </Switch>
-      // </Router>
     )
   }
 }

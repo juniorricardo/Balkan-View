@@ -1,17 +1,14 @@
 import React from 'react'
-// import { results } from '../../../json/usuarios.json'
 import './userlist.css'
 
 const UserList = () => {
-  // const [listUsers, setList] = React.useState(results[0].listUsers)
 
   const [userList, setUserList] = React.useState([])
 
   const obtenerLista = async () => {
     const lista = await fetch('https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json')
       .then(r => r.json())
-      .then(e => e.listUsers)
-    console.log(lista)
+      .then(e => e.userList)
     setUserList(lista)
   }
 
@@ -26,7 +23,7 @@ const UserList = () => {
         valueOfType.color = 'primary'
         valueOfType.type = 'Cliente'
       } else if (type === 'account-manager') {
-        valueOfType.color = 'info'
+        valueOfType.color = 'success'
         valueOfType.type = 'Agente de cuentas'
       } else {
         valueOfType.color = 'dark'
