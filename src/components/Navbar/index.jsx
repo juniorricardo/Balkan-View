@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './navigation.css'
-import logo from './../../banco.svg'
+import './navbar.css'
+import logo from './../../img/icons/banco.svg'
 import Auth from './../../services/Auth'
 
 const Navbar = props => {
@@ -37,7 +37,7 @@ const Navbar = props => {
         />{' '}
         <h5 className='d-inline-block mt-1'>Sucursal bancario</h5>
       </a>
-      <div className='nav navbar-nav navbar-right d-inline-block my-1'>
+      <div className='nav form-inline navbar-nav navbar-right d-inline-block my-1'>
         <img
           className='shadow rounded-circle w-60 border border-primary d-inline mr-3'
           src={user.avatar}
@@ -46,8 +46,8 @@ const Navbar = props => {
         <span className='navbar-text'>
           {user.firstName} {user.lastName}
         </span>
-        <button className='btn btn-dark ml-4' onClick={() => navLogout()}>
-          Logout
+        <button className='btn btn-dark ml-2' onClick={() => navLogout()}>
+        <i class="fas fa-sign-out-alt"></i>
         </button>
       </div>
     </nav>
