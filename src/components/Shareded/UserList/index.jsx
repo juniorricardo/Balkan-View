@@ -1,21 +1,17 @@
 import React from 'react'
 import './userlist.css'
 
-const UserList = () => {
-
+const UserList = (props) => {
   const [userList, setUserList] = React.useState([])
-
-  const obtenerLista = async () => {
-    const lista = await fetch('https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json')
-      .then(r => r.json())
-      .then(e => e.userList)
-    setUserList(lista)
-  }
 
   React.useEffect(() => {
     obtenerLista()
   }, [])
-
+  
+  const obtenerLista = () => {
+    const lista = JSON.parse(localStorage.getItem('userList')).filter(u => u.document !== props.document)
+    setUserList(lista)
+  }
   const showList = () => {
     var valueOfType = { color: '', type: '' }
     const getColorOfType = type => {
@@ -59,8 +55,6 @@ const UserList = () => {
         </td>
         <td className='align-middle'>{user.document}</td>
         <td className='align-middle'>{user.login.email}</td>
-        {/* <td className='align-middle d-none d-lg-block'>{user.addres.city}</td>
-        <td className='align-middle d-none d-lg-block'>{user.addres.county}</td> */}
       </tr>
     ))
     return list

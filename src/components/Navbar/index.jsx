@@ -1,14 +1,15 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './navigation.css'
 import logo from './../../banco.svg'
 import Auth from './../../services/Auth'
 
 const Navbar = props => {
-  // cargar del props los datos necesarios
-  // nombre, y tipo de usuario, id en la tabla
   const [user, setUser] = React.useState({
-    user: JSON.parse(sessionStorage.getItem('user'))
+    firstName: props.firstName,
+    lastName: props.lastName,
+    avatar: props.avatar,
+    type: props.type
   })
 
   const navLogout = () => {
@@ -16,6 +17,11 @@ const Navbar = props => {
     //Luego redirigir al login
     Auth.logout(() => {
       sessionStorage.removeItem('user')
+      setUser({
+        firstName: '',
+        lastName: '',
+        type: ''
+      })
     })
   }
 
@@ -31,16 +37,28 @@ const Navbar = props => {
         />{' '}
         <h5 className='d-inline-block mt-1'>Sucursal bancario</h5>
       </a>
-      <div className='nav navbar-nav navbar-right d-inline-block'>
-        <span className='navbar-text mr-4'>
-          {user.name}
+      <div className='nav navbar-nav navbar-right d-inline-block my-1'>
+        <img
+          className='shadow rounded-circle w-60 border border-primary d-inline mr-3'
+          src={user.avatar}
+          alt='Avatar'
+        />
+        <span className='navbar-text'>
+          {user.firstName} {user.lastName}
         </span>
-        <button className='btn btn-dark' onClick={() => navLogout()}>
+        <button className='btn btn-dark ml-4' onClick={() => navLogout()}>
           Logout
         </button>
       </div>
     </nav>
   )
+}
+
+Navbar.protoType = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 }
 
 export default Navbar

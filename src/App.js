@@ -1,6 +1,6 @@
 import React from 'react'
 import Admin from './components/Users/Admin/Admin'
-import Agent from './components/Users/Agent/Agent'
+import AccountManager from './components/Users/AccountManager'
 import Client from './components/Users/Client/Client'
 import Login from './components/Login/Login'
 import './App.css'
@@ -10,6 +10,7 @@ import {
   Route
 } from "react-router-dom"
 import LoadListUser from './services/LoadListUser'
+import Auth from './services/Auth'
 
 
 class App extends React.Component {
@@ -27,6 +28,9 @@ class App extends React.Component {
   componentDidMount() {
     console.log('componentDidMount');
     LoadListUser()
+    sessionStorage.clear()
+    console.log(Auth.isAuthenticated())
+    
     //const listaStorage = JSON.parse(localStorage.getItem('userList'))
   }
 
@@ -50,7 +54,7 @@ class App extends React.Component {
           <Switch>
             <Route path='/' exact component={Login} />
             <Route path='/admin' component={Admin} />
-            <Route path='/agent' component={Agent} />
+            <Route path='/account-manager' component={AccountManager} />
             <Route path='/client' component={Client} />
             <Route path='*' component={() => "404 NOT FOUND"} />
           </Switch>

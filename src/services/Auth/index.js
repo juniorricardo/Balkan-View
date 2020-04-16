@@ -4,11 +4,14 @@ class Auth{
   }
 
   login(cb){
+    console.log('Logged')
     this.authenticated = true
     cb()
   }
 
   logout(cb){
+    console.log('Logouted')
+    sessionStorage.removeItem('user')
     this.authenticated = false
     cb()
   }

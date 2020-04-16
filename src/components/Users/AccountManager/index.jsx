@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Agent = () => {
+const AccountManager = () => {
   return (
     <div>
       Soy Agente de cuentas
@@ -8,4 +8,4 @@ const Agent = () => {
   )
 }
 
-export default Agent
+export default AccountManager

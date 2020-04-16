@@ -7,28 +7,45 @@ const Login = props => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   /*
-
+-Client
 clarissa.wallner@correo.com
 dO6DNdgGbRmojdq
+-Account-manager
+jean.zeidler12@correo.com
+i0cd62wD5_PCUeY
+-Admin
+leni.wiegelmann@correo.com
+Kh5RPDNjPWl4E_i
 
 */
   const handleSubmit = ev => {
     ev.preventDefault()
-    // Validar con base de datos.OK
-    console.log('procesando...' + email + password)
+    // Validar con base de datos. -> Https.status.OK
+    console.log(`Logueando con: ${email} + ${password}`)
 
-    const userN = JSON.parse(localStorage.getItem('userList')).filter(
+    const userLog = JSON.parse(localStorage.getItem('userList')).filter(
       u => u.login.email === email && u.login.password === password
     )
-    if (userN[0]) {
+    if (userLog[0]) {
       Auth.login(() => {
-        sessionStorage.setItem('user',JSON.stringify(userN[0]))
-        props.history.push('/admin')
+        var userType = ''
+        sessionStorage.setItem('user', JSON.stringify(userLog[0]))
+        switch (userLog[0].userType) {
+          case 'client':
+            userType = '/client'
+            break
+          case 'account-manager':
+            userType = '/account-manager'
+            break
+          case 'admin':
+            userType = '/admin'
+            break
+        }
+        props.history.push(userType)
       })
     } else {
-      console.log('fail')
+      console.log('Login. ERROR')
     }
-
     setEmail('')
     setPassword('')
   }
