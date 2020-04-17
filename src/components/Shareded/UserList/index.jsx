@@ -58,33 +58,23 @@ const UserList = props => {
         <td className='align-middle'>{user.document}</td>
         <td className='align-middle'>{user.login.email}</td>
         <td className='align-middle'>
-          <button className='btn btn-warning mr-1'>
-            <i className='fas fa-user-edit fa-sm'></i>
-          </button>
-          <button className='btn btn-danger'>
-            <i className='fas fa-user-minus fa-sm'></i>
-          </button>
+          <div className="btn-group">
+            <button className='btn btn-warning mr-1'>
+              <i className='fas fa-user-edit fa-sm'></i>
+            </button>
+            <button className='btn btn-danger'
+            onClick={()=>{console.log(index)}}>
+              <i className='fas fa-user-minus fa-sm'></i>
+            </button>
+          </div>
         </td>
       </tr>
     ))
     return list
   }
-  const seleccionUsuario = id => {
-    console.log(id)
-  }
 
-  const showAdmins = ev => {
-    console.log('Mostrando Administradores')
-  }
-  const showAccountManagers = ev => {
-    console.log('Mostrando Agente de cuentas')
-  }
-  const showClients = ev => {
-    console.log('Mostrando Clientes')
-  }
-
-  return (
-    <div className='container card px-4 bg-light border border-primary text-center'>
+  const showOptions = () => {
+    const options = (
       <div className='d-flex justify-content-between my-2'>
         <div className='btn-group'>
           <button
@@ -119,10 +109,30 @@ const UserList = props => {
           </button>
         </div>
         <button className='btn btn-success my-1'>
-          <i class='fas fa-user-plus'></i> Nuevo usuario
+          <i className='fas fa-user-plus'></i> Nuevo usuario
         </button>
       </div>
+    )
+    return options
+  }
 
+  const seleccionUsuario = id => {
+    console.log(id)
+  }
+
+  const showAdmins = ev => {
+    console.log('Mostrando Administradores')
+  }
+  const showAccountManagers = ev => {
+    console.log('Mostrando Agente de cuentas')
+  }
+  const showClients = ev => {
+    console.log('Mostrando Clientes')
+  }
+
+  return (
+    <div className='container card px-4 bg-light border border-primary text-center'>
+      {showOptions()}
       <div className='table-responsive'>
         <table className='table table-borderless table-hover'>
           <thead className='bg-dark text-light'>

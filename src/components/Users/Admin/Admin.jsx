@@ -7,8 +7,7 @@ const Admin = () => {
   // const [userLogged, setUserLogged] = React.useState(
   //   JSON.parse(sessionStorage.getItem('user'))
   // )
-
-  const [userLogged, setUserLogged] = React.useState({
+  const userLogged = {
     name: {
       firstName: 'Leni',
       lastName: 'Wiegelmann',
@@ -35,7 +34,7 @@ const Admin = () => {
       userName: 'Giuliana.Thimm',
       password: 'Kh5RPDNjPWl4E_i'
     }
-  })
+  }
 
   React.useEffect(() => {
     console.log(userLogged)
@@ -49,7 +48,7 @@ const Admin = () => {
         avatar={userLogged.avatar}
         type='admin'
       />
-      <UserList document={userLogged.document} />
+      <UserList document={userLogged.document} type='admin' />
     </React.Fragment>
   )
 }

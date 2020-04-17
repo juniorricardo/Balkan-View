@@ -47,7 +47,7 @@ const Navbar = props => {
           {user.firstName} {user.lastName}
         </span>
         <button className='btn btn-dark ml-2' onClick={() => navLogout()}>
-        <i class="fas fa-sign-out-alt"></i>
+          <i className='fas fa-sign-out-alt'></i>
         </button>
       </div>
     </nav>
