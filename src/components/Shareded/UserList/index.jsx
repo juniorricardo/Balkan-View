@@ -1,7 +1,15 @@
 import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+
 import './userlist.css'
 
 const UserList = props => {
+
+  const { re_userList } = useSelector(state => ({
+    re_userList: state.userList
+  }))
+  const dispatch = useDispatch()
+
   const [userList, setUserList] = React.useState([])
 
   React.useEffect(() => {
@@ -29,47 +37,50 @@ const UserList = props => {
       }
       return valueOfType
     }
-    const list = userList.map((user, index) => (
-      <tr className='align-middle' key={index}>
-        <td className='d-flex align-items-center'>
-          <img
-            className='shadow rounded-circle w-60 border border-secondary d-block'
-            src={user.avatar}
-            alt='Avatar'
-          />
-          <div className='ml-3 align-middle text-left'>
-            <h6 className='my-0' onClick={() => seleccionUsuario(index)}>
-              {user.name.firstName} {user.name.lastName}
-            </h6>
-            <small className='text-muted d-none d-lg-block'>
-              {user.name.jobTitle}
-            </small>
-          </div>
-        </td>
-        <td className='align-middle'>
-          <span
-            className={`badge text-wrap badge-${
-              getColorOfType(user.userType).color
-            }`}
-          >
-            {valueOfType.type}
-          </span>
-        </td>
-        <td className='align-middle'>{user.document}</td>
-        <td className='align-middle'>{user.login.email}</td>
-        <td className='align-middle'>
-          <div className="btn-group">
-            <button className='btn btn-warning mr-1'>
-              <i className='fas fa-user-edit fa-sm'></i>
-            </button>
-            <button className='btn btn-danger'
-            onClick={()=>{console.log(index)}}>
-              <i className='fas fa-user-minus fa-sm'></i>
-            </button>
-          </div>
-        </td>
-      </tr>
-    ))
+    const list = re_userList.map((i) => console.log(i)
+    
+    //   (user, index) => (
+    //   <tr className='align-middle' key={index}>
+    //     <td className='d-flex align-items-center'>
+    //       <img
+    //         className='shadow rounded-circle w-60 border border-secondary d-block'
+    //         src={user.avatar}
+    //         alt='Avatar'
+    //       />
+    //       <div className='ml-3 align-middle text-left'>
+    //         <h6 className='my-0' onClick={() => seleccionUsuario(index)}>
+    //           {user.name.firstName} {user.name.lastName}
+    //         </h6>
+    //         <small className='text-muted d-none d-lg-block'>
+    //           {user.name.jobTitle}
+    //         </small>
+    //       </div>
+    //     </td>
+    //     <td className='align-middle'>
+    //       <span
+    //         className={`badge text-wrap badge-${
+    //           getColorOfType(user.userType).color
+    //         }`}
+    //       >
+    //         {valueOfType.type}
+    //       </span>
+    //     </td>
+    //     <td className='align-middle'>{user.document}</td>
+    //     <td className='align-middle'>{user.login.email}</td>
+    //     <td className='align-middle'>
+    //       <div className="btn-group">
+    //         <button className='btn btn-warning mr-1'>
+    //           <i className='fas fa-user-edit fa-sm'></i>
+    //         </button>
+    //         <button className='btn btn-danger'
+    //         onClick={()=>{console.log(index)}}>
+    //           <i className='fas fa-user-minus fa-sm'></i>
+    //         </button>
+    //       </div>
+    //     </td>
+    //   </tr>
+    // )
+    )
     return list
   }
 
@@ -144,7 +155,12 @@ const UserList = props => {
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody>{showList()}</tbody>
+          <tbody>{
+          // showList()
+          re_userList.map((u,index) => (
+            console.log(u,index)
+          ))
+          }</tbody>
         </table>
       </div>
     </div>

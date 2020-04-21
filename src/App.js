@@ -1,14 +1,16 @@
 import React from 'react'
-import Admin from './components/Users/Admin/Admin'
-import AccountManager from './components/Users/AccountManager'
-import Client from './components/Users/Client/Client'
-import Login from './components/Login/Login'
-import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom"
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import Admin from './components/Users/Admin/Admin'
+import AccountManager from './components/Users/AccountManager'
+import Client from './components/Users/Client/Client'
+import Login from './components/Login/Login'
+import './App.css'
 import LoadListUser from './services/LoadListUser'
 import Auth from './services/Auth'
 
@@ -30,7 +32,7 @@ class App extends React.Component {
     LoadListUser()
     sessionStorage.clear()
     console.log(Auth.isAuthenticated())
-    
+
     //const listaStorage = JSON.parse(localStorage.getItem('userList'))
   }
 
@@ -48,18 +50,20 @@ class App extends React.Component {
       //   <Navigation logo={logo}></Navigation>
       //    <UserList />
       // </div>
-      <div className="App">
-        <div className='bg-bank'></div>
-        <Router>
-          <Switch>
-            <Route path='/' exact component={Login} />
-            <Route path='/admin' component={Admin} />
-            <Route path='/account-manager' component={AccountManager} />
-            <Route path='/client' component={Client} />
-            <Route path='*' component={() => "404 NOT FOUND"} />
-          </Switch>
-        </Router>
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <div className='bg-bank'></div>
+          <Router>
+            <Switch>
+              <Route path='/' exact component={Login} />
+              <Route path='/admin' component={Admin} />
+              <Route path='/account-manager' component={AccountManager} />
+              <Route path='/client' component={Client} />
+              <Route path='*' component={() => "404 NOT FOUND"} />
+            </Switch>
+          </Router>
+        </div>
+      </Provider>
     )
   }
 }
