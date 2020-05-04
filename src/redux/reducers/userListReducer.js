@@ -1,11 +1,10 @@
 const urlUsers = 'https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json'
 
-const users = []
-fetch(urlUsers)
-  .then(r => r.json() )
-  .then(i => i.userList.map((item) => users.push(item)))
+const data = fetch(urlUsers)
+  .then(r => r.json())
+  .then(s => s.userList)
 
-export default function (state = users, action) {
+export default function (state = data, action) {
   console.log('reducer user', action)
   switch (action.type) {
     case 'ADD_USER':
