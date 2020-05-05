@@ -1,10 +1,8 @@
-import LoadListUser from '../../services/getUserList'
+//const urlUsers = 'https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json'
+import usuarios from './../../json/usuarios.json'
 
-const userList = LoadListUser()
-debugger
-export default function (state = userList, action) {
+export default function (state = usuarios, action) {
   console.log('reducer Usuarios', state)
-  
   switch (action.type) {
     case 'ADD_USER':
       return state.concat([action.user])

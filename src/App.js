@@ -29,7 +29,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('componentDidMount');
-    LoadListUser()
+    //LoadListUser()
     sessionStorage.clear()
     console.log(Auth.isAuthenticated())
 

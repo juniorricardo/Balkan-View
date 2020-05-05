@@ -6,10 +6,17 @@ const urlUsers = 'https://raw.githubusercontent.com/juniorricardo/sucursal-banca
 //   .then(e => localStorage.setItem('userList',JSON.stringify(e.userList)))
 // }
 
-export default () => {
-  const users = []
-  fetch(urlUsers)
-    .then(r => r.json())
-    .then(obj => obj.map(i => users.push(i)))
+const LoadListUser = () => {
+  let users = fetch(urlUsers)
+    .then(res => {
+      ((res.ok) ? console.log('SUCCESS') : console.log('NOT SUCCESSFUL'))
+      return res.json()
+    })
+    .then(data => {
+      return data.userList
+    })
+    .catch(error => console.log('ERROR FETCH', error))
   return users
 }
+
+export default LoadListUser

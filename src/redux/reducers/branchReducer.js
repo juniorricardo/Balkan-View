@@ -2,7 +2,7 @@
 -deternima el estado inicial del state y la acciones <!-- */
 const lista = []
 export default function (state = lista, action) {
-  console.log('reducer++', action)
+  //console.log('reducer++', action)
 
   switch (action.type) {
     case 'ADD_BRANCH':
