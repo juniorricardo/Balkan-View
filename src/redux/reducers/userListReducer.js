@@ -1,10 +1,9 @@
 import LoadListUser from '../../services/getUserList'
 
 const userList = LoadListUser()
-
+debugger
 export default function (state = userList, action) {
   console.log('reducer Usuarios', state)
-  console.log('vista lista', state.userList)
   
   switch (action.type) {
     case 'ADD_USER':

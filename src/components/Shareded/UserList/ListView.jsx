@@ -23,8 +23,8 @@ const ListView = () => {
 
   
   const getList = (list) => {
-    console.log('Porque!!', list)
-    debugger
+    console.log('datos!',list)
+    list.map(e => console.log(e))
     const table = list.map((user, index) => (
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>
