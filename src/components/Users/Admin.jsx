@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../../Navbar'
-import UserList from '../../Shareded/UserList'
+import Navbar from '../Navbar'
+import UserList from '../Shareded/UserList'
 
 const Admin = () => {
   // constructor debe tomar datos del usuario logeado

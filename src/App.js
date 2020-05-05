@@ -6,13 +6,13 @@ import {
 } from "react-router-dom"
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import Admin from './components/Users/Admin/Admin'
+import Admin from './components/Users/Admin'
 import AccountManager from './components/Users/AccountManager'
-import Client from './components/Users/Client/Client'
+import Client from './components/Users/Client'
 import Login from './components/Login/Login'
-import './App.css'
-import LoadListUser from './services/LoadListUser'
+import LoadListUser from './services/getUserList'
 import Auth from './services/Auth'
+import './App.css'
 
 
 class App extends React.Component {
