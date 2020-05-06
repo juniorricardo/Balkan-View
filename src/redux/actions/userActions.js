@@ -8,6 +8,8 @@ export const removeUser = (index) => ({
   index
 })
 
+//Varificar como encuentra el usuario correcto
+//documento
 export const updateUser = (user) => ({
   type: 'UPDATE_USER',
   user

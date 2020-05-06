@@ -10,11 +10,8 @@ import Admin from './components/Users/Admin'
 import AccountManager from './components/Users/AccountManager'
 import Client from './components/Users/Client'
 import Login from './components/Login/Login'
-import LoadListUser from './services/getUserList'
 import Auth from './services/Auth'
 import './App.css'
-import FromRegister from './components/Users/FromRegister'
-
 
 class App extends React.Component {
   // constructor() {

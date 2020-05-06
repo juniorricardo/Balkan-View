@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState, useEffect, useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { addUser, removeUser, updateUser} from './../../../redux/actions/userActions'
+import {
+  removeUser
+} from './../../../redux/actions/userActions'
 
 //IMPORTAR DISPATCHS
 
-
-const ListView = () => {
-
+const ListView = ({showForm}) => {
   const userList = useSelector(state => state.userList)
   const dispatch = useDispatch()
 
@@ -26,6 +26,19 @@ const ListView = () => {
     return valueOfType
   }
 
+  const userToEdit = user => {
+    console.log('Agregando usuario para editar');
+    
+    localStorage.setItem('userEdit', JSON.stringify(user))
+
+    showForm(true)
+  }
+
+  const confirmRemoveUser = index => {
+    if (window.confirm('Usted esta seguro que quiere eliminarlo?')) {
+      dispatch(removeUser(index))
+    }
+  }
   const getList = () => {
     console.log('Lista!', userList)
 
@@ -59,13 +72,15 @@ const ListView = () => {
         <td className='align-middle'>{user.login.email}</td>
         <td className='align-middle'>
           <div className='btn-group'>
-            <button className='btn btn-warning mr-1'
-            onClick={() => console.log('editararrasdasd')}>
+            <button
+              className='btn btn-warning mr-1'
+              onClick={() => userToEdit(user)}
+            >
               <i className='fas fa-user-edit fa-sm'></i>
             </button>
             <button
               className='btn btn-danger'
-              onClick={() => dispatch(removeUser(index))}
+              onClick={() => confirmRemoveUser(index)}
             >
               <i className='fas fa-user-minus fa-sm'></i>
             </button>

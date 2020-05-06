@@ -2,13 +2,12 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './userlist.css'
 import ListView from './ListView'
-import FromRegister from '../../Users/FromRegister'
+import FormRegister from '../../Users/FormRegister'
 
 const UserList = props => {
   const userList = useSelector(state => state.userList)
- 
 
-  const [registerMode, setRegisterMode] = React.useState(false)
+  const [showForm, setShowForm] = React.useState(false)
 
   // React.useEffect(() => {
   //   const obtenerLista = () => {
@@ -20,6 +19,10 @@ const UserList = props => {
   //   obtenerLista()
   // }, [])
 
+  const newUser = () => {
+    localStorage.setItem('userEdit', null)
+    setShowForm(true)
+  }
   const showOptions = () => {
     const options = (
       <div className='d-flex justify-content-between my-2'>
@@ -57,7 +60,7 @@ const UserList = props => {
         </div>
         <button
           className='btn btn-success my-1'
-          onClick={() => setRegisterMode(true)}
+          onClick={() => newUser()}
         >
           <i className='fas fa-user-plus'></i> Nuevo usuario
         </button>
@@ -76,7 +79,7 @@ const UserList = props => {
     console.log('Mostrando Clientes')
   }
 
-  return !registerMode ? (
+  return !showForm ? (
     <div className='container card px-4 bg-light border border-primary text-center'>
       {showOptions()}
       <div className='table-responsive'>
@@ -90,12 +93,12 @@ const UserList = props => {
               <th>Acciones</th>
             </tr>
           </thead>
-          <ListView />
+          <ListView showForm={setShowForm}/>
         </table>
       </div>
     </div>
   ) : (
-    <FromRegister endProcess={setRegisterMode} />
+    <FormRegister showForm={setShowForm} />
   )
 }
 
