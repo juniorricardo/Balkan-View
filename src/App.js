@@ -13,6 +13,7 @@ import Login from './components/Login/Login'
 import LoadListUser from './services/getUserList'
 import Auth from './services/Auth'
 import './App.css'
+import FromRegister from './components/Users/FromRegister'
 
 
 class App extends React.Component {

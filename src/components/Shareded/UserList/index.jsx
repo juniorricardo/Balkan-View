@@ -2,14 +2,13 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './userlist.css'
 import ListView from './ListView'
+import FromRegister from '../../Users/FromRegister'
 
 const UserList = props => {
-  // const { re_userList } = useSelector(state => ({
-  //   re_userList: state.userList
-  // }))
+  const userList = useSelector(state => state.userList)
   const dispatch = useDispatch()
 
-  const [userList, setUserList] = React.useState([])
+  const [registerMode, setRegisterMode] = React.useState(false)
 
   // React.useEffect(() => {
   //   const obtenerLista = () => {
@@ -21,68 +20,6 @@ const UserList = props => {
   //   obtenerLista()
   // }, [])
 
-  // const showList = () => {
-  //   var valueOfType = { color: '', type: '' }
-  //   const getColorOfType = type => {
-  //     if (type === 'client') {
-  //       valueOfType.color = 'primary'
-  //       valueOfType.type = 'Cliente'
-  //     } else if (type === 'account-manager') {
-  //       valueOfType.color = 'success'
-  //       valueOfType.type = 'Agente de cuentas'
-  //     } else {
-  //       valueOfType.color = 'dark'
-  //       valueOfType.type = 'Administrador'
-  //     }
-  //     return valueOfType
-  //   }
-  //   const list = re_userList.map(
-  //     i => console.log(i)
-
-  //     //   (user, index) => (
-  //     //   <tr className='align-middle' key={index}>
-  //     //     <td className='d-flex align-items-center'>
-  //     //       <img
-  //     //         className='shadow rounded-circle w-60 border border-secondary d-block'
-  //     //         src={user.avatar}
-  //     //         alt='Avatar'
-  //     //       />
-  //     //       <div className='ml-3 align-middle text-left'>
-  //     //         <h6 className='my-0' onClick={() => seleccionUsuario(index)}>
-  //     //           {user.name.firstName} {user.name.lastName}
-  //     //         </h6>
-  //     //         <small className='text-muted d-none d-lg-block'>
-  //     //           {user.name.jobTitle}
-  //     //         </small>
-  //     //       </div>
-  //     //     </td>
-  //     //     <td className='align-middle'>
-  //     //       <span
-  //     //         className={`badge text-wrap badge-${
-  //     //           getColorOfType(user.userType).color
-  //     //         }`}
-  //     //       >
-  //     //         {valueOfType.type}
-  //     //       </span>
-  //     //     </td>
-  //     //     <td className='align-middle'>{user.document}</td>
-  //     //     <td className='align-middle'>{user.login.email}</td>
-  //     //     <td className='align-middle'>
-  //     //       <div className="btn-group">
-  //     //         <button className='btn btn-warning mr-1'>
-  //     //           <i className='fas fa-user-edit fa-sm'></i>
-  //     //         </button>
-  //     //         <button className='btn btn-danger'
-  //     //         onClick={()=>{console.log(index)}}>
-  //     //           <i className='fas fa-user-minus fa-sm'></i>
-  //     //         </button>
-  //     //       </div>
-  //     //     </td>
-  //     //   </tr>
-  //     // )
-  //   )
-  //   return list
-  // }
   const showOptions = () => {
     const options = (
       <div className='d-flex justify-content-between my-2'>
@@ -118,16 +55,13 @@ const UserList = props => {
             </span>
           </button>
         </div>
-        <button className='btn btn-success my-1'>
+        <button className='btn btn-success my-1'
+        onClick={()=> setRegisterMode(true)}>
           <i className='fas fa-user-plus'></i> Nuevo usuario
         </button>
       </div>
     )
     return options
-  }
-
-  const seleccionUsuario = id => {
-    console.log(id)
   }
 
   const showAdmins = ev => {
@@ -140,7 +74,7 @@ const UserList = props => {
     console.log('Mostrando Clientes')
   }
 
-  return (
+  return registerMode ? (
     <div className='container card px-4 bg-light border border-primary text-center'>
       {showOptions()}
       <div className='table-responsive'>
@@ -154,13 +88,12 @@ const UserList = props => {
               <th>Acciones</th>
             </tr>
           </thead>
-          {
-            // showList() re_userList.map((u, index) => console.log(u, index))
-          }
           <ListView />
         </table>
       </div>
     </div>
+  ) : (
+    <FromRegister endProcess={setRegisterMode} />
   )
 }
 

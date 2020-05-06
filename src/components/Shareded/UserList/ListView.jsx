@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect, useSelector } from 'react-redux'
 
 const ListView = () => {
-  const usersList = useSelector(state => state.usersList)
+  const userList = useSelector(state => state.userList)
 
   var valueOfType = { color: '', type: '' }
   const getColorOfType = type => {
@@ -20,9 +20,9 @@ const ListView = () => {
   }
 
   const getList = () => {
-    console.log('Lista!', usersList)
+    console.log('Lista!', userList)
 
-    const table = usersList.map((user, index) => (
+    const table = userList.map((user, index) => (
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>
           <img
@@ -72,7 +72,7 @@ const ListView = () => {
 
   return (
     <React.Fragment>
-      {usersList.length === 0 ? 'Vacio' : <tbody>{getList()}</tbody>}
+      {userList.length === 0 ? 'Vacio' : <tbody>{getList()}</tbody>}
     </React.Fragment>
   )
 }
