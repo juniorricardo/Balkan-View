@@ -7,7 +7,7 @@ export default function (state = usuarios, action) {
     case 'ADD_USER':
       return state.concat([action.user])
     case 'REMOVE_USER':
-      return state.filter(({ id }) => id !== action.id)
+      return state.filter((u, index) => index !== action.index)
     case 'EDIT_USER':
       return state //Completar
     default:

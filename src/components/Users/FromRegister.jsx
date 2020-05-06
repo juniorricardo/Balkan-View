@@ -5,7 +5,7 @@ const FromRegister = ({ endProcess }) => {
   const sendForm = (e) => {
     e.preventDefault()
     console.log('asdasdasd')
-    endProcess(true)
+    endProcess(false)
   }
 
   return (

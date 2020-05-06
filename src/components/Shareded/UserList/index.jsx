@@ -6,7 +6,7 @@ import FromRegister from '../../Users/FromRegister'
 
 const UserList = props => {
   const userList = useSelector(state => state.userList)
-  const dispatch = useDispatch()
+ 
 
   const [registerMode, setRegisterMode] = React.useState(false)
 
@@ -55,8 +55,10 @@ const UserList = props => {
             </span>
           </button>
         </div>
-        <button className='btn btn-success my-1'
-        onClick={()=> setRegisterMode(true)}>
+        <button
+          className='btn btn-success my-1'
+          onClick={() => setRegisterMode(true)}
+        >
           <i className='fas fa-user-plus'></i> Nuevo usuario
         </button>
       </div>
@@ -74,7 +76,7 @@ const UserList = props => {
     console.log('Mostrando Clientes')
   }
 
-  return registerMode ? (
+  return !registerMode ? (
     <div className='container card px-4 bg-light border border-primary text-center'>
       {showOptions()}
       <div className='table-responsive'>
