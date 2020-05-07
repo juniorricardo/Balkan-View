@@ -58,10 +58,7 @@ const UserList = props => {
             </span>
           </button>
         </div>
-        <button
-          className='btn btn-success my-1'
-          onClick={() => newUser()}
-        >
+        <button className='btn btn-success my-1' onClick={() => newUser()}>
           <i className='fas fa-user-plus'></i> Nuevo usuario
         </button>
       </div>
@@ -80,7 +77,7 @@ const UserList = props => {
   }
 
   return !showForm ? (
-    <div className='container card px-4 bg-light border border-primary text-center'>
+    <div className='card p-4 bg-light border border-primary text-center'>
       {showOptions()}
       <div className='table-responsive'>
         <table className='table table-borderless table-hover'>
@@ -88,12 +85,12 @@ const UserList = props => {
             <tr>
               <th>Nombre</th>
               <th>Tipo</th>
-              <th>Documento</th>
-              <th>Correo</th>
+              <th className='d-none d-md-table-cell'>Documento</th>
+              <th className='d-none d-md-table-cell'>Correo</th>
               <th>Acciones</th>
             </tr>
           </thead>
-          <ListView showForm={setShowForm}/>
+          <ListView showForm={setShowForm} />
         </table>
       </div>
     </div>

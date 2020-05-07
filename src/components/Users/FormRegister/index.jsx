@@ -1,15 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { addUser, updateUser } from './../../redux/actions/userActions'
+import { addUser, updateUser } from '../../../redux/actions/userActions'
 
 const FormRegister = ({ showForm }) => {
+  const [user, setUser] = useState({})
 
-  const [user, setUser] = useState(null)
+  //  name
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [jobTitle, setJobTitle] = useState('')
+  //<-
+  //const [userType, setUserType] = useState('')
+  const [document, setDocument] = useState(0)
+  const [birthday, setBirthday] = useState('')
+  //  addres
+  //  =>street
+  const [streetNumber, setStreetNumber] = useState('')
+  const [streetName, setStreetName] = useState('')
+  // <-
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [country, setCountry] = useState('')
+  const [countryCode, setCountryCode] = useState('')
+  // <-
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [avatar, setAvatar] = useState('')
+  //  login
+  const [email, setEmail] = useState('')
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
 
   const dispatch = useDispatch()
 
   const [editMode, setEditMode] = useState(() => {
     var userInit = JSON.parse(localStorage.getItem('userEdit'))
+    debugger
     if (!userInit) {
       return false
     } else {
@@ -18,13 +43,32 @@ const FormRegister = ({ showForm }) => {
     }
   })
 
-  const sendForm = e => {
+  const handleSubmit = e => {
     e.preventDefault()
-    console.log('Submit')
+    console.log('Submit:')
+    setUser({
+      name: { firstName, lastName, jobTitle },
+      addres: {
+        street: { number: streetNumber, name: streetName },
+        city,
+        state,
+        country,
+        countryCode
+      },
+      phoneNumber,
+      avatar,
+      login: {
+        email,
+        userName,
+        password
+      }
+    })
     if (editMode) {
-      //dispatch(updateUser(user))
+      console.log('Edit')
     } else {
-      //dispatch(addUser(user))
+      console.log('Add')
+      debugger
+      console.log('CAPTURANDO USUARIO', user)
     }
     localStorage.setItem('userEdit', null)
     showForm(false)
@@ -40,8 +84,13 @@ const FormRegister = ({ showForm }) => {
         <h3>Registro</h3>
       </div>
       <div className='card-body'>
-        <form className='row d-flex justify-content-around' onSubmit={sendForm}>
-          <div className='col-lg-3 col-md-12 mb-2'>
+        <div className='card-deck' >
+          <div className='col-lg-4 col-sm-12 mb-2'>
+            {
+              // avatar
+              // https://www.youtube.com/watch?v=XeiOnkEI7XI
+              // axios post and firabase
+            }
             <div className='card'>
               <div className='card-body form-group'>
                 <h4 className='card-title'>Datos personales</h4>
@@ -51,6 +100,8 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='firstNameInput'
                   placeholder='Ingrese su nombre'
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
                 />
                 <label htmlFor='lastNameInput'>Apellido</label>
                 <input
@@ -58,6 +109,8 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='lastNameInput'
                   placeholder='Ingrese su Apellido'
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
                 />
                 <label htmlFor='jobTitleInput'>Trabajo</label>
                 <input
@@ -65,6 +118,8 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='jobTitleInput'
                   placeholder='Ingrese el puesto de trabajo'
+                  value={jobTitle}
+                  onChange={e => setJobTitle(e.target.value)}
                 />
                 <label htmlFor='documentInput'>Documento</label>
                 <input
@@ -72,17 +127,21 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='documentInput'
                   placeholder='Ingrese su documento'
+                  value={document}
+                  onChange={e => setDocument(e.target.value)}
                 />
                 <label htmlFor='phoneNumberInput'>Telefono</label>
                 <input
                   type='text'
                   className='form-control'
                   id='phoneNumberInput'
+                  value={phoneNumber}
+                  onChange={e => setPhoneNumber(e.target.value)}
                 />
                 <div className='row my-2'>
                   <label
                     htmlFor='birthdayInput'
-                    className='col-5 col-form-label'
+                    className='col-5 col-form-label wrap'
                   >
                     Cumpleaños
                   </label>
@@ -91,6 +150,8 @@ const FormRegister = ({ showForm }) => {
                       className='form-control'
                       type='date'
                       id='birthdayInput'
+                      defaultValue={birthday}
+                      onChange={e => setBirthday(e.target.value)}
                     />
                   </div>
                 </div>
@@ -98,35 +159,35 @@ const FormRegister = ({ showForm }) => {
             </div>
           </div>
 
-          <div className='col-lg-3 col-md-12 mb-2'>
+          <div className='col-lg-4 col-sm-12 mb-2'>
             <div className='card'>
               <div className='card-body form-group'>
                 <h4 className='card-title'>Iniciar sesion</h4>
                 <label htmlFor='emailInput'>Correo electronico</label>
-                <input type='email' className='form-control' id='emailInput' />
+                <input
+                  type='email'
+                  className='form-control'
+                  id='emailInput'
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                />
                 <label htmlFor='userNameInput'>Usuario</label>
                 <input
                   type='text'
                   className='form-control'
                   id='userNameInput'
+                  value={userName}
+                  onChange={e => setUserName(e.target.value)}
                 />
                 <label htmlFor='passInput'>Contraseña</label>
                 <input
                   type='password'
                   className='form-control'
                   id='passInput'
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
-                <label htmlFor='avatarInput'>Avatar</label>
-                <div className='custom-file'>
-                  <input
-                    type='file'
-                    className='custom-file-input'
-                    id='fileInput'
-                  />
-                  <label className='custom-file-label' htmlFor='fileInput'>
-                    Seleccionar Archivo
-                  </label>
-                </div>
+
                 <label htmlFor='userTypeInput'>Tipo de usuario</label>
                 <select className='form-control' id='userTypeInput'>
                   <option defaultValue>Seleccione una opcion</option>
@@ -138,7 +199,7 @@ const FormRegister = ({ showForm }) => {
             </div>
           </div>
 
-          <div className='col-lg-3 col-md-12 mb-2'>
+          <div className='col-lg-4 col-sm-12 mb-2'>
             <div className='card'>
               <div className='card-body form-group'>
                 <h4 className='card-title'>Direccion</h4>
@@ -147,52 +208,64 @@ const FormRegister = ({ showForm }) => {
                   type='text'
                   className='form-control'
                   id='streetNameInput'
+                  value={streetName}
+                  onChange={e => setStreetName(e.target.value)}
                 />
                 <label htmlFor='streetNumberInput'>Numero</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetNumberInput'
+                  value={streetNumber}
+                  onChange={e => setStreetNumber(e.target.value)}
                 />
                 <label htmlFor='streetCityInput'>Ciudad</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCityInput'
+                  value={city}
+                  onChange={e => setCity(e.target.value)}
                 />
                 <label htmlFor='streetCountyInput'>Provincia</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCountyInput'
+                  value={state}
+                  onChange={e => setState(e.target.value)}
                 />
                 <label htmlFor='streetCountryInput'>Pais</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCountryInput'
+                  value={country}
+                  onChange={e => setCountry(e.target.value)}
                 />
                 <label htmlFor='streetCountryCodeInput'>Codigo postal</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCountryCodeInput'
+                  value={countryCode}
+                  onChange={e => setCountryCode(e.target.value)}
                 />
               </div>
             </div>
           </div>
-
-          <div className='col-lg-2 col-md-12 mb-3 align-self-center'>
-            <button
-              className={`btn btn-block btn-large btn-${
-                editMode ? 'warning text-light' : 'dark'
-              }`}
-            >
-              <i className='fas fa-user-plus'></i>
-              {editMode ? ' Actualizar usuario' : ' Agregar'}
-            </button>
-          </div>
-        </form>
+        </div>
+      </div>
+      <div className='card-footer text-center'>
+        <button
+          className={`btn w-80 btn-${
+            editMode ? 'warning text-light' : 'success'
+          }`}
+          onClick={handleSubmit}
+        >
+          <i className='fas fa-user-plus'></i>
+          {editMode ? ' Actualizar usuario' : ' Agregar'}
+        </button>
       </div>
     </div>
   )

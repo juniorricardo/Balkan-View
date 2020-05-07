@@ -68,8 +68,8 @@ const ListView = ({showForm}) => {
             {valueOfType.type}
           </span>
         </td>
-        <td className='align-middle'>{user.document}</td>
-        <td className='align-middle'>{user.login.email}</td>
+        <td className='align-middle d-none d-md-table-cell'>{user.document}</td>
+        <td className='align-middle d-none d-md-table-cell '>{user.login.email}</td>
         <td className='align-middle'>
           <div className='btn-group'>
             <button

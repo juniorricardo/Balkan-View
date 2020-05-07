@@ -7,7 +7,7 @@
     },
     "userType": "client",
     "document": 38975677,
-    "birthday": "1980-05-17T03:31:11.776Z",
+    "birthday": "1980-05-17",
     "addres": {
       "street": {
         "number": "83288 Lucas Hills",
@@ -15,7 +15,6 @@
       },
       "city": "Dinadorf",
       "state": "Hamburg",
-      "county": "Cambridgeshire",
       "country": "Französisch-Polynesien",
       "countryCode": "CL"
     },
@@ -35,7 +34,7 @@
     },
     "userType": "client",
     "document": 39775702,
-    "birthday": "1997-11-23T07:03:44.531Z",
+    "birthday": "1997-11-23",
     "addres": {
       "street": {
         "number": "2655 Prediger Skyway",
@@ -43,7 +42,6 @@
       },
       "city": "Süd Alexland",
       "state": "Schleswig-Holstein",
-      "county": "Avon",
       "country": "Andorra",
       "countryCode": "GI"
     },
@@ -63,7 +61,7 @@
     },
     "userType": "client",
     "document": 38558327,
-    "birthday": "1987-06-30T07:50:07.452Z",
+    "birthday": "1987-06-30",
     "addres": {
       "street": {
         "number": "5125 Loreen Rue",
@@ -71,7 +69,6 @@
       },
       "city": "Tarjascheid",
       "state": "Hamburg",
-      "county": "Cambridgeshire",
       "country": "Demokratische Republik Kongo",
       "countryCode": "LU"
     },
@@ -91,7 +88,7 @@
     },
     "userType": "client",
     "document": 41958743,
-    "birthday": "2002-04-25T15:48:36.545Z",
+    "birthday": "2002-04-25",
     "addres": {
       "street": {
         "number": "8422 Kühnel Expressway",
@@ -99,7 +96,6 @@
       },
       "city": "Feldscheid",
       "state": "Baden-Württemberg",
-      "county": "Berkshire",
       "country": "Kamerun",
       "countryCode": "AW"
     },
@@ -119,7 +115,7 @@
     },
     "userType": "client",
     "document": 38928085,
-    "birthday": "1981-03-29T08:27:39.284Z",
+    "birthday": "1981-03-29",
     "addres": {
       "street": {
         "number": "889 Vin Curve",
@@ -127,7 +123,6 @@
       },
       "city": "Haileyburg",
       "state": "Thüringen",
-      "county": "Buckinghamshire",
       "country": "Libyen",
       "countryCode": "LB"
     },
@@ -147,7 +142,7 @@
     },
     "userType": "account-manager",
     "document": 44105284,
-    "birthday": "1997-05-16T19:53:40.543Z",
+    "birthday": "1997-05-16",
     "addres": {
       "street": {
         "number": "5135 Ferdinand Hollow",
@@ -155,7 +150,6 @@
       },
       "city": "Bad Ismailscheid",
       "state": "Schleswig-Holstein",
-      "county": "Cambridgeshire",
       "country": "Jordanien",
       "countryCode": "BG"
     },
@@ -175,7 +169,7 @@
     },
     "userType": "account-manager",
     "document": 43439214,
-    "birthday": "1973-11-19T15:24:10.307Z",
+    "birthday": "1973-11-19",
     "addres": {
       "street": {
         "number": "33353 Phoebe Springs",
@@ -183,7 +177,6 @@
       },
       "city": "Ost Helena",
       "state": "Niedersachsen",
-      "county": "Buckinghamshire",
       "country": "Schweden",
       "countryCode": "HK"
     },
@@ -203,7 +196,7 @@
     },
     "userType": "admin",
     "document": 40493669,
-    "birthday": "2000-06-16T01:15:49.801Z",
+    "birthday": "2000-06-16",
     "addres": {
       "street": {
         "number": "2398 Lorenz Lodge",
@@ -211,7 +204,6 @@
       },
       "city": "Ost Svenja",
       "state": "Brandenburg",
-      "county": "Avon",
       "country": "Sambia",
       "countryCode": "HR"
     },
