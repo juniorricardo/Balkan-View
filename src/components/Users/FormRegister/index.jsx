@@ -6,9 +6,11 @@ const FormRegister = ({ showForm }) => {
   const [user, setUser] = useState({})
 
   //  name
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [jobTitle, setJobTitle] = useState('')
+  const [name, setName] = useState({
+    firstName: '',
+    lastName: '',
+    jobTitle: ''
+  })
   //<-
   //const [userType, setUserType] = useState('')
   const [document, setDocument] = useState(0)
@@ -26,9 +28,27 @@ const FormRegister = ({ showForm }) => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [avatar, setAvatar] = useState('')
   //  login
-  const [email, setEmail] = useState('')
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
+  const [login, setLogin] = useState({
+    email: '',
+    acceso: {
+      userName: '',
+      password: ''
+    }
+  })
+
+  const [nuevo, setNuevo] = useState({
+    name: { firstName: '', lastName: '', jobTitle: '' },
+    addres: {
+      street: { number: '', name: '' },
+      city: '',
+      state: '',
+      country: '',
+      countryCode: ''
+    },
+    phoneNumber: '',
+    avatar: '',
+    login: { email: '', acceso: { userName: '', password: '' } }
+  })
 
   const dispatch = useDispatch()
 
@@ -46,23 +66,29 @@ const FormRegister = ({ showForm }) => {
   const handleSubmit = e => {
     e.preventDefault()
     console.log('Submit:')
-    setUser({
-      name: { firstName, lastName, jobTitle },
-      addres: {
-        street: { number: streetNumber, name: streetName },
-        city,
-        state,
-        country,
-        countryCode
-      },
-      phoneNumber,
-      avatar,
-      login: {
-        email,
-        userName,
-        password
-      }
+    setNuevo({
+      ...nuevo,
+      login
     })
+    console.log('nuevo usuario', nuevo)
+    debugger
+    // setUser({
+    //   name: { firstName, lastName, jobTitle },
+    //   addres: {
+    //     street: { number: streetNumber, name: streetName },
+    //     city,
+    //     state,
+    //     country,
+    //     countryCode
+    //   },
+    //   phoneNumber,
+    //   avatar,
+    //   login: {
+    //     email,
+    //     userName,
+    //     password
+    //   }
+    // })
     if (editMode) {
       console.log('Edit')
     } else {
@@ -84,7 +110,7 @@ const FormRegister = ({ showForm }) => {
         <h3>Registro</h3>
       </div>
       <div className='card-body'>
-        <div className='card-deck' >
+        <div className='card-deck'>
           <div className='col-lg-4 col-sm-12 mb-2'>
             {
               // avatar
@@ -100,8 +126,11 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='firstNameInput'
                   placeholder='Ingrese su nombre'
-                  value={firstName}
-                  onChange={e => setFirstName(e.target.value)}
+                  name='firstName'
+                  value={name.firstName}
+                  onChange={e =>
+                    setName({ ...name, [e.target.name]: e.target.value })
+                  }
                 />
                 <label htmlFor='lastNameInput'>Apellido</label>
                 <input
@@ -109,8 +138,11 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='lastNameInput'
                   placeholder='Ingrese su Apellido'
-                  value={lastName}
-                  onChange={e => setLastName(e.target.value)}
+                  name='lastName'
+                  value={name.lastName}
+                  onChange={e =>
+                    setName({ ...name, [e.target.name]: e.target.value })
+                  }
                 />
                 <label htmlFor='jobTitleInput'>Trabajo</label>
                 <input
@@ -118,8 +150,11 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='jobTitleInput'
                   placeholder='Ingrese el puesto de trabajo'
-                  value={jobTitle}
-                  onChange={e => setJobTitle(e.target.value)}
+                  name='jobTitle'
+                  value={name.jobTitle}
+                  onChange={e =>
+                    setName({ ...name, [e.target.name]: e.target.value })
+                  }
                 />
                 <label htmlFor='documentInput'>Documento</label>
                 <input
@@ -168,24 +203,50 @@ const FormRegister = ({ showForm }) => {
                   type='email'
                   className='form-control'
                   id='emailInput'
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  name='email'
+                  value={login.email}
+                  onChange={e =>
+                    setLogin({
+                      ...login,
+                      [e.target.name]: e.target.value
+                    })
+                  }
                 />
                 <label htmlFor='userNameInput'>Usuario</label>
                 <input
                   type='text'
                   className='form-control'
                   id='userNameInput'
-                  value={userName}
-                  onChange={e => setUserName(e.target.value)}
+                  name='userName'
+                  value={login.acceso.userName}
+                  onChange={e => {
+                    console.log(e.target.name)
+                    debugger
+                    setLogin({
+                      ...login,
+                      acceso: {
+                        ...login.acceso,
+                        [e.target.name]: e.target.value
+                      }
+                    })
+                  }}
                 />
                 <label htmlFor='passInput'>Contraseña</label>
                 <input
                   type='password'
                   className='form-control'
                   id='passInput'
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  name='password'
+                  value={login.acceso.password}
+                  onChange={e =>
+                    setLogin({
+                      ...login,
+                      acceso: {
+                        ...login.acceso,
+                        [e.target.name]: e.target.value
+                      }
+                    })
+                  }
                 />
 
                 <label htmlFor='userTypeInput'>Tipo de usuario</label>

@@ -1,13 +1,14 @@
 [
   {
-    "name": {
+    "personal-information": {
       "firstName": "Clarissa",
       "lastName": "Wallner",
-      "jobTitle": "Global Solutions Architect"
+      "document": 38975677,
+      "jobTitle": "Global Solutions Architect",
+      "birthday": "1980-05-17",
+      "phoneNumber": "+49-3910-28364088"
     },
     "userType": "client",
-    "document": 38975677,
-    "birthday": "1980-05-17",
     "addres": {
       "street": {
         "number": "83288 Lucas Hills",
@@ -18,7 +19,6 @@
       "country": "Französisch-Polynesien",
       "countryCode": "CL"
     },
-    "phoneNumber": "+49-3910-28364088",
     "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/clarissa.jpg",
     "login": {
       "email": "clarissa.wallner@correo.com",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Stella",
       "lastName": "Tschirch",
       "jobTitle": "Direct Intranet Producer"
@@ -54,7 +54,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Milan",
       "lastName": "Edorh",
       "jobTitle": "Dynamic Optimization Analyst"
@@ -81,7 +81,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Amy",
       "lastName": "Gens",
       "jobTitle": "Direct Division Producer"
@@ -108,7 +108,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Pierre",
       "lastName": "Welz",
       "jobTitle": "Direct Optimization Developer"
@@ -135,7 +135,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Malina",
       "lastName": "Heidelmann",
       "jobTitle": "National Web Facilitator"
@@ -162,7 +162,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Jean",
       "lastName": "Zeidler",
       "jobTitle": "Central Intranet Specialist"
@@ -189,7 +189,7 @@
     }
   },
   {
-    "name": {
+    "personal-information": {
       "firstName": "Leni",
       "lastName": "Wiegelmann",
       "jobTitle": "Corporate Integration Coordinator"
