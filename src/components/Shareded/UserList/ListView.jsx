@@ -47,15 +47,15 @@ const ListView = ({showForm}) => {
         <td className='d-flex align-items-center'>
           <img
             className='shadow rounded-circle w-60 border border-secondary d-block'
-            src={user.avatar}
+            src={user.login.avatar}
             alt='Avatar'
           />
           <div className='ml-3 align-middle text-left'>
             <h6 className='my-0'>
-              {user.name.firstName} {user.name.lastName}
+              {user.personalInfo.firstName} {user.personalInfo.lastName}
             </h6>
             <small className='text-muted d-none d-lg-block'>
-              {user.name.jobTitle}
+              {user.personalInfo.jobTitle}
             </small>
           </div>
         </td>
@@ -68,7 +68,7 @@ const ListView = ({showForm}) => {
             {valueOfType.type}
           </span>
         </td>
-        <td className='align-middle d-none d-md-table-cell'>{user.document}</td>
+        <td className='align-middle d-none d-md-table-cell'>{user.personalInfo.document}</td>
         <td className='align-middle d-none d-md-table-cell '>{user.login.email}</td>
         <td className='align-middle'>
           <div className='btn-group'>

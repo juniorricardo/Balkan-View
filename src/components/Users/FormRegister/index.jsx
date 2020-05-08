@@ -3,62 +3,48 @@ import { useDispatch } from 'react-redux'
 import { addUser, updateUser } from '../../../redux/actions/userActions'
 
 const FormRegister = ({ showForm }) => {
-  const [user, setUser] = useState({})
-
-  //  name
-  const [name, setName] = useState({
+  const [personalInfo, setPersonalInfo] = useState({
     firstName: '',
     lastName: '',
-    jobTitle: ''
+    document: '',
+    jobTitle: '',
+    birthday: '',
+    phoneNumber: ''
   })
-  //<-
-  //const [userType, setUserType] = useState('')
-  const [document, setDocument] = useState(0)
-  const [birthday, setBirthday] = useState('')
-  //  addres
-  //  =>street
-  const [streetNumber, setStreetNumber] = useState('')
-  const [streetName, setStreetName] = useState('')
-  // <-
-  const [city, setCity] = useState('')
-  const [state, setState] = useState('')
-  const [country, setCountry] = useState('')
-  const [countryCode, setCountryCode] = useState('')
-  // <-
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [avatar, setAvatar] = useState('')
-  //  login
+  const [userType, setUserType] = useState('')
+  const [addres, setAddres] = useState({
+    street: { number: '', name: '' },
+    city: '',
+    state: '',
+    country: '',
+    countryCode: ''
+  })
   const [login, setLogin] = useState({
-    email: '',
-    acceso: {
-      userName: '',
-      password: ''
-    }
-  })
-
-  const [nuevo, setNuevo] = useState({
-    name: { firstName: '', lastName: '', jobTitle: '' },
-    addres: {
-      street: { number: '', name: '' },
-      city: '',
-      state: '',
-      country: '',
-      countryCode: ''
-    },
-    phoneNumber: '',
     avatar: '',
-    login: { email: '', acceso: { userName: '', password: '' } }
+    email: '',
+    userName: '',
+    password: ''
+  })
+  const [user, setUser] = useState({
+    personalInfo,
+    userType,
+    addres,
+    login
   })
 
   const dispatch = useDispatch()
 
   const [editMode, setEditMode] = useState(() => {
     var userInit = JSON.parse(localStorage.getItem('userEdit'))
+
+    setUser(userInit)
+    console.log('Usuario a editar', user)
     debugger
     if (!userInit) {
       return false
     } else {
-      setUser(userInit)
+      //cargar, desde el localstore, los datos correspondientes
+      // en los 'states'
       return true
     }
   })
@@ -66,33 +52,13 @@ const FormRegister = ({ showForm }) => {
   const handleSubmit = e => {
     e.preventDefault()
     console.log('Submit:')
-    setNuevo({
-      ...nuevo,
-      login
-    })
-    console.log('nuevo usuario', nuevo)
+    console.log('nuevo usuario')
     debugger
-    // setUser({
-    //   name: { firstName, lastName, jobTitle },
-    //   addres: {
-    //     street: { number: streetNumber, name: streetName },
-    //     city,
-    //     state,
-    //     country,
-    //     countryCode
-    //   },
-    //   phoneNumber,
-    //   avatar,
-    //   login: {
-    //     email,
-    //     userName,
-    //     password
-    //   }
-    // })
     if (editMode) {
       console.log('Edit')
     } else {
       console.log('Add')
+      setUser({ ...user, personalInfo, userType, addres, login })
       debugger
       console.log('CAPTURANDO USUARIO', user)
     }
@@ -111,6 +77,7 @@ const FormRegister = ({ showForm }) => {
       </div>
       <div className='card-body'>
         <div className='card-deck'>
+          {/* Personal Info */}
           <div className='col-lg-4 col-sm-12 mb-2'>
             {
               // avatar
@@ -127,9 +94,12 @@ const FormRegister = ({ showForm }) => {
                   id='firstNameInput'
                   placeholder='Ingrese su nombre'
                   name='firstName'
-                  value={name.firstName}
+                  value={personalInfo.firstName}
                   onChange={e =>
-                    setName({ ...name, [e.target.name]: e.target.value })
+                    setPersonalInfo({
+                      ...personalInfo,
+                      [e.target.name]: e.target.value
+                    })
                   }
                 />
                 <label htmlFor='lastNameInput'>Apellido</label>
@@ -139,9 +109,27 @@ const FormRegister = ({ showForm }) => {
                   id='lastNameInput'
                   placeholder='Ingrese su Apellido'
                   name='lastName'
-                  value={name.lastName}
+                  value={personalInfo.lastName}
                   onChange={e =>
-                    setName({ ...name, [e.target.name]: e.target.value })
+                    setPersonalInfo({
+                      ...personalInfo,
+                      [e.target.name]: e.target.value
+                    })
+                  }
+                />
+                <label htmlFor='documentInput'>Documento</label>
+                <input
+                  type='number'
+                  className='form-control'
+                  id='documentInput'
+                  placeholder='Ingrese su documento'
+                  name='document'
+                  value={personalInfo.document}
+                  onChange={e =>
+                    setPersonalInfo({
+                      ...personalInfo,
+                      [e.target.name]: e.target.value
+                    })
                   }
                 />
                 <label htmlFor='jobTitleInput'>Trabajo</label>
@@ -151,27 +139,13 @@ const FormRegister = ({ showForm }) => {
                   id='jobTitleInput'
                   placeholder='Ingrese el puesto de trabajo'
                   name='jobTitle'
-                  value={name.jobTitle}
+                  value={personalInfo.jobTitle}
                   onChange={e =>
-                    setName({ ...name, [e.target.name]: e.target.value })
+                    setPersonalInfo({
+                      ...personalInfo,
+                      [e.target.name]: e.target.value
+                    })
                   }
-                />
-                <label htmlFor='documentInput'>Documento</label>
-                <input
-                  type='number'
-                  className='form-control'
-                  id='documentInput'
-                  placeholder='Ingrese su documento'
-                  value={document}
-                  onChange={e => setDocument(e.target.value)}
-                />
-                <label htmlFor='phoneNumberInput'>Telefono</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='phoneNumberInput'
-                  value={phoneNumber}
-                  onChange={e => setPhoneNumber(e.target.value)}
                 />
                 <div className='row my-2'>
                   <label
@@ -185,15 +159,44 @@ const FormRegister = ({ showForm }) => {
                       className='form-control'
                       type='date'
                       id='birthdayInput'
-                      defaultValue={birthday}
-                      onChange={e => setBirthday(e.target.value)}
+                      name='birthday'
+                      defaultValue={personalInfo.birthday}
+                      onChange={e =>
+                        setPersonalInfo({
+                          ...personalInfo,
+                          [e.target.name]: e.target.value
+                        })
+                      }
                     />
                   </div>
                 </div>
+                <label htmlFor='phoneNumberInput'>Telefono</label>
+                <input
+                  type='text'
+                  className='form-control'
+                  id='phoneNumberInput'
+                  name='phoneNumber'
+                  value={personalInfo.phoneNumber}
+                  onChange={e =>
+                    setPersonalInfo({
+                      ...personalInfo,
+                      [e.target.name]: e.target.value
+                    })
+                  }
+                />
               </div>
             </div>
+            <div className='card'>
+              <label htmlFor='userTypeInput'>Tipo de usuario</label>
+              <select className='form-control' id='userTypeInput'>
+                <option defaultValue>Seleccione una opcion</option>
+                <option value='admin'>Administrador</option>
+                <option value='account-manager'>Agent de cuenta</option>
+                <option value='client'>Cliente</option>
+              </select>
+            </div>
           </div>
-
+          {/* Login */}
           <div className='col-lg-4 col-sm-12 mb-2'>
             <div className='card'>
               <div className='card-body form-group'>
@@ -218,18 +221,13 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='userNameInput'
                   name='userName'
-                  value={login.acceso.userName}
-                  onChange={e => {
-                    console.log(e.target.name)
-                    debugger
+                  value={login.userName}
+                  onChange={e =>
                     setLogin({
                       ...login,
-                      acceso: {
-                        ...login.acceso,
-                        [e.target.name]: e.target.value
-                      }
+                      [e.target.name]: e.target.value
                     })
-                  }}
+                  }
                 />
                 <label htmlFor='passInput'>Contraseña</label>
                 <input
@@ -237,29 +235,18 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='passInput'
                   name='password'
-                  value={login.acceso.password}
+                  value={login.password}
                   onChange={e =>
                     setLogin({
                       ...login,
-                      acceso: {
-                        ...login.acceso,
-                        [e.target.name]: e.target.value
-                      }
+                      [e.target.name]: e.target.value
                     })
                   }
                 />
-
-                <label htmlFor='userTypeInput'>Tipo de usuario</label>
-                <select className='form-control' id='userTypeInput'>
-                  <option defaultValue>Seleccione una opcion</option>
-                  <option value='admin'>Administrador</option>
-                  <option value='account-manager'>Agent de cuenta</option>
-                  <option value='client'>Cliente</option>
-                </select>
               </div>
             </div>
           </div>
-
+          {/* Addres  */}
           <div className='col-lg-4 col-sm-12 mb-2'>
             <div className='card'>
               <div className='card-body form-group'>
@@ -269,48 +256,90 @@ const FormRegister = ({ showForm }) => {
                   type='text'
                   className='form-control'
                   id='streetNameInput'
-                  value={streetName}
-                  onChange={e => setStreetName(e.target.value)}
+                  name='name'
+                  value={addres.street.name}
+                  onChange={e =>
+                    setAddres({
+                      ...addres,
+                      street: {
+                        ...addres.street,
+                        [e.target.name]: e.target.value
+                      }
+                    })
+                  }
                 />
                 <label htmlFor='streetNumberInput'>Numero</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetNumberInput'
-                  value={streetNumber}
-                  onChange={e => setStreetNumber(e.target.value)}
+                  name='number'
+                  value={addres.street.number}
+                  onChange={e =>
+                    setAddres({
+                      ...addres,
+                      street: {
+                        ...addres.street,
+                        [e.target.name]: e.target.value
+                      }
+                    })
+                  }
                 />
                 <label htmlFor='streetCityInput'>Ciudad</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCityInput'
-                  value={city}
-                  onChange={e => setCity(e.target.value)}
+                  name='city'
+                  value={addres.city}
+                  onChange={e =>
+                    setAddres({
+                      ...addres,
+                      [e.target.name]: e.target.value
+                    })
+                  }
                 />
                 <label htmlFor='streetCountyInput'>Provincia</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCountyInput'
-                  value={state}
-                  onChange={e => setState(e.target.value)}
+                  name='state'
+                  value={addres.state}
+                  onChange={e =>
+                    setAddres({
+                      ...addres,
+                      [e.target.name]: e.target.value
+                    })
+                  }
                 />
                 <label htmlFor='streetCountryInput'>Pais</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCountryInput'
-                  value={country}
-                  onChange={e => setCountry(e.target.value)}
+                  name='country'
+                  value={addres.country}
+                  onChange={e =>
+                    setAddres({
+                      ...addres,
+                      [e.target.name]: e.target.value
+                    })
+                  }
                 />
                 <label htmlFor='streetCountryCodeInput'>Codigo postal</label>
                 <input
                   type='text'
                   className='form-control'
                   id='streetCountryCodeInput'
-                  value={countryCode}
-                  onChange={e => setCountryCode(e.target.value)}
+                  name='countryCode'
+                  value={addres.countryCode}
+                  onChange={e =>
+                    setAddres({
+                      ...addres,
+                      [e.target.name]: e.target.value
+                    })
+                  }
                 />
               </div>
             </div>

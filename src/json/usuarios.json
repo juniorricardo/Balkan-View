@@ -1,6 +1,6 @@
 [
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Clarissa",
       "lastName": "Wallner",
       "document": 38975677,
@@ -19,22 +19,23 @@
       "country": "Französisch-Polynesien",
       "countryCode": "CL"
     },
-    "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/clarissa.jpg",
     "login": {
+      "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/clarissa.jpg",
       "email": "clarissa.wallner@correo.com",
       "userName": "Eleni.Jung52",
       "password": "dO6DNdgGbRmojdq"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Stella",
       "lastName": "Tschirch",
-      "jobTitle": "Direct Intranet Producer"
+      "document": 39775702,
+      "jobTitle": "Direct Intranet Producer",
+      "birthday": "1997-11-23",
+      "phoneNumber": "+49-5277-67441476"
     },
     "userType": "client",
-    "document": 39775702,
-    "birthday": "1997-11-23",
     "addres": {
       "street": {
         "number": "2655 Prediger Skyway",
@@ -45,23 +46,23 @@
       "country": "Andorra",
       "countryCode": "GI"
     },
-    "phoneNumber": "+49-5277-67441476",
-    "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/stella.jpg",
     "login": {
+      "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/stella.jpg",
       "email": "stella.tschrch5@correo.com",
       "userName": "Raphael35",
       "password": "Q89RbrbfPjpTyjV"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Milan",
       "lastName": "Edorh",
-      "jobTitle": "Dynamic Optimization Analyst"
+      "document": 38558327,
+      "jobTitle": "Dynamic Optimization Analyst",
+      "birthday": "1987-06-30",
+      "phoneNumber": "+49-5253-56744153"
     },
     "userType": "client",
-    "document": 38558327,
-    "birthday": "1987-06-30",
     "addres": {
       "street": {
         "number": "5125 Loreen Rue",
@@ -72,23 +73,23 @@
       "country": "Demokratische Republik Kongo",
       "countryCode": "LU"
     },
-    "phoneNumber": "+49-5253-56744153",
-    "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/milan.jpg",
     "login": {
+      "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/milan.jpg",
       "email": "milan.edorh@correo.com",
       "userName": "Dorian_Porth5",
       "password": "lIHadMRnVfF65Fx"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Amy",
       "lastName": "Gens",
-      "jobTitle": "Direct Division Producer"
+      "document": 41958743,
+      "jobTitle": "Direct Division Producer",
+      "birthday": "2002-04-25",
+      "phoneNumber": "+49-485-1203579"
     },
     "userType": "client",
-    "document": 41958743,
-    "birthday": "2002-04-25",
     "addres": {
       "street": {
         "number": "8422 Kühnel Expressway",
@@ -99,23 +100,23 @@
       "country": "Kamerun",
       "countryCode": "AW"
     },
-    "phoneNumber": "+49-485-1203579",
-    "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/amy.jpg",
     "login": {
+      "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/amy.jpg",
       "email": "amy.gens@correo.com",
       "userName": "Marvin.Hassfeld",
       "password": "TYf4xEIfZCRsUgO"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Pierre",
       "lastName": "Welz",
-      "jobTitle": "Direct Optimization Developer"
+      "document": 38928085,
+      "jobTitle": "Direct Optimization Developer",
+      "birthday": "1981-03-29",
+      "phoneNumber": "+49-683-6141030"
     },
     "userType": "client",
-    "document": 38928085,
-    "birthday": "1981-03-29",
     "addres": {
       "street": {
         "number": "889 Vin Curve",
@@ -126,23 +127,23 @@
       "country": "Libyen",
       "countryCode": "LB"
     },
-    "phoneNumber": "+49-683-6141030",
-    "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/pierre.jpg",
     "login": {
+      "avatar": "https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/img/UserAvatar/pierre.jpg",
       "email": "pierre.welz@correo.com",
       "userName": "Francesca_Wurm62",
       "password": "qJgf4WviFXG6Wc2"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Malina",
       "lastName": "Heidelmann",
-      "jobTitle": "National Web Facilitator"
+      "document": 44105284,
+      "jobTitle": "National Web Facilitator",
+      "birthday": "1997-05-16",
+      "phoneNumber": "(0182) 615034388"
     },
     "userType": "account-manager",
-    "document": 44105284,
-    "birthday": "1997-05-16",
     "addres": {
       "street": {
         "number": "5135 Ferdinand Hollow",
@@ -153,23 +154,23 @@
       "country": "Jordanien",
       "countryCode": "BG"
     },
-    "phoneNumber": "(0182) 615034388",
-    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/lepetitogre/128.jpg",
     "login": {
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/lepetitogre/128.jpg",
       "email": "malina.heidelmann@correo.com",
       "userName": "Bennet_Kunz29",
       "password": "mWF9nZHxuOgl1Xq"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Jean",
       "lastName": "Zeidler",
-      "jobTitle": "Central Intranet Specialist"
+      "document": 43439214,
+      "jobTitle": "Central Intranet Specialist",
+      "birthday": "1973-11-19",
+      "phoneNumber": "(03104) 9594189"
     },
     "userType": "account-manager",
-    "document": 43439214,
-    "birthday": "1973-11-19",
     "addres": {
       "street": {
         "number": "33353 Phoebe Springs",
@@ -180,23 +181,23 @@
       "country": "Schweden",
       "countryCode": "HK"
     },
-    "phoneNumber": "(03104) 9594189",
-    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/tumski/128.jpg",
     "login": {
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/tumski/128.jpg",
       "email": "jean.zeidler12@correo.com",
       "userName": "Jean.Kesselring5",
       "password": "i0cd62wD5_PCUeY"
     }
   },
   {
-    "personal-information": {
+    "personalInfo": {
       "firstName": "Leni",
       "lastName": "Wiegelmann",
-      "jobTitle": "Corporate Integration Coordinator"
+      "document": 40493669,
+      "jobTitle": "Corporate Integration Coordinator",
+      "birthday": "2000-06-16",
+      "phoneNumber": "+49-7842-32834099"
     },
     "userType": "admin",
-    "document": 40493669,
-    "birthday": "2000-06-16",
     "addres": {
       "street": {
         "number": "2398 Lorenz Lodge",
@@ -207,9 +208,8 @@
       "country": "Sambia",
       "countryCode": "HR"
     },
-    "phoneNumber": "+49-7842-32834099",
-    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kohette/128.jpg",
     "login": {
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kohette/128.jpg",
       "email": "leni.wiegelmann@correo.com",
       "userName": "Giuliana.Thimm",
       "password": "Kh5RPDNjPWl4E_i"
