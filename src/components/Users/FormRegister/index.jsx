@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { FaSave } from 'react-icons/fa'
 import { addUser, updateUser } from '../../../redux/actions/userActions'
 
 const FormRegister = ({ showForm }) => {
-  const [personalInfo, setPersonalInfo] = useState({
+
+  const [personaInfo, setPersonaInfo] = useState({
     firstName: '',
     lastName: '',
     document: '',
@@ -25,29 +27,10 @@ const FormRegister = ({ showForm }) => {
     userName: '',
     password: ''
   })
-  const [user, setUser] = useState({
-    personalInfo,
-    userType,
-    addres,
-    login
-  })
-
+  
+  const [editMode, setEditMode] = useState(false)
+  
   const dispatch = useDispatch()
-
-  const [editMode, setEditMode] = useState(() => {
-    var userInit = JSON.parse(localStorage.getItem('userEdit'))
-
-    setUser(userInit)
-    console.log('Usuario a editar', user)
-    debugger
-    if (!userInit) {
-      return false
-    } else {
-      //cargar, desde el localstore, los datos correspondientes
-      // en los 'states'
-      return true
-    }
-  })
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -55,19 +38,30 @@ const FormRegister = ({ showForm }) => {
     console.log('nuevo usuario')
     debugger
     if (editMode) {
-      console.log('Edit')
+      console.log('Dispatch => Edit')
     } else {
-      console.log('Add')
-      setUser({ ...user, personalInfo, userType, addres, login })
-      debugger
-      console.log('CAPTURANDO USUARIO', user)
+      console.log('Dispatch => Add')
+      dispatch(addUser({
+        personaInfo,
+        userType,
+        addres,
+        login
+      }))
     }
     localStorage.setItem('userEdit', null)
     showForm(false)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     console.log('editMode', editMode)
+    const res = JSON.parse(localStorage.getItem('userEdit'))
+    if (res) {
+      setEditMode(true)
+      setPersonaInfo({ ...res.personaInfo })
+      setUserType({ ...res.userType })
+      setAddres({ ...res.addres })
+      setLogin({ ...res.login })
+    }
   }, [])
 
   return (
@@ -94,10 +88,10 @@ const FormRegister = ({ showForm }) => {
                   id='firstNameInput'
                   placeholder='Ingrese su nombre'
                   name='firstName'
-                  value={personalInfo.firstName}
+                  value={personaInfo.firstName}
                   onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
+                    setPersonaInfo({
+                      ...personaInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -109,10 +103,10 @@ const FormRegister = ({ showForm }) => {
                   id='lastNameInput'
                   placeholder='Ingrese su Apellido'
                   name='lastName'
-                  value={personalInfo.lastName}
+                  value={personaInfo.lastName}
                   onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
+                    setPersonaInfo({
+                      ...personaInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -124,10 +118,10 @@ const FormRegister = ({ showForm }) => {
                   id='documentInput'
                   placeholder='Ingrese su documento'
                   name='document'
-                  value={personalInfo.document}
+                  value={personaInfo.document}
                   onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
+                    setPersonaInfo({
+                      ...personaInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -139,10 +133,10 @@ const FormRegister = ({ showForm }) => {
                   id='jobTitleInput'
                   placeholder='Ingrese el puesto de trabajo'
                   name='jobTitle'
-                  value={personalInfo.jobTitle}
+                  value={personaInfo.jobTitle}
                   onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
+                    setPersonaInfo({
+                      ...personaInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -160,10 +154,10 @@ const FormRegister = ({ showForm }) => {
                       type='date'
                       id='birthdayInput'
                       name='birthday'
-                      defaultValue={personalInfo.birthday}
+                      defaultValue={personaInfo.birthday}
                       onChange={e =>
-                        setPersonalInfo({
-                          ...personalInfo,
+                        setPersonaInfo({
+                          ...personaInfo,
                           [e.target.name]: e.target.value
                         })
                       }
@@ -176,10 +170,10 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='phoneNumberInput'
                   name='phoneNumber'
-                  value={personalInfo.phoneNumber}
+                  value={personaInfo.phoneNumber}
                   onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
+                    setPersonaInfo({
+                      ...personaInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -187,13 +181,15 @@ const FormRegister = ({ showForm }) => {
               </div>
             </div>
             <div className='card'>
-              <label htmlFor='userTypeInput'>Tipo de usuario</label>
-              <select className='form-control' id='userTypeInput'>
-                <option defaultValue>Seleccione una opcion</option>
-                <option value='admin'>Administrador</option>
-                <option value='account-manager'>Agent de cuenta</option>
-                <option value='client'>Cliente</option>
-              </select>
+              <div className="card-body">
+                <label htmlFor='userTypeInput'>Tipo de usuario</label>
+                <select className='form-control' id='userTypeInput'>
+                  <option defaultValue>Seleccione una opcion</option>
+                  <option value='admin'>Administrador</option>
+                  <option value='account-manager'>Agent de cuenta</option>
+                  <option value='client'>Cliente</option>
+                </select>
+              </div>
             </div>
           </div>
           {/* Login */}
@@ -353,7 +349,7 @@ const FormRegister = ({ showForm }) => {
           }`}
           onClick={handleSubmit}
         >
-          <i className='fas fa-user-plus'></i>
+          <FaSave />
           {editMode ? ' Actualizar usuario' : ' Agregar'}
         </button>
       </div>

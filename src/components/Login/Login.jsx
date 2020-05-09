@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
 import imgLogin from './../../img/image.jpg'
 import Auth from './../../services/Auth'
@@ -39,6 +40,8 @@ Kh5RPDNjPWl4E_i
             break
           case 'admin':
             userType = '/admin'
+            break
+          default:
             break
         }
         props.history.push(userType)
@@ -84,7 +87,7 @@ Kh5RPDNjPWl4E_i
             type='submit'
             className='btn btn-dark btn-lg btn-block mb-2 mt-2'
           >
-            Ingresar
+            Ingresar <FaSignInAlt />
           </button>
         </form>
       </div>

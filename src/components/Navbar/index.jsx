@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {FaSignOutAlt} from 'react-icons/fa'
 import './navbar.css'
 import logo from './../../img/icons/banco.svg'
 import Auth from './../../services/Auth'
@@ -26,7 +27,7 @@ const Navbar = props => {
   }
 
   return (
-    <nav className='navbar sticky-top navbar-light bg-light border-bottom rounded mb-4'>
+    <nav className='navbar sticky-top navbar-light bg-light border-bottom shadow rounded mb-4'>
       <a className='navbar-brand' href='#'>
         <img
           className='align-top'
@@ -47,7 +48,7 @@ const Navbar = props => {
           {user.firstName} {user.lastName}
         </span>
         <button className='btn btn-dark ml-2' onClick={() => navLogout()}>
-          <i className='fas fa-sign-out-alt'></i>
+          <FaSignOutAlt />
         </button>
       </div>
     </nav>

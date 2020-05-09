@@ -1,13 +1,12 @@
 import React from 'react'
 import { useState, useEffect, useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import {
-  removeUser
-} from './../../../redux/actions/userActions'
+import { FaUserEdit, FaUserTimes } from 'react-icons/fa'
+import { removeUser } from './../../../redux/actions/userActions'
 
 //IMPORTAR DISPATCHS
 
-const ListView = ({showForm}) => {
+const ListView = ({ showForm }) => {
   const userList = useSelector(state => state.userList)
   const dispatch = useDispatch()
 
@@ -27,8 +26,8 @@ const ListView = ({showForm}) => {
   }
 
   const userToEdit = user => {
-    console.log('Agregando usuario para editar');
-    
+    console.log('Agregando usuario para editar')
+
     localStorage.setItem('userEdit', JSON.stringify(user))
 
     showForm(true)
@@ -52,10 +51,10 @@ const ListView = ({showForm}) => {
           />
           <div className='ml-3 align-middle text-left'>
             <h6 className='my-0'>
-              {user.personalInfo.firstName} {user.personalInfo.lastName}
+              {user.personaInfo.firstName} {user.personaInfo.lastName}
             </h6>
             <small className='text-muted d-none d-lg-block'>
-              {user.personalInfo.jobTitle}
+              {user.personaInfo.jobTitle}
             </small>
           </div>
         </td>
@@ -68,21 +67,25 @@ const ListView = ({showForm}) => {
             {valueOfType.type}
           </span>
         </td>
-        <td className='align-middle d-none d-md-table-cell'>{user.personalInfo.document}</td>
-        <td className='align-middle d-none d-md-table-cell '>{user.login.email}</td>
+        <td className='align-middle d-none d-md-table-cell'>
+          {user.personaInfo.document}
+        </td>
+        <td className='align-middle d-none d-md-table-cell '>
+          {user.login.email}
+        </td>
         <td className='align-middle'>
           <div className='btn-group'>
             <button
               className='btn btn-warning mr-1'
               onClick={() => userToEdit(user)}
             >
-              <i className='fas fa-user-edit fa-sm'></i>
+              <FaUserEdit size='1.5rem' />
             </button>
             <button
               className='btn btn-danger'
               onClick={() => confirmRemoveUser(index)}
             >
-              <i className='fas fa-user-minus fa-sm'></i>
+              <FaUserTimes size='1.5rem' />
             </button>
           </div>
         </td>

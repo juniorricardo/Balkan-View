@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { FaUserPlus } from 'react-icons/fa'
 import './userlist.css'
 import ListView from './ListView'
 import FormRegister from '../../Users/FormRegister'
@@ -59,7 +60,7 @@ const UserList = props => {
           </button>
         </div>
         <button className='btn btn-success my-1' onClick={() => newUser()}>
-          <i className='fas fa-user-plus'></i> Nuevo usuario
+          <FaUserPlus size='1.5rem'/> Nuevo usuario
         </button>
       </div>
     )
