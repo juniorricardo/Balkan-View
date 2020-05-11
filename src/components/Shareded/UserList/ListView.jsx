@@ -51,10 +51,10 @@ const ListView = ({ showForm }) => {
           />
           <div className='ml-3 align-middle text-left'>
             <h6 className='my-0'>
-              {user.personaInfo.firstName} {user.personaInfo.lastName}
+              {user.personalInfo.firstName} {user.personalInfo.lastName}
             </h6>
             <small className='text-muted d-none d-lg-block'>
-              {user.personaInfo.jobTitle}
+              {user.personalInfo.jobTitle}
             </small>
           </div>
         </td>
@@ -68,7 +68,7 @@ const ListView = ({ showForm }) => {
           </span>
         </td>
         <td className='align-middle d-none d-md-table-cell'>
-          {user.personaInfo.document}
+          {user.personalInfo.document}
         </td>
         <td className='align-middle d-none d-md-table-cell '>
           {user.login.email}

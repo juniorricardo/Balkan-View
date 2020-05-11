@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
-import imgLogin from './../../img/image.jpg'
+import imgLogin from './../../images/image.jpg'
 import Auth from './../../services/Auth'
 
 const Login = props => {
@@ -77,7 +77,7 @@ Kh5RPDNjPWl4E_i
               type='password'
               className='form-control'
               id='exampleInputPassword'
-              placeholder='Contraseña'
+              placeholder='Ingrese su contraseña'
               required
               value={password}
               onChange={e => setPassword(e.target.value)}

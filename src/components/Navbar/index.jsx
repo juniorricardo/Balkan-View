@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {FaSignOutAlt} from 'react-icons/fa'
 import './navbar.css'
-import logo from './../../img/icons/banco.svg'
+import logo from './../../images/imagination-at-work.webp'
 import Auth from './../../services/Auth'
 
 const Navbar = props => {
@@ -32,11 +32,9 @@ const Navbar = props => {
         <img
           className='align-top'
           src={logo}
-          width='30'
-          height='30'
+          width='160'
           alt='logo'
-        />{' '}
-        <h5 className='d-inline-block mt-1'>Sucursal bancario</h5>
+        />
       </a>
       <div className='nav form-inline navbar-nav navbar-right d-inline-block my-1'>
         <img

@@ -4,8 +4,7 @@ import { FaSave } from 'react-icons/fa'
 import { addUser, updateUser } from '../../../redux/actions/userActions'
 
 const FormRegister = ({ showForm }) => {
-
-  const [personaInfo, setPersonaInfo] = useState({
+  const [personalInfo, setPersonalInfo] = useState({
     firstName: '',
     lastName: '',
     document: '',
@@ -27,9 +26,9 @@ const FormRegister = ({ showForm }) => {
     userName: '',
     password: ''
   })
-  
+
   const [editMode, setEditMode] = useState(false)
-  
+
   const dispatch = useDispatch()
 
   const handleSubmit = e => {
@@ -39,14 +38,24 @@ const FormRegister = ({ showForm }) => {
     debugger
     if (editMode) {
       console.log('Dispatch => Edit')
+      dispatch(
+        updateUser({
+          personalInfo,
+          userType,
+          addres,
+          login
+        })
+      )
     } else {
       console.log('Dispatch => Add')
-      dispatch(addUser({
-        personaInfo,
-        userType,
-        addres,
-        login
-      }))
+      dispatch(
+        addUser({
+          personalInfo,
+          userType,
+          addres,
+          login
+        })
+      )
     }
     localStorage.setItem('userEdit', null)
     showForm(false)
@@ -57,8 +66,8 @@ const FormRegister = ({ showForm }) => {
     const res = JSON.parse(localStorage.getItem('userEdit'))
     if (res) {
       setEditMode(true)
-      setPersonaInfo({ ...res.personaInfo })
-      setUserType({ ...res.userType })
+      setPersonalInfo({ ...res.personalInfo })
+      setUserType(res.userType)
       setAddres({ ...res.addres })
       setLogin({ ...res.login })
     }
@@ -88,10 +97,10 @@ const FormRegister = ({ showForm }) => {
                   id='firstNameInput'
                   placeholder='Ingrese su nombre'
                   name='firstName'
-                  value={personaInfo.firstName}
+                  value={personalInfo.firstName}
                   onChange={e =>
-                    setPersonaInfo({
-                      ...personaInfo,
+                    setPersonalInfo({
+                      ...personalInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -103,10 +112,10 @@ const FormRegister = ({ showForm }) => {
                   id='lastNameInput'
                   placeholder='Ingrese su Apellido'
                   name='lastName'
-                  value={personaInfo.lastName}
+                  value={personalInfo.lastName}
                   onChange={e =>
-                    setPersonaInfo({
-                      ...personaInfo,
+                    setPersonalInfo({
+                      ...personalInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -118,10 +127,10 @@ const FormRegister = ({ showForm }) => {
                   id='documentInput'
                   placeholder='Ingrese su documento'
                   name='document'
-                  value={personaInfo.document}
+                  value={personalInfo.document}
                   onChange={e =>
-                    setPersonaInfo({
-                      ...personaInfo,
+                    setPersonalInfo({
+                      ...personalInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -133,10 +142,10 @@ const FormRegister = ({ showForm }) => {
                   id='jobTitleInput'
                   placeholder='Ingrese el puesto de trabajo'
                   name='jobTitle'
-                  value={personaInfo.jobTitle}
+                  value={personalInfo.jobTitle}
                   onChange={e =>
-                    setPersonaInfo({
-                      ...personaInfo,
+                    setPersonalInfo({
+                      ...personalInfo,
                       [e.target.name]: e.target.value
                     })
                   }
@@ -154,10 +163,10 @@ const FormRegister = ({ showForm }) => {
                       type='date'
                       id='birthdayInput'
                       name='birthday'
-                      defaultValue={personaInfo.birthday}
+                      defaultValue={personalInfo.birthday}
                       onChange={e =>
-                        setPersonaInfo({
-                          ...personaInfo,
+                        setPersonalInfo({
+                          ...personalInfo,
                           [e.target.name]: e.target.value
                         })
                       }
@@ -170,25 +179,14 @@ const FormRegister = ({ showForm }) => {
                   className='form-control'
                   id='phoneNumberInput'
                   name='phoneNumber'
-                  value={personaInfo.phoneNumber}
+                  value={personalInfo.phoneNumber}
                   onChange={e =>
-                    setPersonaInfo({
-                      ...personaInfo,
+                    setPersonalInfo({
+                      ...personalInfo,
                       [e.target.name]: e.target.value
                     })
                   }
                 />
-              </div>
-            </div>
-            <div className='card'>
-              <div className="card-body">
-                <label htmlFor='userTypeInput'>Tipo de usuario</label>
-                <select className='form-control' id='userTypeInput'>
-                  <option defaultValue>Seleccione una opcion</option>
-                  <option value='admin'>Administrador</option>
-                  <option value='account-manager'>Agent de cuenta</option>
-                  <option value='client'>Cliente</option>
-                </select>
               </div>
             </div>
           </div>
@@ -239,6 +237,18 @@ const FormRegister = ({ showForm }) => {
                     })
                   }
                 />
+              </div>
+            </div>
+            <div className='card mt-2'>
+              <div className='card-body'>
+                <h4 className='card-title'>Categoria de usuario</h4>
+                <label htmlFor='userTypeInput'>Tipo</label>
+                <select className='form-control' id='userTypeInput'>
+                  <option defaultValue>Seleccione una opcion</option>
+                  <option value='admin'>Administrador</option>
+                  <option value='account-manager'>Agent de cuenta</option>
+                  <option value='client'>Cliente</option>
+                </select>
               </div>
             </div>
           </div>

@@ -7,9 +7,16 @@ export default function (state = usuarios, action) {
     case 'ADD_USER':
       return state.concat([action.user])
     case 'REMOVE_USER':
-      return state.filter((u, index) => index !== action.index)
-    case 'EDIT_USER':
-      return state //Completar
+      return state.filter((user, index) => index !== action.index)
+    case 'UPDATE_USER':
+      console.log('Dispatch Edit', action.user)
+      debugger
+      
+      return state.map(user =>
+        (user.personalInfo.document === action.user.personalInfo.document) ?
+          action.user :
+          user
+      )
     default:
       return state
   }

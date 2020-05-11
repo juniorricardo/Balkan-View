@@ -1,6 +1,6 @@
 [
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Clarissa",
       "lastName": "Wallner",
       "document": 38975677,
@@ -27,7 +27,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Stella",
       "lastName": "Tschirch",
       "document": 39775702,
@@ -54,7 +54,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Milan",
       "lastName": "Edorh",
       "document": 38558327,
@@ -81,7 +81,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Amy",
       "lastName": "Gens",
       "document": 41958743,
@@ -108,7 +108,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Pierre",
       "lastName": "Welz",
       "document": 38928085,
@@ -135,7 +135,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Malina",
       "lastName": "Heidelmann",
       "document": 44105284,
@@ -162,7 +162,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Jean",
       "lastName": "Zeidler",
       "document": 43439214,
@@ -189,7 +189,7 @@
     }
   },
   {
-    "personaInfo": {
+    "personalInfo": {
       "firstName": "Leni",
       "lastName": "Wiegelmann",
       "document": 40493669,
