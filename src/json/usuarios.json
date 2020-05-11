@@ -143,7 +143,7 @@
       "birthday": "1997-05-16",
       "phoneNumber": "(0182) 615034388"
     },
-    "userType": "account-manager",
+    "userType": "accountManager",
     "addres": {
       "street": {
         "number": "5135 Ferdinand Hollow",
@@ -170,7 +170,7 @@
       "birthday": "1973-11-19",
       "phoneNumber": "(03104) 9594189"
     },
-    "userType": "account-manager",
+    "userType": "accountManager",
     "addres": {
       "street": {
         "number": "33353 Phoebe Springs",

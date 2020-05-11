@@ -31,13 +31,24 @@ const FormRegister = ({ showForm }) => {
 
   const dispatch = useDispatch()
 
+  const optionDrop = [
+    { type: 'client', name: 'Cliente' },
+    { type: 'accountManager', name: 'Agente de cuentas' },
+    { type: 'admin', name: 'Administrador' }
+  ]
+
   const handleSubmit = e => {
     e.preventDefault()
     console.log('Submit:')
-    console.log('nuevo usuario')
     debugger
     if (editMode) {
       console.log('Dispatch => Edit')
+      console.log('Update user', {
+        personalInfo,
+        userType,
+        addres,
+        login
+      })
       dispatch(
         updateUser({
           personalInfo,
@@ -48,6 +59,12 @@ const FormRegister = ({ showForm }) => {
       )
     } else {
       console.log('Dispatch => Add')
+      console.log('New user', {
+        personalInfo,
+        userType,
+        addres,
+        login
+      })
       dispatch(
         addUser({
           personalInfo,
@@ -243,11 +260,30 @@ const FormRegister = ({ showForm }) => {
               <div className='card-body'>
                 <h4 className='card-title'>Categoria de usuario</h4>
                 <label htmlFor='userTypeInput'>Tipo</label>
-                <select className='form-control' id='userTypeInput'>
-                  <option defaultValue>Seleccione una opcion</option>
-                  <option value='admin'>Administrador</option>
-                  <option value='account-manager'>Agent de cuenta</option>
-                  <option value='client'>Cliente</option>
+                <select
+                  className='form-control'
+                  id='userTypeInput'
+                  value={userType}
+                  onChange={e => setUserType(e.target.value)}
+                >
+                  {editMode ? (
+                    optionDrop.map((item, index) => (
+                      <option value={item.type} key={index}>
+                        {item.name}
+                      </option>
+                    ))
+                  ) : (
+                    <React.Fragment>
+                      <option defaultValue>
+                        Seleccione una opcion
+                      </option>
+                      {optionDrop.map((item, index) => (
+                        <option value={item.type} key={index}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </React.Fragment>
+                  )}
                 </select>
               </div>
             </div>

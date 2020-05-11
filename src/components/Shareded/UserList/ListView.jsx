@@ -1,10 +1,8 @@
 import React from 'react'
-import { useState, useEffect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { FaUserEdit, FaUserTimes } from 'react-icons/fa'
 import { removeUser } from './../../../redux/actions/userActions'
-
-//IMPORTAR DISPATCHS
 
 const ListView = ({ showForm }) => {
   const userList = useSelector(state => state.userList)
@@ -15,7 +13,7 @@ const ListView = ({ showForm }) => {
     if (type === 'client') {
       valueOfType.color = 'primary'
       valueOfType.type = 'Cliente'
-    } else if (type === 'account-manager') {
+    } else if (type === 'accountManager') {
       valueOfType.color = 'success'
       valueOfType.type = 'Agente de cuentas'
     } else {
@@ -77,7 +75,10 @@ const ListView = ({ showForm }) => {
           <div className='btn-group'>
             <button
               className='btn btn-warning mr-1'
-              onClick={() => userToEdit(user)}
+              onClick={() => {
+                console.log(user)
+                userToEdit(user)
+              }}
             >
               <FaUserEdit size='1.5rem' />
             </button>

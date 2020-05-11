@@ -45,7 +45,7 @@ const UserList = props => {
           >
             Agente de cuantas
             <span className='badge badge-light contador ml-1 align-middle badge-pill'>
-              {userList.filter(e => e.userType === 'account-manager').length}
+              {userList.filter(e => e.userType === 'accountManager').length}
             </span>
           </button>
           <button
