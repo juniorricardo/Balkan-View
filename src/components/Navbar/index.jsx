@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {FaSignOutAlt} from 'react-icons/fa'
+import { FaSignOutAlt } from 'react-icons/fa'
 import './navbar.css'
-import logo from './../../images/imagination-at-work.webp'
+import logo from './../../images/bk-logo.webp'
 import Auth from './../../services/Auth'
 
 const Navbar = props => {
@@ -27,21 +27,28 @@ const Navbar = props => {
   }
 
   return (
-    <nav className='navbar sticky-top navbar-light bg-light border-bottom shadow rounded mb-4'>
+    <nav className='navbar navbar-expand sticky-top navbar-light bg-light border-bottom shadow rounded mb-4'>
       <a className='navbar-brand' href='#'>
-        <img
-          className='align-top'
-          src={logo}
-          width='160'
-          alt='logo'
-        />
+        <img className='align-top' src={logo} width='160' alt='logo' />
       </a>
+      <div className='collapse navbar-collapse' id='navbarText'>
+        <ul className='navbar-nav mr-auto'>
+          <li
+            className='nav-item'
+            onClick={() => props.actionShowBranch(false)}
+          >
+            <a className='nav-link' href='#'>
+              Inicio
+            </a>
+          </li>
+          <li className='nav-item' onClick={() => props.actionShowBranch(true)}>
+            <a className='nav-link' href='#'>
+              Sucursales
+            </a>
+          </li>
+        </ul>
+      </div>
       <div className='nav form-inline navbar-nav navbar-right d-inline-block my-1'>
-        <img
-          className='shadow rounded-circle w-60 border border-primary d-inline mr-3'
-          src={user.avatar}
-          alt='Avatar'
-        />
         <span className='navbar-text'>
           {user.firstName} {user.lastName}
         </span>

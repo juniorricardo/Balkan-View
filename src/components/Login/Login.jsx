@@ -1,7 +1,8 @@
 import React from 'react'
+import { Card, Form, Button } from 'react-bootstrap'
 import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
-import imgLogin from './../../images/image.jpg'
+import imgLogin from './../../images/formPicture.jpg'
 import Auth from './../../services/Auth'
 
 const Login = props => {
@@ -54,44 +55,37 @@ Kh5RPDNjPWl4E_i
   }
 
   return (
-    <div className='card shadow width-1 mx-auto font-quicksand bg-light'>
-      <img className='card-img-top px-1 py-1' src={imgLogin} alt='Login' />
-      <div className='card-body'>
-        <h2 className='card-title text-center mb-4'>Iniciar sesion</h2>
-        <form onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='exampleInputEmail'>Correo electronico</label>
-            <input
+    <Card style={{ width: '20rem' }}>
+      <Card.Img variant='top' src={imgLogin} alt='Login' />
+      <Card.Body>
+        <Card.Title>Iniciar sesion</Card.Title>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId='formBasicEmail'>
+            <Form.Label>Correo electronico</Form.Label>
+            <Form.Control
               type='email'
-              className='form-control'
-              id='exampleInputEmail'
               placeholder='Ingrese su correo'
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='exampleInputPassword'>Contraseña</label>
-            <input
+          </Form.Group>
+
+          <Form.Group controlId='formBasicPassword'>
+            <Form.Label>Contraseña</Form.Label>
+            <Form.Control
               type='password'
-              className='form-control'
-              id='exampleInputPassword'
-              placeholder='Ingrese su contraseña'
-              required
+              placeholder='Contraseña'
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
-          </div>
-          <button
-            type='submit'
-            className='btn btn-dark btn-lg btn-block mb-2 mt-2'
-          >
+          </Form.Group>
+          <Button variant='dark' type='submit' size='lg' block>
             Ingresar <FaSignInAlt />
-          </button>
-        </form>
-      </div>
-    </div>
+          </Button>
+        </Form>
+      </Card.Body>
+    </Card>
   )
 }
 

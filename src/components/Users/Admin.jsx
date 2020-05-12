@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Navbar'
 import UserList from '../Shareded/UserList'
+import Branch from './../Shareded/Branch'
 
 const Admin = () => {
   // constructor debe tomar datos del usuario logeado
@@ -35,6 +36,7 @@ const Admin = () => {
       password: 'Kh5RPDNjPWl4E_i'
     }
   }
+  const [isVisibleBranch, setVisibleBranch] = React.useState(false)
 
   React.useEffect(() => {
     console.log(userLogged)
@@ -47,8 +49,16 @@ const Admin = () => {
         lastName={userLogged.name.lastName}
         avatar={userLogged.avatar}
         type='admin'
+        actionShowBranch={setVisibleBranch}
       />
-      <UserList document={userLogged.document} type='admin' />
+      <div className='card p-4 bg-light border border-primary text-center'>
+        {!isVisibleBranch ? (
+          <UserList userDocument={userLogged.document} type='admin' />
+        ) : (
+          /* mostrar crud sucursales*/
+          <Branch userDocument={userLogged.document} />
+        )}
+      </div>
     </React.Fragment>
   )
 }

@@ -60,7 +60,7 @@ const UserList = props => {
           </button>
         </div>
         <button className='btn btn-success my-1' onClick={() => newUser()}>
-          <FaUserPlus size='1.5rem'/> Nuevo usuario
+          <FaUserPlus size='1.5rem' /> Nuevo usuario
         </button>
       </div>
     )
@@ -78,7 +78,7 @@ const UserList = props => {
   }
 
   return !showForm ? (
-    <div className='card p-4 bg-light border border-primary text-center'>
+    <React.Fragment>
       {showOptions()}
       <div className='table-responsive'>
         <table className='table table-borderless table-hover'>
@@ -94,7 +94,7 @@ const UserList = props => {
           <ListView showForm={setShowForm} />
         </table>
       </div>
-    </div>
+    </React.Fragment>
   ) : (
     <FormRegister showForm={setShowForm} />
   )

@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { FaUserEdit, FaUserTimes } from 'react-icons/fa'
+import { FaUserEdit, FaUserTimes, FaUser } from 'react-icons/fa'
+import {AiOutlineUser} from 'react-icons/ai'
 import { removeUser } from './../../../redux/actions/userActions'
 
 const ListView = ({ showForm }) => {
@@ -42,11 +43,14 @@ const ListView = ({ showForm }) => {
     const table = userList.map((user, index) => (
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>
-          <img
+          {/* <img
             className='shadow rounded-circle w-60 border border-secondary d-block'
             src={user.login.avatar}
             alt='Avatar'
-          />
+          /> */}
+          <div className="w-40">
+            <FaUser size='50'/>
+          </div>
           <div className='ml-3 align-middle text-left'>
             <h6 className='my-0'>
               {user.personalInfo.firstName} {user.personalInfo.lastName}

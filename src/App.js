@@ -10,6 +10,7 @@ import Admin from './components/Users/Admin'
 import AccountManager from './components/Users/AccountManager'
 import Client from './components/Users/Client'
 import Login from './components/Login/Login'
+import Branch from './components/Shareded/Branch'
 import Auth from './services/Auth'
 import './App.css'
 
@@ -50,7 +51,7 @@ class App extends React.Component {
       // </div>
       <Provider store={store}>
         <div className="App">
-          <div className='bg-bank'></div>
+          <div className='bg-bank bg-opacity'></div>
           <Router>
             <Switch>
               <Route path='/' exact component={Login} />
