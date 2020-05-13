@@ -10,7 +10,6 @@ import Admin from './components/Users/Admin'
 import AccountManager from './components/Users/AccountManager'
 import Client from './components/Users/Client'
 import Login from './components/Login/Login'
-import Branch from './components/Shareded/Branch'
 import Auth from './services/Auth'
 import './App.css'
 

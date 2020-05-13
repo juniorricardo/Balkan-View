@@ -1,6 +1,7 @@
 {
   "sucursales": [
     {
+      "id": "46Juzcyx",
       "name": {
         "nameCompany": "Engelmann - Denzinger",
         "companySuffix": "ED"
@@ -21,6 +22,7 @@
       }
     },
     {
+      "id": "hwX6aOr7",
       "name": {
         "nameCompany": "Kesselring Gruppe",
         "companySuffix": "KG"

@@ -10,8 +10,8 @@ const Sucursal = () => {
     },
     addres: {
       street: {
-        number: '',
-        name: ''
+        streetName: '',
+        streetNumber: ''
       },
       city: '',
       state: '',
@@ -23,16 +23,36 @@ const Sucursal = () => {
       email: ''
     }
   })
-
-  /*TODO:
-    FIXME:
-  */
   const handleName = ({ name, value }) => {
     setBranch({
-      ...branch
+      ...branch,
+      name: {
+        ...branch.name,
+        [name]: value
+      }
     })
   }
-
+  const handleStreet = ({ name, value }) => {
+    setBranch({
+      ...branch,
+      addres: {
+        ...branch.addres,
+        street: {
+          ...branch.addres.street,
+          [name]: value
+        }
+      }
+    })
+  }
+  const handleAddres = ({ name, value }) => {
+    setBranch({
+      ...branch,
+      addres: {
+        ...branch.addres,
+        [name]: value
+      }
+    })
+  }
   const handleContact = ({ name, value }) => {
     setBranch({
       ...branch,
@@ -88,161 +108,101 @@ const Sucursal = () => {
       <div className='col-lg-4 col-md-5'>
         <div className='card text-left'>
           <div className='card-body'>
-            <h5 class='card-title text-center mb-2'>Registro</h5>
+            <h5 className='card-title text-center mb-2'>Registro</h5>
             <form onSubmit={sendBranch}>
               <hr />
-              <h6 class='card-subtitle my-2 text-muted'>Nombres</h6>
+              <h6 className='card-subtitle my-2 text-muted'>Nombres</h6>
               <label htmlFor='nameCompanyInput'>Nombre de compania</label>
               <input
                 type='text'
                 className='form-control'
                 id='nameCompanyInput'
+                name='nameCompany'
                 value={branch.name.nameCompany}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    name: {
-                      ...branch.name,
-                      nameCompany: e.target.value
-                    }
-                  })
-                }
+                onChange={e => handleName(e.target)}
               />
               <label htmlFor='companySuffixInput'>Iniciales</label>
               <input
                 type='text'
                 className='form-control'
                 id='companySuffixInput'
+                name='companySuffix'
                 value={branch.name.companySuffix}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    name: {
-                      ...branch.name,
-                      companySuffix: e.target.value
-                    }
-                  })
-                }
+                onChange={e => handleName(e.target)}
               />
               <hr />
-              <h6 class='card-subtitle my-2 text-muted'>Direccion</h6>
+              <h6 className='card-subtitle my-2 text-muted'>Direccion</h6>
               <label htmlFor='addresStreetNameInput'>Calle</label>
               <input
                 type='text'
                 className='form-control'
                 id='addresStreetNameInput'
-                value={branch.addres.street.name}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    addres: {
-                      ...branch.addres,
-                      street: {
-                        ...branch.addres.street,
-                        name: e.target.value
-                      }
-                    }
-                  })
-                }
+                name='streetName'
+                value={branch.addres.street.streetName}
+                onChange={e => handleStreet(e.target)}
               />
               <label htmlFor='addresStreetNumberInput'>Numero</label>
               <input
                 type='text'
                 className='form-control'
                 id='addresStreetNumberInput'
-                value={branch.addres.street.number}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    addres: {
-                      ...branch.addres,
-                      street: {
-                        ...branch.addres.street,
-                        number: e.target.value
-                      }
-                    }
-                  })
-                }
+                name='streetNumber'
+                value={branch.addres.street.streetNumber}
+                onChange={e => handleStreet(e.target)}
               />
               <label htmlFor='cityInput'>Ciudad</label>
               <input
                 type='text'
                 className='form-control'
                 id='cityInput'
+                name='city'
                 value={branch.addres.city}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    addres: {
-                      ...branch.addres,
-                      city: e.target.value
-                    }
-                  })
-                }
+                onChange={e => handleAddres(e.target)}
               />
               <label htmlFor='stateInput'>Estado</label>
               <input
                 type='text'
                 className='form-control'
                 id='stateInput'
+                name='state'
                 value={branch.addres.state}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    addres: {
-                      ...branch.addres,
-                      state: e.target.value
-                    }
-                  })
-                }
+                onChange={e => handleAddres(e.target)}
               />
               <label htmlFor='countryInput'>Pais</label>
               <input
                 type='text'
                 className='form-control'
                 id='countryInput'
+                name='country'
                 value={branch.addres.country}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    addres: {
-                      ...branch.addres,
-                      country: e.target.value
-                    }
-                  })
-                }
+                onChange={e => handleAddres(e.target)}
               />
               <label htmlFor='countryCodeInput'>Codigo</label>
               <input
                 type='text'
                 className='form-control'
                 id='countryCodeInput'
+                name='countryCode'
                 value={branch.addres.countryCode}
-                onChange={e =>
-                  setBranch({
-                    ...branch,
-                    addres: {
-                      ...branch.addres,
-                      countryCode: e.target.value
-                    }
-                  })
-                }
+                onChange={e => handleAddres(e.target)}
               />
               <hr />
-              <h6 class='card-subtitle my-2 text-muted'>Contacto</h6>
+              <h6 className='card-subtitle my-2 text-muted'>Contacto</h6>
               <label htmlFor='phoneNumberInput'>Telefono</label>
               <input
                 type='text'
                 className='form-control'
                 id='phoneNumberInput'
+                name='phoneNumber'
                 value={branch.contact.phoneNumber}
-                onchange={e => handleContact(e.target)}
+                onChange={e => handleContact(e.target)}
               />
               <label htmlFor='emailInput'>Correo electronico</label>
               <input
                 type='text'
                 className='form-control'
                 id='emailInput'
+                name='email'
                 value={branch.contact.email}
                 onChange={e => handleContact(e.target)}
               />

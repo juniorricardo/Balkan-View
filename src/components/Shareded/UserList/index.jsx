@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { FaUserPlus } from 'react-icons/fa'
 import './userlist.css'
 import ListView from './ListView'
