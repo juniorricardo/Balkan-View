@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Card, Form, Button } from 'react-bootstrap'
 import shortid from 'shortid'
 import { branchInit } from './../../../services/constants/branchInit'
 import {
@@ -55,10 +56,6 @@ const Branch = () => {
   const distpatch = useDispatch()
 
   const [editMode, setEditMode] = useState(false)
-
-  // useEffect(() => {
-  //   console.log('lista de sucursales', branchList)
-  // }, [])
 
   const sendFormBranch = ev => {
     ev.preventDefault()
@@ -137,12 +134,12 @@ const Branch = () => {
   return (
     <div className='row'>
       <div className='col-lg-4 col-md-5'>
-        <div className='card text-left'>
-          <div className='card-body'>
-            <h5 className='card-title text-center mb-2'>
+        <Card style={{textAlign: 'left'}}>
+          <Card.Body>
+            <Card.Title>
               {editMode ? 'Actualizar sucursal' : 'Registrar'}
-            </h5>
-            <form onSubmit={sendFormBranch}>
+            </Card.Title>
+            <Form onSubmit={sendFormBranch}>
               <hr />
               <h6 className='card-subtitle my-2 text-muted'>Nombres</h6>
               <label htmlFor='nameCompanyInput'>Nombre de compania</label>
@@ -247,16 +244,12 @@ const Branch = () => {
                 value={branch.contact.email}
                 onChange={e => handleContact(e.target)}
               />
-              <button
-                className={`btn btn-${
-                  editMode ? 'warning' : 'success'
-                } btn-block mt-2`}
-              >
+              <Button variant={`${editMode ? 'warning' : 'success'}`} block>
                 {editMode ? 'Actualizar' : 'Agregar'}
-              </button>
-            </form>
-          </div>
-        </div>
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
       </div>
 
       <div className='col'>{showBranchList(branchList)}</div>

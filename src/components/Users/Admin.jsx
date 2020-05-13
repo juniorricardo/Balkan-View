@@ -55,7 +55,6 @@ const Admin = () => {
         {!isVisibleBranch ? (
           <UserList userDocument={userLogged.document} type='admin' />
         ) : (
-          /* mostrar crud sucursales*/
           <Branch userDocument={userLogged.document} />
         )}
       </div>

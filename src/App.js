@@ -13,6 +13,10 @@ import Login from './components/Login/Login'
 import Auth from './services/Auth'
 import './App.css'
 
+//TODO:
+//  SASS -> Bootstrap recuperar unicamente
+//          los espaciados 'margin' y 'padding'
+
 class App extends React.Component {
   // constructor() {
   //   super()
