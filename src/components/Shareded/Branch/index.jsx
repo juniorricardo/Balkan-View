@@ -1,28 +1,16 @@
-import React from 'react'
-import { sucursales } from '../../../json/sucursales.json'
-import './sucursal.css'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import shortid from 'shortid'
+import { branchInit } from './../../../services/constants/branchInit'
+import {
+  addBranch,
+  removeBranch,
+  updateBranch
+} from './../../../redux/actions/branchAction'
+import './branch.css'
 
-const Sucursal = () => {
-  const [branch, setBranch] = React.useState({
-    name: {
-      nameCompany: '',
-      companySuffix: ''
-    },
-    addres: {
-      street: {
-        streetName: '',
-        streetNumber: ''
-      },
-      city: '',
-      state: '',
-      country: '',
-      countryCode: ''
-    },
-    contact: {
-      phoneNumber: '',
-      email: ''
-    }
-  })
+const Branch = () => {
+  const [branch, setBranch] = React.useState({ ...branchInit })
   const handleName = ({ name, value }) => {
     setBranch({
       ...branch,
@@ -63,8 +51,45 @@ const Sucursal = () => {
     })
   }
 
-  const showSucursales = listaSucursales => {
-    return listaSucursales.map((sucursal, index) => (
+  const branchList = useSelector(state => state.branchList)
+  const distpatch = useDispatch()
+
+  const [editMode, setEditMode] = useState(false)
+
+  // useEffect(() => {
+  //   console.log('lista de sucursales', branchList)
+  // }, [])
+
+  const sendFormBranch = ev => {
+    ev.preventDefault()
+    console.log('Submit Form')
+    if (!editMode) {
+      distpatch(addBranch({ ...branch, id: shortid.generate() }))
+    } else {
+      console.log('Editar')
+      distpatch(updateBranch(branch))
+    }
+    setBranch({ ...branchInit })
+    setEditMode(false)
+  }
+
+  const handleEdit = inBranch => {
+    //console.log('Branch to edit: ', inBranch)
+    setBranch({ ...inBranch })
+    setEditMode(true)
+    //debugger
+    //console.log('Setting branch to edit on branch state', branch)
+  }
+
+  const handleDetele = id => {
+    console.log('Dispatch -> Remove branch: ', id)
+
+    window.confirm('¿Esta seguro que desea eliminar esta sucursal?') &&
+      distpatch(removeBranch(id))
+  }
+
+  const showBranchList = branchList => {
+    return branchList.map((branch, index) => (
       <div className='card' key={index}>
         <div className='row no-gutters'>
           <div className='col-md-4'>
@@ -75,23 +100,33 @@ const Sucursal = () => {
             />
           </div>
           <div className='col-md-8'>
-            <h5 className='card-header'>{`${sucursal.name.nameCompany}. ${sucursal.name.companySuffix}`}</h5>
+            <h5 className='card-header'>{`${branch.name.nameCompany}. ${branch.name.companySuffix}`}</h5>
             <div className='card-body'>
-              {`${sucursal.addres.street.number} - ${sucursal.addres.street.name}`}
+              {`${branch.addres.street.streetNumber} - ${branch.addres.street.streetName}`}
               <br />
-              {`${sucursal.addres.city}, ${sucursal.addres.country}`}
+              {`${branch.addres.city}, ${branch.addres.country}`}
               <br />
               <abbr title='Telefono'>Telefono:</abbr>
-              {sucursal.contact.phoneNumber}
+              {branch.contact.phoneNumber}
               <br />
-              <a href={`mailto:${sucursal.contact.email}`}>
-                {sucursal.contact.email}
+              <a href={`mailto:${branch.contact.email}`}>
+                {branch.contact.email}
               </a>
               <br />
             </div>
             <div className='card-footer btn-group'>
-              <button className='btn btn-warning block'>Editar</button>
-              <button className='btn btn-danger block'>Eliminar</button>
+              <button
+                className='btn btn-warning block'
+                onClick={() => handleEdit(branch)}
+              >
+                Editar
+              </button>
+              <button
+                className='btn btn-danger block'
+                onClick={() => handleDetele(branch.id)}
+              >
+                Eliminar
+              </button>
             </div>
           </div>
         </div>
@@ -99,17 +134,15 @@ const Sucursal = () => {
     ))
   }
 
-  const sendBranch = ev => {
-    ev.preventDefault()
-    console.log('New branch')
-  }
   return (
-    <div className='container row'>
+    <div className='row'>
       <div className='col-lg-4 col-md-5'>
         <div className='card text-left'>
           <div className='card-body'>
-            <h5 className='card-title text-center mb-2'>Registro</h5>
-            <form onSubmit={sendBranch}>
+            <h5 className='card-title text-center mb-2'>
+              {editMode ? 'Actualizar sucursal' : 'Registrar'}
+            </h5>
+            <form onSubmit={sendFormBranch}>
               <hr />
               <h6 className='card-subtitle my-2 text-muted'>Nombres</h6>
               <label htmlFor='nameCompanyInput'>Nombre de compania</label>
@@ -117,6 +150,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='nameCompanyInput'
+                required
                 name='nameCompany'
                 value={branch.name.nameCompany}
                 onChange={e => handleName(e.target)}
@@ -137,6 +171,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='addresStreetNameInput'
+                required
                 name='streetName'
                 value={branch.addres.street.streetName}
                 onChange={e => handleStreet(e.target)}
@@ -146,6 +181,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='addresStreetNumberInput'
+                required
                 name='streetNumber'
                 value={branch.addres.street.streetNumber}
                 onChange={e => handleStreet(e.target)}
@@ -164,6 +200,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='stateInput'
+                required
                 name='state'
                 value={branch.addres.state}
                 onChange={e => handleAddres(e.target)}
@@ -173,6 +210,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='countryInput'
+                required
                 name='country'
                 value={branch.addres.country}
                 onChange={e => handleAddres(e.target)}
@@ -182,6 +220,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='countryCodeInput'
+                required
                 name='countryCode'
                 value={branch.addres.countryCode}
                 onChange={e => handleAddres(e.target)}
@@ -193,6 +232,7 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='phoneNumberInput'
+                required
                 name='phoneNumber'
                 value={branch.contact.phoneNumber}
                 onChange={e => handleContact(e.target)}
@@ -202,19 +242,26 @@ const Sucursal = () => {
                 type='text'
                 className='form-control'
                 id='emailInput'
+                required
                 name='email'
                 value={branch.contact.email}
                 onChange={e => handleContact(e.target)}
               />
-              <button className='btn btn-primary mt-2'>Agregar</button>
+              <button
+                className={`btn btn-${
+                  editMode ? 'warning' : 'success'
+                } btn-block mt-2`}
+              >
+                {editMode ? 'Actualizar' : 'Agregar'}
+              </button>
             </form>
           </div>
         </div>
       </div>
 
-      <div className='col'>{showSucursales(sucursales)}</div>
+      <div className='col'>{showBranchList(branchList)}</div>
     </div>
   )
 }
 
-export default Sucursal
+export default Branch

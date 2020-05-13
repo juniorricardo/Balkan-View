@@ -2,7 +2,7 @@
 import usuarios from './../../json/usuarios.json'
 
 export default function (state = usuarios, action) {
-  console.log('reducer Usuarios', state)
+  //console.log('reducer Usuarios', state)
   switch (action.type) {
     case 'ADD_USER':
       return state.concat([action.user])
@@ -11,7 +11,7 @@ export default function (state = usuarios, action) {
     case 'UPDATE_USER':
       console.log('Dispatch Edit', action.user)
       debugger
-      
+
       return state.map(user =>
         (user.personalInfo.document === action.user.personalInfo.document) ?
           action.user :

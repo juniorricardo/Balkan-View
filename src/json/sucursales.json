@@ -8,8 +8,8 @@
       },
       "addres": {
         "street": {
-          "number": "5302 Asya Wells",
-          "name": "Mira Trail"
+          "streetName": "Mira Trail",
+          "streetNumber": "5302 Asya Wells"
         },
         "city": "Neu Mariellaland",
         "state": "Sachsen",
@@ -29,8 +29,8 @@
       },
       "addres": {
         "street": {
-          "number": "254 Krause Village",
-          "name": "Liebach Path"
+          "streetName": "Liebach Path",
+          "streetNumber": "254 Krause Village"
         },
         "city": "Kaulburg",
         "state": "Bremen",

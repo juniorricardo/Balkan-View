@@ -1,8 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { FaUserEdit, FaUserTimes, FaUser } from 'react-icons/fa'
-import {AiOutlineUser} from 'react-icons/ai'
 import { removeUser } from './../../../redux/actions/userActions'
 
 const ListView = ({ showForm }) => {
@@ -48,8 +46,8 @@ const ListView = ({ showForm }) => {
             src={user.login.avatar}
             alt='Avatar'
           /> */}
-          <div className="w-40">
-            <FaUser size='50'/>
+          <div className='w-40'>
+            <FaUser size='50' />
           </div>
           <div className='ml-3 align-middle text-left'>
             <h6 className='my-0'>
