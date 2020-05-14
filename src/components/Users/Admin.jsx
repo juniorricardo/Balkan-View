@@ -1,5 +1,4 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
 import Navbar from '../Navbar'
 import UserList from '../Shareded/UserList'
 import Branch from './../Shareded/Branch'
@@ -52,15 +51,13 @@ const Admin = () => {
         type='admin'
         actionShowBranch={setVisibleBranch}
       />
-      <Card bg='light' border='primary'>
-        <Card.Body>
-          {!isVisibleBranch ? (
-            <UserList userDocument={userLogged.document} type='admin' />
-          ) : (
-            <Branch userDocument={userLogged.document} />
-          )}
-        </Card.Body>
-      </Card>
+      <div className='card p-4 bg-light border border-primary text-center'>
+        {!isVisibleBranch ? (
+          <UserList userDocument={userLogged.document} type='admin' />
+        ) : (
+          <Branch userDocument={userLogged.document} />
+        )}
+      </div>
     </React.Fragment>
   )
 }

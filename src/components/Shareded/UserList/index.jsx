@@ -24,7 +24,7 @@ const UserList = props => {
   
   const showOptions = () => {
     const options = (
-      <div className='d-flex justify-content-between my-2'>
+      <div className='d-flex justify-content-between mb-1'>
         <div className='btn-group'>
           <button
             type='button'

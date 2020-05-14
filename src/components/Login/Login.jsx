@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container,Row, Col, Card, Form, Button } from 'react-bootstrap'
 import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
 import imgLogin from './../../images/formPicture.jpg'
@@ -55,43 +54,39 @@ Kh5RPDNjPWl4E_i
   }
 
   return (
-    <Container>
-      <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-          <Card style={{ width: '20rem' }}>
-            <Card.Img variant='top' src={imgLogin} alt='Login' />
-            <Card.Body>
-              <Card.Title>Iniciar sesion</Card.Title>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group controlId='formBasicEmail'>
-                  <Form.Label>Correo electronico</Form.Label>
-                  <Form.Control
-                    type='email'
-                    placeholder='Ingrese su correo'
-                    required
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                  />
-                </Form.Group>
-  
-                <Form.Group controlId='formBasicPassword'>
-                  <Form.Label>Contraseña</Form.Label>
-                  <Form.Control
-                    type='password'
-                    placeholder='Contraseña'
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                  />
-                </Form.Group>
-                <Button variant='dark' type='submit' size='lg' block>
-                  Ingresar <FaSignInAlt />
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <div className='container'>
+      <div className='card' style={{ width: '20rem' }}>
+        <img className='card-img-top' src={imgLogin} alt='Login' />
+        <div className='card-body'>
+          <div className='card-title text-center'>
+            <p className='lead'>Iniciar sesion</p>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor='formBasicEmail'>Correo electronico</label>
+            <input
+              className='form-control'
+              type='email'
+              placeholder='Ingrese su correo'
+              required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+
+            <label htmlFor='formBasicPassword'>Contraseña</label>
+            <input
+              className='form-control'
+              type='password'
+              placeholder='Contraseña'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <button className='btn btn-dark btn-lg btn-block mt-2'>
+              Ingresar <FaSignInAlt />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   )
 }
 

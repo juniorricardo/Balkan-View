@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Form, Button } from 'react-bootstrap'
 import shortid from 'shortid'
 import { branchInit } from './../../../services/constants/branchInit'
 import {
@@ -134,12 +133,12 @@ const Branch = () => {
   return (
     <div className='row'>
       <div className='col-lg-4 col-md-5'>
-        <Card style={{textAlign: 'left'}}>
-          <Card.Body>
-            <Card.Title>
+        <div className='card' style={{textAlign: 'left'}}>
+          <div className='card-body'>
+            <div className='card-title'>
               {editMode ? 'Actualizar sucursal' : 'Registrar'}
-            </Card.Title>
-            <Form onSubmit={sendFormBranch}>
+            </div>
+            <form onSubmit={sendFormBranch}>
               <hr />
               <h6 className='card-subtitle my-2 text-muted'>Nombres</h6>
               <label htmlFor='nameCompanyInput'>Nombre de compania</label>
@@ -244,12 +243,12 @@ const Branch = () => {
                 value={branch.contact.email}
                 onChange={e => handleContact(e.target)}
               />
-              <Button variant={`${editMode ? 'warning' : 'success'}`} block>
+              <button className={`btn btn-${editMode ? 'warning':'success'} btn-block`}>
                 {editMode ? 'Actualizar' : 'Agregar'}
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
 
       <div className='col'>{showBranchList(branchList)}</div>

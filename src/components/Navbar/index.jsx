@@ -28,7 +28,7 @@ const Navbar = props => {
 
   return (
     <nav className='navbar navbar-expand sticky-top navbar-light bg-light border-bottom shadow rounded mb-4'>
-      <a className='navbar-brand' href='#'>
+      <a className='navbar-brand' href={user.type}>
         <img className='align-top' src={logo} width='160' alt='logo' />
       </a>
       <div className='collapse navbar-collapse' id='navbarText'>
@@ -37,7 +37,7 @@ const Navbar = props => {
             className='nav-item'
             onClick={() => props.actionShowBranch(false)}
           >
-            <a className='nav-link' href='#'>
+            <a className='nav-link' href={user.type}>
               Inicio
             </a>
           </li>
