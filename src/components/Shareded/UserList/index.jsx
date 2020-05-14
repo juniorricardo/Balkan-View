@@ -20,10 +20,8 @@ const UserList = props => {
   //   obtenerLista()
   // }, [])
 
-  const newUser = () => {
-    localStorage.setItem('userEdit', null)
-    setShowForm(true)
-  }
+  const newUser = () => setShowForm(true)
+  
   const showOptions = () => {
     const options = (
       <div className='d-flex justify-content-between my-2'>
@@ -67,15 +65,10 @@ const UserList = props => {
     return options
   }
 
-  const showAdmins = ev => {
-    console.log('Mostrando Administradores')
-  }
-  const showAccountManagers = ev => {
-    console.log('Mostrando Agente de cuentas')
-  }
-  const showClients = ev => {
-    console.log('Mostrando Clientes')
-  }
+  const showAdmins = ev => console.log('Mostrando Administradores')
+  const showAccountManagers = ev => console.log('Mostrando Agente de cuentas')
+  const showClients = ev => console.log('Mostrando Clientes')
+  
 
   return !showForm ? (
     <React.Fragment>

@@ -30,14 +30,11 @@ const ListView = ({ showForm }) => {
     showForm(true)
   }
 
-  const confirmRemoveUser = index => {
-    if (window.confirm('Usted esta seguro que quiere eliminarlo?')) {
-      dispatch(removeUser(index))
-    }
-  }
-  const getList = () => {
-    console.log('Lista!', userList)
+  const confirmRemoveUser = index =>
+    window.confirm('Usted esta seguro que quiere eliminarlo?') &&
+    dispatch(removeUser(index))
 
+  const getList = () => {
     const table = userList.map((user, index) => (
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>

@@ -39,8 +39,6 @@ const FormRegister = ({ showForm }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log('Submit:')
-    debugger
     if (editMode) {
       console.log('Dispatch => Edit')
       console.log('Update user', {

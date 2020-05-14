@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Form, Button } from 'react-bootstrap'
+import { Container,Row, Col, Card, Form, Button } from 'react-bootstrap'
 import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
 import imgLogin from './../../images/formPicture.jpg'
@@ -55,37 +55,43 @@ Kh5RPDNjPWl4E_i
   }
 
   return (
-    <Card style={{ width: '20rem' }}>
-      <Card.Img variant='top' src={imgLogin} alt='Login' />
-      <Card.Body>
-        <Card.Title>Iniciar sesion</Card.Title>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId='formBasicEmail'>
-            <Form.Label>Correo electronico</Form.Label>
-            <Form.Control
-              type='email'
-              placeholder='Ingrese su correo'
-              required
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId='formBasicPassword'>
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Contraseña'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <Button variant='dark' type='submit' size='lg' block>
-            Ingresar <FaSignInAlt />
-          </Button>
-        </Form>
-      </Card.Body>
-    </Card>
+    <Container>
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <Card style={{ width: '20rem' }}>
+            <Card.Img variant='top' src={imgLogin} alt='Login' />
+            <Card.Body>
+              <Card.Title>Iniciar sesion</Card.Title>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId='formBasicEmail'>
+                  <Form.Label>Correo electronico</Form.Label>
+                  <Form.Control
+                    type='email'
+                    placeholder='Ingrese su correo'
+                    required
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                </Form.Group>
+  
+                <Form.Group controlId='formBasicPassword'>
+                  <Form.Label>Contraseña</Form.Label>
+                  <Form.Control
+                    type='password'
+                    placeholder='Contraseña'
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                  />
+                </Form.Group>
+                <Button variant='dark' type='submit' size='lg' block>
+                  Ingresar <FaSignInAlt />
+                </Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
