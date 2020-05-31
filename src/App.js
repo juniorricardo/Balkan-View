@@ -53,8 +53,7 @@ class App extends React.Component {
       //    <UserList />
       // </div>
       <Provider store={store}>
-        <div className="App">
-          <div className='bg-bank bg-opacity'></div>
+        <div className="min-vh-100">
           <Router>
             <Switch>
               <Route path='/' exact component={Login} />

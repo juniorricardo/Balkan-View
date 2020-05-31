@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../Navbar'
 import UserList from '../Shareded/UserList'
 import Branch from './../Shareded/Branch'
+import Main from './../Main'
 
 const Admin = () => {
   // constructor debe tomar datos del usuario logeado
@@ -40,9 +41,26 @@ const Admin = () => {
 
   React.useEffect(() => {
     console.log(userLogged)
+    console.log(isVisibleBranch)
   }, [])
 
   return (
+    // <div className='container-fluid bg-primary min-vh-100 min-vw-100 mb-4'>
+    //   <Navbar
+    //     firstName={userLogged.name.firstName}
+    //     lastName={userLogged.name.lastName}
+    //     avatar={userLogged.avatar}
+    //     type='admin'
+    //     actionShowBranch={setVisibleBranch}
+    //   />
+    //   <div className='card p-4 bg-light border border-primary text-center'>
+    //     {!isVisibleBranch ? (
+    //       <UserList userDocument={userLogged.document} type='admin' />
+    //     ) : (
+    //       <Branch userDocument={userLogged.document} />
+    //     )}
+    //   </div>
+    // </div>
     <React.Fragment>
       <Navbar
         firstName={userLogged.name.firstName}
@@ -51,7 +69,7 @@ const Admin = () => {
         type='admin'
         actionShowBranch={setVisibleBranch}
       />
-      <div className='card p-4 bg-light border border-primary text-center'>
+      <div className='mx-2 my-2 p-4 bg-light border border-primary text-center'>
         {!isVisibleBranch ? (
           <UserList userDocument={userLogged.document} type='admin' />
         ) : (
