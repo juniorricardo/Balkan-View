@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaUserEdit, FaUserTimes, FaUser } from 'react-icons/fa'
 import { removeUser } from './../../../redux/actions/userActions'
+import './Userlist.css'
 
 const ListView = ({ showForm }) => {
   const userList = useSelector(state => state.userList)
@@ -10,14 +11,14 @@ const ListView = ({ showForm }) => {
   var valueOfType = { color: '', type: '' }
   const getColorOfType = type => {
     if (type === 'client') {
-      valueOfType.color = 'primary'
+      valueOfType.color = 'text-success'
       valueOfType.type = 'Cliente'
     } else if (type === 'accountManager') {
-      valueOfType.color = 'success'
-      valueOfType.type = 'Agente de cuentas'
+      valueOfType.color = 'color-account-manager'
+      valueOfType.type = 'Agente'
     } else {
-      valueOfType.color = 'dark'
-      valueOfType.type = 'Administrador'
+      valueOfType.color = 'text-warning'
+      valueOfType.type = 'Admin'
     }
     return valueOfType
   }
@@ -93,10 +94,37 @@ const ListView = ({ showForm }) => {
     ))
     return table
   }
+  const newListView = () => {
+    return userList.map((user, index) => (
+      <div className='col col-md-offset-2'>
+        <div className='row no-gutters card-box bg-dark rounded'>
+          <div className='media'>
+            <div className='avatar mr-3'>
+              <img
+                src={user.login.avatar}
+                class='rounded-circle img-fluid'
+                alt='avatar'
+              />
+            </div>
+            <div className='media-body overflow-hidden text-left'>
+              <h5 className='mt-0 mb-1'>
+                {user.personalInfo.firstName} {user.personalInfo.lastName}
+              </h5>
+              <p className='text-muted mb-2'>{user.login.email}</p>
+              <small
+                className={`${getColorOfType(user.userType).color} font-weight-bold`}
+              >{valueOfType.type}
+              </small> 
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
 
   return (
     <React.Fragment>
-      {userList.length === 0 ? 'Vacio' : <tbody>{getList()}</tbody>}
+      {userList.length === 0 ? 'Vacio' : newListView()}
     </React.Fragment>
   )
 }

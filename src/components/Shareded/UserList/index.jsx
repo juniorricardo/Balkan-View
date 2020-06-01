@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { FaUserPlus } from 'react-icons/fa'
-import './userlist.css'
+import './Userlist.css'
 import ListView from './ListView'
 import FormRegister from '../../Users/FormRegister'
 
@@ -21,7 +21,7 @@ const UserList = props => {
   // }, [])
 
   const newUser = () => setShowForm(true)
-  
+
   const showOptions = () => {
     const options = (
       <div className='d-flex justify-content-between mb-1'>
@@ -68,11 +68,10 @@ const UserList = props => {
   const showAdmins = ev => console.log('Mostrando Administradores')
   const showAccountManagers = ev => console.log('Mostrando Agente de cuentas')
   const showClients = ev => console.log('Mostrando Clientes')
-  
 
   return !showForm ? (
-    <React.Fragment>
-      {showOptions()}
+    <div className='row text-white'>
+      {/* {showOptions()}
       <div className='table-responsive'>
         <table className='table table-borderless table-hover'>
           <thead className='bg-dark text-light'>
@@ -86,8 +85,21 @@ const UserList = props => {
           </thead>
           <ListView showForm={setShowForm} />
         </table>
+      </div> */}
+      <div className='col-12 text-left'>
+        <span className='font-karla' style={{'fontSize':'1.25em'}}>Lista de usuarios</span>
+        <button className='btn btn-success float-right'>
+          Agregar <FaUserPlus size='1.5rem' />
+        </button>
       </div>
-    </React.Fragment>
+
+      <div className='col-12 py-2'>
+        <div className='row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4'>
+          {/* LISTA DE USUARIOS*/}
+          <ListView showForm={setShowForm} />
+        </div>
+      </div>
+    </div>
   ) : (
     <FormRegister showForm={setShowForm} />
   )
