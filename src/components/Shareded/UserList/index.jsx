@@ -87,9 +87,9 @@ const UserList = props => {
         </table>
       </div> */}
       <div className='col-12 text-left'>
-        <span className='font-karla' style={{'fontSize':'1.25em'}}>Lista de usuarios</span>
+        <span className='header-title' style={{'fontSize':'1.25em'}}>Lista de usuarios</span>
         <button className='btn btn-success float-right'>
-          Agregar <FaUserPlus size='1.5rem' />
+          <FaUserPlus size='1.5rem' />
         </button>
       </div>
 

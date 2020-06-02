@@ -53,7 +53,7 @@ class App extends React.Component {
       //    <UserList />
       // </div>
       <Provider store={store}>
-        <div className="min-vh-100">
+        <div id='wrapper'>
           <Router>
             <Switch>
               <Route path='/' exact component={Login} />

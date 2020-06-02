@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { FaUserEdit, FaUserTimes, FaUser } from 'react-icons/fa'
+import { FaUserCheck, FaUserEdit, FaUserTimes, FaUser } from 'react-icons/fa'
 import { removeUser } from './../../../redux/actions/userActions'
 import './Userlist.css'
 
@@ -96,25 +96,51 @@ const ListView = ({ showForm }) => {
   }
   const newListView = () => {
     return userList.map((user, index) => (
-      <div className='col col-md-offset-2'>
-        <div className='row no-gutters card-box bg-dark rounded'>
-          <div className='media'>
+      <div className='col'>
+        <div className='no-gutters card-box bg-dark rounded'>
+          <div className='media-n'>
             <div className='avatar mr-3'>
               <img
                 src={user.login.avatar}
-                class='rounded-circle img-fluid'
+                class='rounded-circle img-fluid d-flex align-items-center'
                 alt='avatar'
               />
             </div>
-            <div className='media-body overflow-hidden text-left'>
+            <div className='media-n-body overflow-hidden text-left'>
               <h5 className='mt-0 mb-1'>
                 {user.personalInfo.firstName} {user.personalInfo.lastName}
               </h5>
               <p className='text-muted mb-2'>{user.login.email}</p>
-              <small
-                className={`${getColorOfType(user.userType).color} font-weight-bold`}
-              >{valueOfType.type}
-              </small> 
+
+              <div className='d-flex align-items-center m-0'>
+                <small
+                  className={`${
+                    getColorOfType(user.userType).color
+                  } font-weight-bold mr-auto p-2`}
+                >
+                  {valueOfType.type}
+                </small>
+                <div className='btn-group-sm p-2'>
+                  <small className='btn btn-info'>
+                    <FaUserCheck />
+                  </small>
+                  <button
+                    className='btn btn-warning mx-1'
+                    onClick={() => {
+                      console.log(user)
+                      userToEdit(user)
+                    }}
+                  >
+                    <FaUserEdit />
+                  </button>
+                  <button
+                    className='btn btn-danger'
+                    onClick={() => confirmRemoveUser(index)}
+                  >
+                    <FaUserTimes />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

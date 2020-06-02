@@ -16,36 +16,30 @@ thead {
   height: 60px !important;
 }
 
-.card-box {
-  background-color: #313844;
-  padding: 1.5rem;
-  -webkit-box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
-  box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
-  margin-bottom: 24px;
-  border-radius: 0.25rem;
-}
-.card-box .card-drop {
-  color: #adb5bd;
-  font-size: 20px;
-  display: inline-block;
-  line-height: 1px;
+.nav-user {
+  padding: 0 12px !important
 }
 
-.media {
+.nav-user img {
+  height: 32px;
+  width: 32px
+}
+
+.header-title {
+  font-size: 1rem;
+  margin: 0 0 7px 0;
+}
+
+.media-n {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: flex-start;
+  align-items: center;
 }
-.media-body {
+.media-n-body {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-}
-
-.avatar {
-  height: 4.5rem;
-  width: 4.5rem
 }

@@ -69,7 +69,7 @@ const Admin = () => {
         type='admin'
         actionShowBranch={setVisibleBranch}
       />
-      <div className='p-4 bg-admin text-center'>
+      <div className='p-4 bg-admin text-center content-page'>
         {!isVisibleBranch ? (
           <UserList userDocument={userLogged.document} type='admin' />
         ) : (

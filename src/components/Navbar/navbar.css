@@ -29,8 +29,15 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-
 .icon {
   display: block;
   background: #fff;
+}
+.dropdown-header {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: #343a30;
+  white-space: nowrap;
 }

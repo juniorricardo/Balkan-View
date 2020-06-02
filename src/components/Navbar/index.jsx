@@ -70,7 +70,7 @@ const NavB = props => {
           </button>
         </div>
       </nav> */}
-      <Navbar bg='light' expand='lg'>
+      <Navbar bg='light' expand='lg' fixed="top" >
         <Navbar.Brand href={user.type}>
           <img className='align-top' src={logo} width='100' alt='logo' />
         </Navbar.Brand>
@@ -97,13 +97,18 @@ const NavB = props => {
           </Nav>
           <Form inline>
             <DropdownButton
+              variant='light'
               as={ButtonGroup}
               title={`${user.firstName} ${user.lastName}`}
               id='bg-nested-dropdown'
             >
+              <div className='dropdown-header noti-title'>
+                <h6 className='m-0'>Bienvenido!</h6>
+              </div>
               <Dropdown.Item eventKey='1'>
                 Mi perfil <FaUserAlt />
               </Dropdown.Item>
+              <Dropdown.Divider />
               <Dropdown.Item eventKey='2'>
                 Cerrar sesion <FaSignOutAlt />
               </Dropdown.Item>
