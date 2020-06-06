@@ -2,7 +2,7 @@
 -deternima el estado inicial del state y la acciones <!-- */
 import { sucursales } from './../../json/sucursales.json'
 export default function (state = sucursales, action) {
-  console.log('reducer++', action)
+  console.log('reducer BRANCH', action)
 
   switch (action.type) {
     case 'ADD_BRANCH':

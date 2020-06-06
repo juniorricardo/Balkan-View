@@ -94,7 +94,7 @@ const UserList = props => {
       </div>
 
       <div className='col-12 py-2'>
-        <div className='row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4'>
+        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4'>
           {/* LISTA DE USUARIOS*/}
           <ListView showForm={setShowForm} />
         </div>

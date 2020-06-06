@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import branchReducer from './../reducers/branchReducer'
-import userListReducer from './../reducers/userListReducer'
+import branchReducer from './branchReducer'
+import userListReducer from './userListReducer'
+import userSession from './userSessionReducer'
 
 export default combineReducers({
   userList: userListReducer,
-  branchList: branchReducer
+  branchList: branchReducer,
+  userSession: userSession
 })

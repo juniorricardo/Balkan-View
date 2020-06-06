@@ -1,81 +1,39 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { FaUserAlt, FaSignOutAlt } from 'react-icons/fa'
+import PropTypes from 'prop-types'
+import {signOut} from './../../redux/actions/userSessionAction'
 import {
   Nav,
   Navbar,
   NavDropdown,
-  Form,
   ButtonGroup,
-  Dropdown,
-  DropdownButton
+  Button
 } from 'react-bootstrap'
-import PropTypes from 'prop-types'
-import { FaUserAlt, FaSignOutAlt } from 'react-icons/fa'
 import './navbar.css'
 import logo from './../../images/logo-balkan.webp'
-import Auth from './../../services/Auth'
 
 const NavB = props => {
-  const [user, setUser] = React.useState({
-    firstName: props.firstName,
-    lastName: props.lastName,
-    avatar: props.avatar,
-    type: props.type
-  })
 
+  const userLogged = useSelector(state => state.userSession)
+  const dispatch = useDispatch()
   const navLogout = () => {
     console.log('Navbar logout Button')
     //Luego redirigir al login
-    Auth.logout(() => {
-      sessionStorage.removeItem('user')
-      setUser({
-        firstName: '',
-        lastName: '',
-        type: ''
-      })
-    })
+    dispatch(signOut())
   }
+  React.useEffect(() => {
+    console.log('Usuario logueado como admin:', userLogged)
+  }, [])
 
   return (
     <React.Fragment>
-      {/* <nav className='navbar navbar-expand fixed-top navbar-light bg-light border-bottom shadow rounded'>
-        <a className='navbar-brand' href={user.type}>
-          <img className='align-top' src={logo} width='100' alt='logo' />
-        </a>
-        <div className='collapse navbar-collapse' id='navbarText'>
-          <ul className='navbar-nav mr-auto'>
-            <li
-              className='nav-item'
-              onClick={() => props.actionShowBranch(false)}
-            >
-              <a className='nav-link' href={user.type}>
-                Inicio
-              </a>
-            </li>
-            <li
-              className='nav-item'
-              onClick={() => props.actionShowBranch(true)}
-            >
-              <a className='nav-link' href='#'>
-                Sucursales
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className='nav form-inline navbar-nav navbar-right d-inline-block my-1'>
-          <span className='navbar-text'>
-            {user.firstName} {user.lastName}
-          </span>
-          <button className='btn btn-dark ml-2' onClick={() => navLogout()}>
-            <FaSignOutAlt />
-          </button>
-        </div>
-      </nav> */}
-      <Navbar bg='light' expand='lg' fixed="top" >
-        <Navbar.Brand href={user.type}>
+      <Navbar collapseOnSelect bg='light' expand='lg' fixed='top'>
+        <Navbar.Brand href={userLogged.userType}>
           <img className='align-top' src={logo} width='100' alt='logo' />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='mr-auto'>
             <Nav.Link href='#' onClick={() => props.actionShowBranch(false)}>
               Inicio
@@ -95,25 +53,27 @@ const NavB = props => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form inline>
-            <DropdownButton
+          <Nav>
+            <NavDropdown
               variant='light'
               as={ButtonGroup}
-              title={`${user.firstName} ${user.lastName}`}
-              id='bg-nested-dropdown'
+              title={`${userLogged.firstName} ${userLogged.lastName}`}
+              id='collasible-nav-dropdown'
             >
               <div className='dropdown-header noti-title'>
                 <h6 className='m-0'>Bienvenido!</h6>
               </div>
-              <Dropdown.Item eventKey='1'>
+              <NavDropdown.Item href='#'>
                 Mi perfil <FaUserAlt />
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey='2'>
-                Cerrar sesion <FaSignOutAlt />
-              </Dropdown.Item>
-            </DropdownButton>
-          </Form>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href='#'>
+                <Button onClick={() => navLogout()}>
+                  Cerrar sesion <FaSignOutAlt />
+                </Button>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     </React.Fragment>

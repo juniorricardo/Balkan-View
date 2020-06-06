@@ -2,7 +2,7 @@
 import usuarios from './../../json/usuarios.json'
 
 export default function (state = usuarios, action) {
-  //console.log('reducer Usuarios', state)
+  console.log('reducer USERS', state)
   switch (action.type) {
     case 'ADD_USER':
       return state.concat([action.user])

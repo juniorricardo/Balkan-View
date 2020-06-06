@@ -15,10 +15,10 @@ const ListView = ({ showForm }) => {
       valueOfType.type = 'Cliente'
     } else if (type === 'accountManager') {
       valueOfType.color = 'color-account-manager'
-      valueOfType.type = 'Agente'
+      valueOfType.type = 'Agente de cuentas'
     } else {
       valueOfType.color = 'text-warning'
-      valueOfType.type = 'Admin'
+      valueOfType.type = 'Administrador'
     }
     return valueOfType
   }
@@ -96,13 +96,13 @@ const ListView = ({ showForm }) => {
   }
   const newListView = () => {
     return userList.map((user, index) => (
-      <div className='col'>
+      <div className='col' key={index}>
         <div className='no-gutters card-box bg-dark rounded'>
           <div className='media-n'>
             <div className='avatar mr-3'>
               <img
                 src={user.login.avatar}
-                class='rounded-circle img-fluid d-flex align-items-center'
+                className='rounded-circle img-fluid d-flex align-items-center'
                 alt='avatar'
               />
             </div>
