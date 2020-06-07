@@ -78,6 +78,7 @@ const FormRegister = ({ showForm }) => {
 
   React.useEffect(() => {
     console.log('editMode', editMode)
+    debugger
     const res = JSON.parse(localStorage.getItem('userEdit'))
     if (res) {
       setEditMode(true)
@@ -91,7 +92,7 @@ const FormRegister = ({ showForm }) => {
   return (
     <div className='card bg-light'>
       <div className='card-header text-center'>
-        <h3>Registro</h3>
+        <h3>{editMode ? 'Actualizar usuario' : 'Registro'}</h3>
       </div>
       <div className='card-body'>
         <div className='card-deck'>
@@ -272,9 +273,7 @@ const FormRegister = ({ showForm }) => {
                     ))
                   ) : (
                     <React.Fragment>
-                      <option defaultValue>
-                        Seleccione una opcion
-                      </option>
+                      <option defaultValue>Seleccione una opcion</option>
                       {optionDrop.map((item, index) => (
                         <option value={item.type} key={index}>
                           {item.name}
@@ -394,7 +393,7 @@ const FormRegister = ({ showForm }) => {
           onClick={handleSubmit}
         >
           <FaSave />
-          {editMode ? ' Actualizar usuario' : ' Agregar'}
+          {editMode ? ' Guardar' : ' Agregar'}
         </button>
       </div>
     </div>

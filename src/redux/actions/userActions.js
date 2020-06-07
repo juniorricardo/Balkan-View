@@ -3,9 +3,9 @@
     user
   })
 
-  export const removeUser = (index) => ({
+  export const removeUser = (userid) => ({
     type: 'REMOVE_USER',
-    index
+    userid
   })
 
   export const updateUser = (user) => ({

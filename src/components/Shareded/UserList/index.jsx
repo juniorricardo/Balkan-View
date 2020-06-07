@@ -10,18 +10,6 @@ const UserList = props => {
 
   const [showForm, setShowForm] = React.useState(false)
 
-  // React.useEffect(() => {
-  //   const obtenerLista = () => {
-  //     const lista = JSON.parse(localStorage.getItem('userList')).filter(
-  //       u => u.document !== props.document
-  //     )
-  //     setUserList(lista)
-  //   }
-  //   obtenerLista()
-  // }, [])
-
-  const newUser = () => setShowForm(true)
-
   const showOptions = () => {
     const options = (
       <div className='d-flex justify-content-between mb-1'>
@@ -57,7 +45,7 @@ const UserList = props => {
             </span>
           </button>
         </div>
-        <button className='btn btn-success my-1' onClick={() => newUser()}>
+        <button className='btn btn-success my-1' onClick={() => setShowForm(true)}>
           <FaUserPlus size='1.5rem' /> Nuevo usuario
         </button>
       </div>
@@ -87,8 +75,13 @@ const UserList = props => {
         </table>
       </div> */}
       <div className='col-12 text-left'>
-        <span className='header-title' style={{'fontSize':'1.25em'}}>Lista de usuarios</span>
-        <button className='btn btn-success float-right'>
+        <span className='header-title' style={{ fontSize: '1.25em' }}>
+          Lista de usuarios
+        </span>
+        <button
+          className='btn btn-success float-right'
+          onClick={() => setShowForm(true)}
+        >
           <FaUserPlus size='1.5rem' />
         </button>
       </div>

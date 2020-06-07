@@ -54,8 +54,8 @@ Kh5RPDNjPWl4E_i
   }
 
   return (
-    <div className='container'>
-      <div className='card' style={{ width: '20rem' }}>
+    <div className='container-fluid min-vh-100'>
+      <div className='card mx-auto mt-5' style={{ width: '20rem' }}>
         <img className='card-img-top' src={imgLogin} alt='Login' />
         <div className='card-body'>
           <div className='card-title text-center'>
