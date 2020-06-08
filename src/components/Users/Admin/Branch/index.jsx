@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import shortid from 'shortid'
-import { branchInit } from './../../../services/constants/branchInit'
+import { branchInit } from './../../../../services/constants/branchInit'
 import {
   addBranch,
   removeBranch,
   updateBranch
-} from './../../../redux/actions/branchAction'
+} from './../../../../redux/actions/branchAction'
 import './branch.css'
 
 const Branch = () => {

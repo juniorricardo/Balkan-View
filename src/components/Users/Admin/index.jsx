@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import NavB from '../Navbar'
-import UserList from '../Shareded/UserList'
-import Branch from './../Shareded/Branch'
+import NavB from './../../Navbar'
+import UserList from './UserList'
+import Branch from './Branch'
 
 const Admin = () => {
   // constructor debe tomar datos del usuario logeado

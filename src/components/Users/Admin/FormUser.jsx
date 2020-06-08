@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { FaSave } from 'react-icons/fa'
 import { addUser, updateUser } from '../../../redux/actions/userActions'
 
-const FormRegister = ({ showForm }) => {
+const FormUser = ({ showForm }) => {
   const [personalInfo, setPersonalInfo] = useState({
     firstName: '',
     lastName: '',
@@ -400,4 +400,4 @@ const FormRegister = ({ showForm }) => {
   )
 }
 
-export default FormRegister
+export default FormUser

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { FaUserPlus } from 'react-icons/fa'
 import './Userlist.css'
 import ListView from './ListView'
-import FormRegister from '../../Users/FormRegister'
+import FormUser from './../FormUser'
 
 const UserList = props => {
   const userList = useSelector(state => state.userList)
@@ -94,7 +94,7 @@ const UserList = props => {
       </div>
     </div>
   ) : (
-    <FormRegister showForm={setShowForm} />
+    <FormUser showForm={setShowForm} />
   )
 }
 
