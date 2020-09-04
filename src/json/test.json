@@ -1,0 +1,5 @@
+[
+  {"Address": { "City": "New York", "State": "NY" }},
+  {"Other": { "City": "New York", "State": "ST" }},
+  {"Data": { "City": "New York", "State": "DH" }}
+]
