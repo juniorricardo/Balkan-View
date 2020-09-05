@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from '../Navbar'
-import UserList from '../Shareded/UserList'
+import React from "react"
+import Navbar from "../Navbar"
+import UserList from "../Shareded/UserList"
 
 const Admin = () => {
   // constructor debe tomar datos del usuario logeado
@@ -9,31 +9,31 @@ const Admin = () => {
   // )
   const userLogged = {
     name: {
-      firstName: 'Leni',
-      lastName: 'Wiegelmann',
-      jobTitle: 'Corporate Integration Coordinator'
+      firstName: "Leni",
+      lastName: "Wiegelmann",
+      jobTitle: "Corporate Integration Coordinator",
     },
-    userType: 'admin',
+    userType: "admin",
     document: 40493669,
-    birthday: '2000-06-16T01:15:49.801Z',
+    birthday: "2000-06-16T01:15:49.801Z",
     addres: {
       street: {
-        number: '2398 Lorenz Lodge',
-        name: 'Nick Manors'
+        number: "2398 Lorenz Lodge",
+        name: "Nick Manors",
       },
-      city: 'Ost Svenja',
-      state: 'Brandenburg',
-      county: 'Avon',
-      country: 'Sambia',
-      countryCode: 'HR'
+      city: "Ost Svenja",
+      state: "Brandenburg",
+      county: "Avon",
+      country: "Sambia",
+      countryCode: "HR",
     },
-    phoneNumber: '+49-7842-32834099',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kohette/128.jpg',
+    phoneNumber: "+49-7842-32834099",
+    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/kohette/128.jpg",
     login: {
-      email: 'leni.wiegelmann@correo.com',
-      userName: 'Giuliana.Thimm',
-      password: 'Kh5RPDNjPWl4E_i'
-    }
+      email: "leni.wiegelmann@correo.com",
+      userName: "Giuliana.Thimm",
+      password: "Kh5RPDNjPWl4E_i",
+    },
   }
 
   React.useEffect(() => {
@@ -46,9 +46,9 @@ const Admin = () => {
         firstName={userLogged.name.firstName}
         lastName={userLogged.name.lastName}
         avatar={userLogged.avatar}
-        type='admin'
+        type="admin"
       />
-      <UserList document={userLogged.document} type='admin' />
+      <UserList document={userLogged.document} type="admin" />
     </React.Fragment>
   )
 }

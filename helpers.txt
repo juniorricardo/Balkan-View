@@ -1,0 +1,14 @@
+npx eslint --init
+
+npx eslint .
+./node_modules/.bin/eslint .
+
+npx eslit . --fix
+
+npx prettier . --check
+
+eslint-config-prettier
+
+extends: ["prettier"]
+
+eslint-plugin-react eslint-config-standard eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard

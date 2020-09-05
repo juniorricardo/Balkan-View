@@ -1,4 +1,5 @@
-const urlUsers = 'https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json'
+const urlUsers =
+  'https://raw.githubusercontent.com/juniorricardo/sucursal-bancario/master/src/json/usuarios.json'
 // const LoadListUser = async() => {
 //   console.log('Cargando usuario en localStorage');
 //   await fetch(urlUsers)
@@ -9,7 +10,7 @@ const urlUsers = 'https://raw.githubusercontent.com/juniorricardo/sucursal-banca
 export default () => {
   const users = []
   fetch(urlUsers)
-    .then(r => r.json())
-    .then(obj => obj.map(i => users.push(i)))
+    .then((r) => r.json())
+    .then((obj) => obj.userList.map(u => users.push(u)))
   return users
 }

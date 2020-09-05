@@ -1,13 +1,13 @@
 import React from 'react'
-import { useState, useEffect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const ListView = () => {
-  const { usersList } = useSelector(state => ({
+  const { usersList } = useSelector((state) => ({
     usersList: state.usersList
   }))
 
   var valueOfType = { color: '', type: '' }
-  const getColorOfType = type => {
+  const getColorOfType = (type) => {
     if (type === 'client') {
       valueOfType.color = 'primary'
       valueOfType.type = 'Cliente'
@@ -21,10 +21,9 @@ const ListView = () => {
     return valueOfType
   }
 
-  
   const getList = (list) => {
-    console.log('datos!',list)
-    list.map(e => console.log(e))
+    console.log('datos!', list)
+    list.map((e) => console.log(e))
     const table = list.map((user, index) => (
       <tr className='align-middle' key={index}>
         <td className='d-flex align-items-center'>
@@ -46,8 +45,7 @@ const ListView = () => {
           <span
             className={`badge text-wrap badge-${
               getColorOfType(user.userType).color
-            }`}
-          >
+            }`}>
             {valueOfType.type}
           </span>
         </td>
@@ -62,8 +60,7 @@ const ListView = () => {
               className='btn btn-danger'
               onClick={() => {
                 console.log(index)
-              }}
-            >
+              }}>
               <i className='fas fa-user-minus fa-sm'></i>
             </button>
           </div>
@@ -75,15 +72,7 @@ const ListView = () => {
 
   return (
     <React.Fragment>
-      {usersList.length !== 0 ? (
-        'Vacio'
-      ) : (
-        <tbody>
-          {
-            getList(usersList)
-          }
-        </tbody>
-      )}
+      {usersList.length !== 0 ? 'Vacio' : <tbody>{getList(usersList)}</tbody>}
     </React.Fragment>
   )
 }

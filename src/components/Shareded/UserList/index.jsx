@@ -1,9 +1,9 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import './userlist.css'
-import ListView from './ListView'
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import "./userlist.css"
+import ListView from "./ListView"
 
-const UserList = props => {
+const UserList = (props) => {
   // const { re_userList } = useSelector(state => ({
   //   re_userList: state.userList
   // }))
@@ -85,67 +85,67 @@ const UserList = props => {
   // }
   const showOptions = () => {
     const options = (
-      <div className='d-flex justify-content-between my-2'>
-        <div className='btn-group'>
+      <div className="d-flex justify-content-between my-2">
+        <div className="btn-group">
           <button
-            type='button'
-            className='btn btn-dark mr-1'
+            type="button"
+            className="btn btn-dark mr-1"
             onClick={() => showAdmins(this)}
           >
             Administradores
-            <span className='badge badge-light contador ml-1 align-middle badge-pill'>
-              {userList.filter(e => e.userType === 'admin').length}
+            <span className="badge badge-light contador ml-1 align-middle badge-pill">
+              {userList.filter((e) => e.userType === "admin").length}
             </span>
           </button>
           <button
-            type='button'
-            className='btn btn-dark mr-1'
+            type="button"
+            className="btn btn-dark mr-1"
             onClick={() => showAccountManagers()}
           >
             Agente de cuantas
-            <span className='badge badge-light contador ml-1 align-middle badge-pill'>
-              {userList.filter(e => e.userType === 'account-manager').length}
+            <span className="badge badge-light contador ml-1 align-middle badge-pill">
+              {userList.filter((e) => e.userType === "account-manager").length}
             </span>
           </button>
           <button
-            type='button'
-            className='btn btn-dark'
+            type="button"
+            className="btn btn-dark"
             onClick={() => showClients()}
           >
             Clientes
-            <span className='badge badge-light contador ml-2 align-middle badge-pill'>
-              {userList.filter(e => e.userType === 'client').length}
+            <span className="badge badge-light contador ml-2 align-middle badge-pill">
+              {userList.filter((e) => e.userType === "client").length}
             </span>
           </button>
         </div>
-        <button className='btn btn-success my-1'>
-          <i className='fas fa-user-plus'></i> Nuevo usuario
+        <button className="btn btn-success my-1">
+          <i className="fas fa-user-plus"></i> Nuevo usuario
         </button>
       </div>
     )
     return options
   }
 
-  const seleccionUsuario = id => {
+  const seleccionUsuario = (id) => {
     console.log(id)
   }
 
-  const showAdmins = ev => {
-    console.log('Mostrando Administradores')
+  const showAdmins = (ev) => {
+    console.log("Mostrando Administradores")
   }
-  const showAccountManagers = ev => {
-    console.log('Mostrando Agente de cuentas')
+  const showAccountManagers = (ev) => {
+    console.log("Mostrando Agente de cuentas")
   }
-  const showClients = ev => {
-    console.log('Mostrando Clientes')
+  const showClients = (ev) => {
+    console.log("Mostrando Clientes")
   }
 
   return (
-    <div className='container card px-4 bg-light border border-primary text-center'>
+    <div className="container card px-4 bg-light border border-primary text-center">
       {showOptions()}
-      <div className='table-responsive'>
-        <table className='table table-borderless table-hover'>
-          <thead className='bg-dark text-light'>
+      <div className="table-responsive">
+        <table className="table table-borderless table-hover">
+          <thead className="bg-dark text-light">
             <tr>
               <th>Nombre</th>
               <th>Tipo</th>

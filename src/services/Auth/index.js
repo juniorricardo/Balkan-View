@@ -1,24 +1,23 @@
-class Auth{
-  constructor(){
+class Auth {
+  constructor () {
     this.authenticated = false
   }
 
-  login(cb){
+  login (cb) {
     console.log('Logged')
     this.authenticated = true
     cb()
   }
 
-  logout(cb){
+  logout (cb) {
     console.log('Logouted')
     sessionStorage.removeItem('user')
     this.authenticated = false
     cb()
   }
 
-  isAuthenticated(){
+  isAuthenticated () {
     return this.authenticated
   }
-
 }
 export default new Auth()

@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react"
 
 const AccountManager = () => {
-  return (
-    <div>
-      Soy Agente de cuentas
-    </div>
-  )
+  return <div>Soy Agente de cuentas</div>
 }
 
 export default AccountManager
