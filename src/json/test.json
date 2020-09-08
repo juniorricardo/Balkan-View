@@ -1,0 +1,311 @@
+{
+  "wobbuffet-02": {
+    "Abilities": [
+      {
+        "ability": {
+          "Name": "shadow-tag",
+          "URL": "https://pokeapi.co/api/v2/ability/23/"
+        },
+        "is hidden": false,
+        "slot": 1
+      },
+      {
+        "ability": {
+          "Name": "telepathy",
+          "URL": "https://pokeapi.co/api/v2/ability/140/"
+        },
+        "is hidden": true,
+        "slot": 3
+      }
+    ],
+    "forms": [
+      {
+        "Name": "wobbuffet",
+        "URL": "https://pokeapi.co/api/v2/pokemon-form/202/"
+      }
+    ],
+    "Name": "wobbuffet-02",
+    "stats": [
+      {
+        "base stat": 190,
+        "effort": 2,
+        "Is Main": true,
+        "stat": {
+          "Name": "hp",
+          "URL": "https://pokeapi.co/api/v2/stat/1/"
+        }
+      },
+      {
+        "base stat": 33,
+        "effort": 0,
+        "stat": {
+          "Name": "attack",
+          "URL": "https://pokeapi.co/api/v2/stat/2/"
+        }
+      },
+      {
+        "base stat": 58,
+        "effort": 0,
+        "stat": {
+          "Name": "defense",
+          "URL": "https://pokeapi.co/api/v2/stat/3/"
+        }
+      },
+      {
+        "base stat": 33,
+        "effort": 0,
+        "stat": {
+          "Name": "special-attack",
+          "URL": "https://pokeapi.co/api/v2/stat/4/"
+        }
+      },
+      {
+        "base stat": 58,
+        "effort": 0,
+        "stat": {
+          "Name": "special-defense",
+          "URL": "https://pokeapi.co/api/v2/stat/5/"
+        }
+      },
+      {
+        "base stat": 33,
+        "effort": 0,
+        "stat": {
+          "Name": "speed",
+          "URL": "https://pokeapi.co/api/v2/stat/6/"
+        }
+      }
+    ]
+  },
+  "bulbasaur": {
+    "Abilities": [
+      {
+        "ability": {
+          "Name": "overgrow",
+          "URL": "https://pokeapi.co/api/v2/ability/65/"
+        },
+        "is hidden": false,
+        "slot": 1
+      },
+      {
+        "ability": {
+          "Name": "chlorophyll",
+          "URL": "https://pokeapi.co/api/v2/ability/34/"
+        },
+        "is hidden": true,
+        "slot": 3
+      }
+    ],
+    "forms": [
+      {
+        "Name": "bulbasaur",
+        "URL": "https://pokeapi.co/api/v2/pokemon-form/1/"
+      }
+    ],
+    "Name": "bulbasaur",
+    "stats": [
+      {
+        "base stat": 45,
+        "effort": 0,
+        "stat": {
+          "Name": "hp",
+          "URL": "https://pokeapi.co/api/v2/stat/1/"
+        }
+      },
+      {
+        "base stat": 49,
+        "effort": 0,
+        "stat": {
+          "Name": "attack",
+          "URL": "https://pokeapi.co/api/v2/stat/2/"
+        }
+      },
+      {
+        "base stat": 49,
+        "effort": 0,
+        "stat": {
+          "Name": "defense",
+          "URL": "https://pokeapi.co/api/v2/stat/3/"
+        }
+      },
+      {
+        "base stat": 65,
+        "effort": 1,
+        "stat": {
+          "Name": "special-attack",
+          "URL": "https://pokeapi.co/api/v2/stat/4/"
+        }
+      },
+      {
+        "base stat": 65,
+        "effort": 0,
+        "stat": {
+          "Name": "special-defense",
+          "URL": "https://pokeapi.co/api/v2/stat/5/"
+        }
+      },
+      {
+        "base stat": 45,
+        "effort": 0,
+        "stat": {
+          "Name": "speed",
+          "URL": "https://pokeapi.co/api/v2/stat/6/"
+        }
+      }
+    ]
+  },
+  "GROUP-ivysaur": {
+    "Abilities": [
+      {
+        "ability": {
+          "Name": "overgrow",
+          "URL": "https://pokeapi.co/api/v2/ability/65/"
+        },
+        "is hidden": false,
+        "slot": 1
+      },
+      {
+        "ability": {
+          "Name": "chlorophyll",
+          "URL": "https://pokeapi.co/api/v2/ability/34/"
+        },
+        "is hidden": true,
+        "slot": 3
+      }
+    ],
+    "forms": [
+      {
+        "Name": "ivysaur",
+        "URL": "https://pokeapi.co/api/v2/pokemon-form/2/"
+      }
+    ],
+    "Name": "GROUP-ivysaur",
+    "stats": [
+      {
+        "base stat": 60,
+        "effort": 0,
+        "stat": {
+          "Name": "hp",
+          "URL": "https://pokeapi.co/api/v2/stat/1/"
+        }
+      },
+      {
+        "base stat": 62,
+        "effort": 0,
+        "stat": {
+          "Name": "attack",
+          "URL": "https://pokeapi.co/api/v2/stat/2/"
+        }
+      },
+      {
+        "base stat": 63,
+        "effort": 0,
+        "stat": {
+          "Name": "defense",
+          "URL": "https://pokeapi.co/api/v2/stat/3/"
+        }
+      },
+      {
+        "base stat": 80,
+        "effort": 1,
+        "stat": {
+          "Name": "special-attack",
+          "URL": "https://pokeapi.co/api/v2/stat/4/"
+        }
+      },
+      {
+        "base stat": 80,
+        "effort": 1,
+        "stat": {
+          "Name": "special-defense",
+          "URL": "https://pokeapi.co/api/v2/stat/5/"
+        }
+      },
+      {
+        "base stat": 60,
+        "effort": 0,
+        "stat": {
+          "Name": "speed",
+          "URL": "https://pokeapi.co/api/v2/stat/6/"
+        }
+      }
+    ]
+  },
+  "charmander:4E-0A-7E-26-77-FC": {
+    "Abilities": [
+      {
+        "ability": {
+          "Name": "blaze",
+          "URL": "https://pokeapi.co/api/v2/ability/66/"
+        },
+        "is hidden": false,
+        "slot": 1
+      },
+      {
+        "ability": {
+          "Name": "solar-power",
+          "URL": "https://pokeapi.co/api/v2/ability/94/"
+        },
+        "is hidden": true,
+        "slot": 3
+      }
+    ],
+    "forms": [
+      {
+        "Name": "charmander",
+        "URL": "https://pokeapi.co/api/v2/pokemon-form/4/"
+      }
+    ],
+    "Name": "charmander:4E-0A-7E-26-77-FC",
+    "stats": [
+      {
+        "base stat": 39,
+        "effort": 0,
+        "stat": {
+          "Name": "hp",
+          "URL": "https://pokeapi.co/api/v2/stat/1/"
+        }
+      },
+      {
+        "base stat": 52,
+        "effort": 0,
+        "stat": {
+          "Name": "attack",
+          "URL": "https://pokeapi.co/api/v2/stat/2/"
+        }
+      },
+      {
+        "base stat": 43,
+        "effort": 0,
+        "stat": {
+          "Name": "defense",
+          "URL": "https://pokeapi.co/api/v2/stat/3/"
+        }
+      },
+      {
+        "base stat": 60,
+        "effort": 0,
+        "stat": {
+          "Name": "special-attack",
+          "URL": "https://pokeapi.co/api/v2/stat/4/"
+        }
+      },
+      {
+        "base stat": 50,
+        "effort": 0,
+        "stat": {
+          "Name": "special-defense",
+          "URL": "https://pokeapi.co/api/v2/stat/5/"
+        }
+      },
+      {
+        "base stat": 65,
+        "effort": 1,
+        "stat": {
+          "Name": "speed",
+          "URL": "https://pokeapi.co/api/v2/stat/6/"
+        }
+      }
+    ]
+  }
+}

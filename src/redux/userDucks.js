@@ -14,7 +14,7 @@ const usersInit = async () => {
   return users
 }
 
-export default function userReducer(state = usersInit, action) {
+export default function userReducer (state = usersInit, action) {
   switch (action.type) {
     case ADD_USER:
       return state.concat([action.user])

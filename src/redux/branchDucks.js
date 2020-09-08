@@ -1,5 +1,5 @@
 const lista = []
-export default function branchReducer(state = lista, action) {
+export default function branchReducer (state = lista, action) {
   // console.log('reducer++', action)
 
   switch (action.type) {
