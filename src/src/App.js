@@ -3,17 +3,17 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom"
+} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import Admin from './components/Users/Admin'
 import AccountManager from './components/Users/AccountManager'
 import Client from './components/Users/Client'
-import Login from './components/Login/Login'
+import Login from './components/Home/Login'
 import Auth from './services/Auth'
 import './App.css'
 
-//TODO:
+// TODO:
 //  SASS -> Bootstrap recuperar unicamente
 //          los espaciados 'margin' y 'padding'
 
@@ -29,23 +29,24 @@ class App extends React.Component {
   //   // }
   // }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-    //LoadListUser()
+  componentDidMount () {
+    console.log('componentDidMount')
+    // LoadListUser()
     sessionStorage.clear()
     console.log(Auth.isAuthenticated())
 
-    //const listaStorage = JSON.parse(localStorage.getItem('userList'))
+    // const listaStorage = JSON.parse(localStorage.getItem('userList'))
   }
 
-  getRoute() {
+  getRoute () {
     if (sessionStorage.getItem('nombre')) {
-      console.log('No existe');
+      console.log('No existe')
     } else {
       console.log(sessionStorage.getItem('nombre'))
     }
   }
-  render() {
+
+  render () {
     return (
       // <div className='App'>
       //   <div className='wallpaper'></div>
@@ -53,6 +54,7 @@ class App extends React.Component {
       //    <UserList />
       // </div>
       <Provider store={store}>
+        <div className='bg-bank'></div>
         <div id='wrapper'>
           <Router>
             <Switch>
@@ -60,7 +62,7 @@ class App extends React.Component {
               <Route path='/admin' component={Admin} />
               <Route path='/account-manager' component={AccountManager} />
               <Route path='/client' component={Client} />
-              <Route path='*' component={() => "404 NOT FOUND"} />
+              <Route path='*' component={() => '404 NOT FOUND'} />
             </Switch>
           </Router>
         </div>

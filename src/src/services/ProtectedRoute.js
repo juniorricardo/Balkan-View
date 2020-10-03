@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import Auth from './Auth'
 
-
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest}
@@ -12,7 +11,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         } else {
           return <Redirect to={
             {
-              pathname: "/",
+              pathname: '/',
               state: {
                 from: props.location
               }

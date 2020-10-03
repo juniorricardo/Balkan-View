@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import NavB from './../../Navbar'
+import NavB from '../../Home/Navbar'
 import UserList from './UserList'
 import Branch from './Branch'
 

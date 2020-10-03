@@ -6,7 +6,7 @@ import {
   addBranch,
   removeBranch,
   updateBranch
-} from './../../../../redux/actions/branchAction'
+  } from './../../../../redux/branchDucks'
 import './branch.css'
 
 const Branch = () => {

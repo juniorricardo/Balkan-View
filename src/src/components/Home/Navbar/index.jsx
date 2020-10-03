@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaUserAlt, FaSignOutAlt } from 'react-icons/fa'
 import PropTypes from 'prop-types'
-import {signOut} from './../../redux/actions/userSessionAction'
+import { signOut } from '../../../redux/sessionDucks'
 import {
   Nav,
   Navbar,
@@ -11,15 +11,14 @@ import {
   Button
 } from 'react-bootstrap'
 import './navbar.css'
-import logo from './../../images/logo-balkan.webp'
+import logo from './../../../assets/images/logo-balkan.webp'
 
 const NavB = props => {
-
   const userLogged = useSelector(state => state.userSession)
   const dispatch = useDispatch()
   const navLogout = () => {
     console.log('Navbar logout Button')
-    //Luego redirigir al login
+    // Luego redirigir al login
     dispatch(signOut())
   }
   React.useEffect(() => {

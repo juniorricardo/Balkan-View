@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { FaSave } from 'react-icons/fa'
-import { addUser, updateUser } from '../../../redux/actions/userActions'
+import { addUser, updateUser } from '../../../redux/userDucks'
 
 const FormUser = ({ showForm }) => {
   const [personalInfo, setPersonalInfo] = useState({

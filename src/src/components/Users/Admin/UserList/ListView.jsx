@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaUserCheck, FaUserEdit, FaUserTimes } from 'react-icons/fa'
-import { removeUser } from './../../../../redux/actions/userActions'
+import { removeUser } from './../../../../redux/userDucks'
 import './Userlist.css'
 
 const ListView = ({ showForm }) => {

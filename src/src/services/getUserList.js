@@ -7,7 +7,7 @@ const urlUsers = 'https://raw.githubusercontent.com/juniorricardo/sucursal-banca
 // }
 
 const LoadListUser = () => {
-  let users = fetch(urlUsers)
+  const users = fetch(urlUsers)
     .then(res => {
       ((res.ok) ? console.log('SUCCESS') : console.log('NOT SUCCESSFUL'))
       return res.json()

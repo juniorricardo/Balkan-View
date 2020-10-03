@@ -4,7 +4,7 @@
 } */
 
 .bg-bank{
-  background-image: url("./images/wallpaper.jpg");
+  background-image: url("./assets/images/wallpaper.jpg");
   background-position: center;
   background-size: cover;
   position: fixed;

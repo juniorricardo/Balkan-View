@@ -1,8 +1,8 @@
 import React from 'react'
 import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
-import imgLogin from './../../images/formPicture.jpg'
-import Auth from './../../services/Auth'
+import imgLogin from './../../../assets/images/formPicture.jpg'
+import Auth from './../../../services/Auth'
 
 const Login = props => {
   const [email, setEmail] = React.useState('')
