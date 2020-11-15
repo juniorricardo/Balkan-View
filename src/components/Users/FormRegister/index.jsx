@@ -1,269 +1,346 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { FaSave } from 'react-icons/fa'
-import { addUser, updateUser } from '../../../redux/actions/userActions'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { FaSave } from "react-icons/fa";
+import { addUser, updateUser } from "../../../redux/actions/userActions";
+import { Card, CardDeck } from "react-bootstrap";
 
 const FormRegister = ({ showForm }) => {
   const [personalInfo, setPersonalInfo] = useState({
-    firstName: '',
-    lastName: '',
-    document: '',
-    jobTitle: '',
-    birthday: '',
-    phoneNumber: ''
-  })
-  const [userType, setUserType] = useState('')
+    firstName: "",
+    lastName: "",
+    document: "",
+    jobTitle: "",
+    birthday: "",
+    phoneNumber: "",
+  });
+  const [userType, setUserType] = useState("");
   const [addres, setAddres] = useState({
-    street: { number: '', name: '' },
-    city: '',
-    state: '',
-    country: '',
-    countryCode: ''
-  })
+    street: { number: "", name: "" },
+    city: "",
+    state: "",
+    country: "",
+    countryCode: "",
+  });
   const [login, setLogin] = useState({
-    avatar: '',
-    email: '',
-    userName: '',
-    password: ''
-  })
+    avatar: "",
+    email: "",
+    userName: "",
+    password: "",
+  });
 
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const optionDrop = [
-    { type: 'client', name: 'Cliente' },
-    { type: 'accountManager', name: 'Agente de cuentas' },
-    { type: 'admin', name: 'Administrador' }
-  ]
+    { type: "client", name: "Cliente" },
+    { type: "accountManager", name: "Agente de cuentas" },
+    { type: "admin", name: "Administrador" },
+  ];
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (editMode) {
-      console.log('Dispatch => Edit')
-      console.log('Update user', {
+      console.log("Dispatch => Edit");
+      console.log("Update user", {
         personalInfo,
         userType,
         addres,
-        login
-      })
+        login,
+      });
       dispatch(
         updateUser({
           personalInfo,
           userType,
           addres,
-          login
+          login,
         })
-      )
+      );
     } else {
-      console.log('Dispatch => Add')
-      console.log('New user', {
+      console.log("Dispatch => Add");
+      console.log("New user", {
         personalInfo,
         userType,
         addres,
-        login
-      })
+        login,
+      });
       dispatch(
         addUser({
           personalInfo,
           userType,
           addres,
-          login
+          login,
         })
-      )
+      );
     }
-    localStorage.setItem('userEdit', null)
-    showForm(false)
-  }
+    localStorage.setItem("userEdit", null);
+    showForm(false);
+  };
 
   React.useEffect(() => {
-    console.log('editMode', editMode)
-    debugger
-    const res = JSON.parse(localStorage.getItem('userEdit'))
+    console.log("editMode", editMode);
+    debugger;
+    const res = JSON.parse(localStorage.getItem("userEdit"));
     if (res) {
-      setEditMode(true)
-      setPersonalInfo({ ...res.personalInfo })
-      setUserType(res.userType)
-      setAddres({ ...res.addres })
-      setLogin({ ...res.login })
+      setEditMode(true);
+      setPersonalInfo({ ...res.personalInfo });
+      setUserType(res.userType);
+      setAddres({ ...res.addres });
+      setLogin({ ...res.login });
     }
-  }, [])
+  }, [editMode]);
 
   return (
-    <div className='card bg-light'>
-      <div className='card-header text-center'>
-        <h3>{editMode ? 'Actualizar usuario' : 'Registro'}</h3>
-      </div>
-      <div className='card-body'>
-        <div className='card-deck'>
+    <Card bg="light">
+      <Card.Header>
+        <h3>{editMode ? "Actualizar usuario" : "Registro"}</h3>
+      </Card.Header>
+      <Card.Body>
+        <CardDeck>
           {/* Personal Info */}
-          <div className='col-lg-4 col-sm-12 mb-2'>
+          <div className="col-lg-6 col-sm-12 mb-2">
             {
               // avatar
               // https://www.youtube.com/watch?v=XeiOnkEI7XI
               // axios post and firabase
             }
-            <div className='card'>
-              <div className='card-body form-group'>
-                <h4 className='card-title'>Datos personales</h4>
-                <label htmlFor='firstNameInput'>Nombre</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='firstNameInput'
-                  placeholder='Ingrese su nombre'
-                  name='firstName'
-                  value={personalInfo.firstName}
-                  onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-                <label htmlFor='lastNameInput'>Apellido</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='lastNameInput'
-                  placeholder='Ingrese su Apellido'
-                  name='lastName'
-                  value={personalInfo.lastName}
-                  onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-                <label htmlFor='documentInput'>Documento</label>
-                <input
-                  type='number'
-                  className='form-control'
-                  id='documentInput'
-                  placeholder='Ingrese su documento'
-                  name='document'
-                  value={personalInfo.document}
-                  onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-                <label htmlFor='jobTitleInput'>Trabajo</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='jobTitleInput'
-                  placeholder='Ingrese el puesto de trabajo'
-                  name='jobTitle'
-                  value={personalInfo.jobTitle}
-                  onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-                <div className='row my-2'>
+            <Card>
+              <Card.Body>
+                <Card.Title className="mb-4">Datos personales</Card.Title>
+                <div className="form-group row">
                   <label
-                    htmlFor='birthdayInput'
-                    className='col-5 col-form-label wrap'
+                    htmlFor="firstNameInput"
+                    className="col-sm-3 col-form-label"
                   >
-                    Cumpleaños
+                    Nombre
                   </label>
-                  <div className='col-7'>
+                  <div className="col-sm-9">
                     <input
-                      className='form-control'
-                      type='date'
-                      id='birthdayInput'
-                      name='birthday'
-                      defaultValue={personalInfo.birthday}
-                      onChange={e =>
+                      type="text"
+                      className="form-control"
+                      id="firstNameInput"
+                      placeholder="Ingrese su nombre"
+                      name="firstName"
+                      value={personalInfo.firstName}
+                      onChange={(e) =>
                         setPersonalInfo({
                           ...personalInfo,
-                          [e.target.name]: e.target.value
+                          [e.target.name]: e.target.value,
                         })
                       }
                     />
                   </div>
                 </div>
-                <label htmlFor='phoneNumberInput'>Telefono</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='phoneNumberInput'
-                  name='phoneNumber'
-                  value={personalInfo.phoneNumber}
-                  onChange={e =>
-                    setPersonalInfo({
-                      ...personalInfo,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-              </div>
-            </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="lastNameInput"
+                    className="col-sm-3 col-form-label"
+                  >
+                    Apellido
+                  </label>
+                  <div className="col-sm-9">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="lastNameInput"
+                      placeholder="Ingrese su Apellido"
+                      name="lastName"
+                      value={personalInfo.lastName}
+                      onChange={(e) =>
+                        setPersonalInfo({
+                          ...personalInfo,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="documentInput"
+                    className="col-sm-4 col-form-label"
+                  >
+                    Documento
+                  </label>
+                  <div className="col-sm-8">
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="documentInput"
+                      placeholder="Ingrese su documento"
+                      name="document"
+                      value={personalInfo.document}
+                      onChange={(e) =>
+                        setPersonalInfo({
+                          ...personalInfo,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="jobTitleInput"
+                    className="col-sm-3 col-form-label"
+                  >
+                    Trabajo
+                  </label>
+                  <div className="col-sm-9">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="jobTitleInput"
+                      placeholder="Ingrese el puesto de trabajo"
+                      name="jobTitle"
+                      value={personalInfo.jobTitle}
+                      onChange={(e) =>
+                        setPersonalInfo({
+                          ...personalInfo,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="birthdayInput"
+                    className="col-sm-4 col-form-label"
+                  >
+                    Cumpleaños
+                  </label>
+                  <div className="col-sm-8">
+                    <input
+                      className="form-control"
+                      type="date"
+                      id="birthdayInput"
+                      name="birthday"
+                      defaultValue={personalInfo.birthday}
+                      onChange={(e) =>
+                        setPersonalInfo({
+                          ...personalInfo,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="phoneNumberInput"
+                    className="col-sm-3 col-form-label"
+                  >
+                    Telefono
+                  </label>
+                  <div className="col-sm-9">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="phoneNumberInput"
+                      name="phoneNumber"
+                      placeholder="Ingrese su telefono"
+                      value={personalInfo.phoneNumber}
+                      onChange={(e) =>
+                        setPersonalInfo({
+                          ...personalInfo,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
           </div>
           {/* Login */}
-          <div className='col-lg-4 col-sm-12 mb-2'>
-            <div className='card'>
-              <div className='card-body form-group'>
-                <h4 className='card-title'>Iniciar sesion</h4>
-                <label htmlFor='emailInput'>Correo electronico</label>
-                <input
-                  type='email'
-                  className='form-control'
-                  id='emailInput'
-                  name='email'
-                  value={login.email}
-                  onChange={e =>
-                    setLogin({
-                      ...login,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-                <label htmlFor='userNameInput'>Usuario</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='userNameInput'
-                  name='userName'
-                  value={login.userName}
-                  onChange={e =>
-                    setLogin({
-                      ...login,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-                <label htmlFor='passInput'>Contraseña</label>
-                <input
-                  type='password'
-                  className='form-control'
-                  id='passInput'
-                  name='password'
-                  value={login.password}
-                  onChange={e =>
-                    setLogin({
-                      ...login,
-                      [e.target.name]: e.target.value
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <div className='card mt-2'>
-              <div className='card-body'>
-                <h4 className='card-title'>Categoria de usuario</h4>
-                <label htmlFor='userTypeInput'>Tipo</label>
+          <div className="col-lg-6 col-sm-12 mb-2">
+            <Card>
+              <Card.Body className="form-group">
+                <Card.Title className="card-title">Iniciar sesion</Card.Title>
+                <div className="form-group row">
+                  <label
+                    htmlFor="emailInput"
+                    className="col-sm-3 col-form-label"
+                  >
+                    Correo
+                  </label>
+                  <div className="col-sm-9">
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="emailInput"
+                      name="email"
+                      placeholder="Ingrese su correo"
+                      value={login.email}
+                      onChange={(e) =>
+                        setLogin({
+                          ...login,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="userNameInput"
+                    className="col-sm-3 col-form-label"
+                  >
+                    Usuario
+                  </label>
+                  <div className="col-sm-9">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="userNameInput"
+                      name="userName"
+                      placeholder="Ingrese un nombre de usuario"
+                      value={login.userName}
+                      onChange={(e) =>
+                        setLogin({
+                          ...login,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    htmlFor="passInput"
+                    className="col-sm-4 col-form-label"
+                  >
+                    Contraseña
+                  </label>
+                  <div className="col-sm-8">
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="passInput"
+                      name="password"
+                      placeholder="Ingrese su contraseña"
+                      value={login.password}
+                      onChange={(e) =>
+                        setLogin({
+                          ...login,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+            <div className="card mt-2">
+              <div className="card-body">
+                <h4 className="card-title">Categoria de usuario</h4>
+                <label htmlFor="userTypeInput">Tipo</label>
                 <select
-                  className='form-control'
-                  id='userTypeInput'
+                  className="form-control"
+                  id="userTypeInput"
                   value={userType}
-                  onChange={e => setUserType(e.target.value)}
+                  onChange={(e) => setUserType(e.target.value)}
                 >
                   {editMode ? (
                     optionDrop.map((item, index) => (
@@ -286,118 +363,118 @@ const FormRegister = ({ showForm }) => {
             </div>
           </div>
           {/* Addres  */}
-          <div className='col-lg-4 col-sm-12 mb-2'>
-            <div className='card'>
-              <div className='card-body form-group'>
-                <h4 className='card-title'>Direccion</h4>
-                <label htmlFor='streetNameInput'>Calle</label>
+          <div className="col-lg-6 col-sm-12 mb-2">
+            <div className="card">
+              <div className="card-body form-group">
+                <h4 className="card-title">Direccion</h4>
+                <label htmlFor="streetNameInput">Calle</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='streetNameInput'
-                  name='name'
+                  type="text"
+                  className="form-control"
+                  id="streetNameInput"
+                  name="name"
                   value={addres.street.name}
-                  onChange={e =>
+                  onChange={(e) =>
                     setAddres({
                       ...addres,
                       street: {
                         ...addres.street,
-                        [e.target.name]: e.target.value
-                      }
+                        [e.target.name]: e.target.value,
+                      },
                     })
                   }
                 />
-                <label htmlFor='streetNumberInput'>Numero</label>
+                <label htmlFor="streetNumberInput">Numero</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='streetNumberInput'
-                  name='number'
+                  type="text"
+                  className="form-control"
+                  id="streetNumberInput"
+                  name="number"
                   value={addres.street.number}
-                  onChange={e =>
+                  onChange={(e) =>
                     setAddres({
                       ...addres,
                       street: {
                         ...addres.street,
-                        [e.target.name]: e.target.value
-                      }
+                        [e.target.name]: e.target.value,
+                      },
                     })
                   }
                 />
-                <label htmlFor='streetCityInput'>Ciudad</label>
+                <label htmlFor="streetCityInput">Ciudad</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='streetCityInput'
-                  name='city'
+                  type="text"
+                  className="form-control"
+                  id="streetCityInput"
+                  name="city"
                   value={addres.city}
-                  onChange={e =>
+                  onChange={(e) =>
                     setAddres({
                       ...addres,
-                      [e.target.name]: e.target.value
+                      [e.target.name]: e.target.value,
                     })
                   }
                 />
-                <label htmlFor='streetCountyInput'>Provincia</label>
+                <label htmlFor="streetCountyInput">Provincia</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='streetCountyInput'
-                  name='state'
+                  type="text"
+                  className="form-control"
+                  id="streetCountyInput"
+                  name="state"
                   value={addres.state}
-                  onChange={e =>
+                  onChange={(e) =>
                     setAddres({
                       ...addres,
-                      [e.target.name]: e.target.value
+                      [e.target.name]: e.target.value,
                     })
                   }
                 />
-                <label htmlFor='streetCountryInput'>Pais</label>
+                <label htmlFor="streetCountryInput">Pais</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='streetCountryInput'
-                  name='country'
+                  type="text"
+                  className="form-control"
+                  id="streetCountryInput"
+                  name="country"
                   value={addres.country}
-                  onChange={e =>
+                  onChange={(e) =>
                     setAddres({
                       ...addres,
-                      [e.target.name]: e.target.value
+                      [e.target.name]: e.target.value,
                     })
                   }
                 />
-                <label htmlFor='streetCountryCodeInput'>Codigo postal</label>
+                <label htmlFor="streetCountryCodeInput">Codigo postal</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='streetCountryCodeInput'
-                  name='countryCode'
+                  type="text"
+                  className="form-control"
+                  id="streetCountryCodeInput"
+                  name="countryCode"
                   value={addres.countryCode}
-                  onChange={e =>
+                  onChange={(e) =>
                     setAddres({
                       ...addres,
-                      [e.target.name]: e.target.value
+                      [e.target.name]: e.target.value,
                     })
                   }
                 />
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className='card-footer text-center'>
+        </CardDeck>
+      </Card.Body>
+      <div className="card-footer text-center">
         <button
           className={`btn w-80 btn-${
-            editMode ? 'warning text-light' : 'success'
+            editMode ? "warning text-light" : "success"
           }`}
           onClick={handleSubmit}
         >
           <FaSave />
-          {editMode ? ' Guardar' : ' Agregar'}
+          {editMode ? " Guardar" : " Agregar"}
         </button>
       </div>
-    </div>
-  )
-}
+    </Card>
+  );
+};
 
-export default FormRegister
+export default FormRegister;

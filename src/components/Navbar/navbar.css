@@ -19,10 +19,10 @@
       transform: rotate(360deg);
     }
   } */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100&display=swap");
 
 .navbar-brand {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 100;
   -moz-osz-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

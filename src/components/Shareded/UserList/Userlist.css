@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 .contador {
   font-weight: 600;
 }
 
 .table {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 thead {
   font-weight: 600;
@@ -17,12 +17,12 @@ thead {
 }
 
 .nav-user {
-  padding: 0 12px !important
+  padding: 0 12px !important;
 }
 
 .nav-user img {
   height: 32px;
-  width: 32px
+  width: 32px;
 }
 
 .header-title {

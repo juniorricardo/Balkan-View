@@ -1,59 +1,60 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { FaUserCheck, FaUserEdit, FaUserTimes, FaUser } from 'react-icons/fa'
-import { removeUser } from './../../../redux/actions/userActions'
-import './Userlist.css'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FaUserEdit, FaUserTimes } from "react-icons/fa";
+import { Button } from "react-bootstrap";
+import { removeUser } from "./../../../redux/actions/userActions";
+import "./Userlist.css";
 
 const ListView = ({ showForm }) => {
-  const userList = useSelector(state => state.userList)
-  const dispatch = useDispatch()
+  const userList = useSelector((state) => state.userList);
+  const dispatch = useDispatch();
 
-  var valueOfType = { color: '', type: '' }
-  const getColorOfType = type => {
-    if (type === 'client') {
-      valueOfType.color = 'text-success'
-      valueOfType.type = 'Cliente'
-    } else if (type === 'accountManager') {
-      valueOfType.color = 'color-account-manager'
-      valueOfType.type = 'Agente de cuentas'
+  var valueOfType = { color: "", type: "" };
+  const getColorOfType = (type) => {
+    if (type === "client") {
+      valueOfType.color = "text-success";
+      valueOfType.type = "Cliente";
+    } else if (type === "accountManager") {
+      valueOfType.color = "color-account-manager";
+      valueOfType.type = "Agente";
     } else {
-      valueOfType.color = 'text-warning'
-      valueOfType.type = 'Administrador'
+      valueOfType.color = "text-warning";
+      valueOfType.type = "Admin";
     }
-    return valueOfType
-  }
+    return valueOfType;
+  };
 
-  const userToEdit = user => {
-    console.log('Agregando usuario para editar')
+  const userToEdit = (user) => {
+    console.log("Agregando usuario para editar");
 
-    localStorage.setItem('userEdit', JSON.stringify(user))
+    localStorage.setItem("userEdit", JSON.stringify(user));
 
-    showForm(true)
-  }
+    showForm(true);
+  };
 
-  const confirmRemoveUser = userid => 
-    window.confirm('Usted esta seguro que quiere eliminarlo?') &&
-      dispatch(removeUser(userid))
-      
-  const newListView = () => {
+  const confirmRemoveUser = (userid) =>
+    window.confirm("Usted esta seguro que quiere eliminarlo?") &&
+    dispatch(removeUser(userid));
+
+  const listView = () => {
     return userList.map((user, index) => (
-      <div className='col' key={index}>
-        <div className='no-gutters card-box bg-dark rounded'>
-          <div className='media-n'>
-            <div className='avatar mr-3'>
+      <div className="col" key={index}>
+        <div className="p-3 my-3 bg-dark rounded">
+          <div className="media-n">
+            <div className="avatar mr-3">
               <img
                 src={user.login.avatar}
-                className='rounded-circle img-fluid d-flex align-items-center'
-                alt='avatar'
+                className="rounded-circle img-fluid d-flex align-items-center avatar-hover"
+                alt="avatar"
               />
             </div>
-            <div className='media-n-body overflow-hidden text-left'>
-              <h5 className='mt-0 mb-1'>
+            <div className="media-n-body overflow-hidden text-left">
+              <h5 className="mt-0 mb-1">
                 {user.personalInfo.firstName} {user.personalInfo.lastName}
               </h5>
-              <p className='text-muted mb-2'>{user.login.email}</p>
+              <p className="text-muted mb-2">{user.login.email}</p>
 
-              <div className='d-flex align-items-center m-0'>
+              <div className="d-flex align-items-center m-0">
                 <small
                   className={`${
                     getColorOfType(user.userType).color
@@ -61,36 +62,34 @@ const ListView = ({ showForm }) => {
                 >
                   {valueOfType.type}
                 </small>
-                <div className='btn-group-sm p-2'>
-                  <small className='btn btn-info'>
-                    <FaUserCheck />
-                  </small>
-                  <button
-                    className='btn btn-warning mx-1'
+                <div className="btn-group-sm p-2">
+                  <Button
+                    variant="warning"
+                    className="mx-2"
                     onClick={() => userToEdit(user)}
                   >
                     <FaUserEdit />
-                  </button>
-                  <button
-                    className='btn btn-danger'
+                  </Button>
+                  <Button
+                    variant="danger"
                     onClick={() => confirmRemoveUser(user.userid)}
                   >
                     <FaUserTimes />
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    ))
-  }
+    ));
+  };
 
   return (
     <React.Fragment>
-      {userList.length === 0 ? 'Vacio' : newListView()}
+      {userList.length === 0 ? "Vacio" : listView()}
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default ListView
+export default ListView;
